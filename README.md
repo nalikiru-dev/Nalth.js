@@ -40,7 +40,7 @@ In addition, Vite is highly extensible via its [Plugin API](https://vite.dev/gui
 | ----------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------- |
 | [vite](packages/vite)                           | [![vite version](https://img.shields.io/npm/v/vite.svg?label=%20)](packages/vite/CHANGELOG.md)                                    |
 | [@vitejs/plugin-legacy](packages/plugin-legacy) | [![plugin-legacy version](https://img.shields.io/npm/v/@vitejs/plugin-legacy.svg?label=%20)](packages/plugin-legacy/CHANGELOG.md) |
-| [create-vite](packages/create-vite)             | [![create-vite version](https://img.shields.io/npm/v/create-vite.svg?label=%20)](packages/create-vite/CHANGELOG.md)               |
+| [create-nalth](packages/create-nalth)           | [![create-nalth version](https://img.shields.io/npm/v/create-nalth.svg?label=%20)](packages/create-nalth/CHANGELOG.md)            |
 
 ## Contribution
 
@@ -57,3 +57,5 @@ See [Contributing Guide](CONTRIBUTING.md).
     <img alt="sponsors" src="https://sponsors.vuejs.org/vite.svg?v2">
   </a>
 </p>
+# Nalth
+# Nalth
