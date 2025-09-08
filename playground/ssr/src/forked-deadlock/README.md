@@ -48,4 +48,4 @@ Even if `[X]` is imported by `[B]`, `[B]` is not in `[X]`'s stack because it's i
 
 ### Fix description
 
-Vite, when imports `[X]`, should check whether `[X]` is already pending and if it is, it must check that, when it was imported in first place, the stack of `[X]` doesn't have any module in common with the current module; in this case `[B]` has the module `[H]` is common with `[X]` and i can assume that a deadlock is going to happen.
+Nalth, when imports `[X]`, should check whether `[X]` is already pending and if it is, it must check that, when it was imported in first place, the stack of `[X]` doesn't have any module in common with the current module; in this case `[B]` has the module `[H]` is common with `[X]` and i can assume that a deadlock is going to happen.

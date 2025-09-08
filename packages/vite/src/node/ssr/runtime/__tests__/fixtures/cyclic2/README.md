@@ -1,6 +1,6 @@
 - `test1` - `test5`
 
-Cyclic import example based on https://github.com/vitejs/vite/issues/14048#issuecomment-2354774156
+Cyclic import example based on https://github.com/Nalthjs/Nalth/issues/14048#issuecomment-2354774156
 
 ```mermaid
 flowchart TD

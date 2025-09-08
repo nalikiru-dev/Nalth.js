@@ -1,6 +1,6 @@
-# @vitejs/plugin-legacy [![npm](https://img.shields.io/npm/v/@vitejs/plugin-legacy.svg)](https://npmjs.com/package/@vitejs/plugin-legacy)
+# @Nalthjs/plugin-legacy [![npm](https://img.shields.io/npm/v/@Nalthjs/plugin-legacy.svg)](https://npmjs.com/package/@Nalthjs/plugin-legacy)
 
-Vite's default browser support baseline is [Native ESM](https://caniuse.com/es6-module), [native ESM dynamic import](https://caniuse.com/es6-module-dynamic-import), and [`import.meta`](https://caniuse.com/mdn-javascript_operators_import_meta). This plugin provides support for legacy browsers that do not support those features when building for production.
+Nalth's default browser support baseline is [Native ESM](https://caniuse.com/es6-module), [native ESM dynamic import](https://caniuse.com/es6-module-dynamic-import), and [`import.meta`](https://caniuse.com/mdn-javascript_operators_import_meta). This plugin provides support for legacy browsers that do not support those features when building for production.
 
 By default, this plugin will:
 
@@ -15,8 +15,8 @@ By default, this plugin will:
 ## Usage
 
 ```js
-// vite.config.js
-import legacy from '@vitejs/plugin-legacy'
+// Nalth.config.js
+import legacy from '@Nalthjs/plugin-legacy'
 
 export default {
   plugins: [
@@ -103,7 +103,7 @@ npm add -D terser
   Set to `false` to disable legacy chunks. This is only useful if you are using `modernPolyfills`, which essentially allows you to use this plugin for injecting polyfills to the modern build only:
 
   ```js
-  import legacy from '@vitejs/plugin-legacy'
+  import legacy from '@Nalthjs/plugin-legacy'
 
   export default {
     plugins: [
@@ -157,7 +157,7 @@ Polyfill specifier strings for `polyfills` and `modernPolyfills` can be either o
 **Example**
 
 ```js
-import legacy from '@vitejs/plugin-legacy'
+import legacy from '@Nalthjs/plugin-legacy'
 
 export default {
   plugins: [
@@ -176,7 +176,7 @@ The legacy plugin requires inline scripts for [Safari 10.1 `nomodule` fix](https
 The hash values (without the `sha256-` prefix) can be retrieved via:
 
 ```js
-import { cspHashes } from '@vitejs/plugin-legacy'
+import { cspHashes } from '@Nalthjs/plugin-legacy'
 ```
 
 The current values are:
@@ -187,7 +187,7 @@ The current values are:
 - `sha256-+5XkZFazzJo8n0iOP4ti/cLCMUudTf//Mzkb7xNPXIc=`
 
 <!--
-Run `node --input-type=module -e "import {cspHashes} from '@vitejs/plugin-legacy'; console.log(cspHashes.map(h => 'sha256-'+h))"` to retrieve the value.
+Run `node --input-type=module -e "import {cspHashes} from '@Nalthjs/plugin-legacy'; console.log(cspHashes.map(h => 'sha256-'+h))"` to retrieve the value.
 -->
 
 Note that these values could change between minor versions. Thus, we recommend generating the CSP header from the exported `cspHashes` variable. If you copy the values manually, then you should pin the minor version using `~`.

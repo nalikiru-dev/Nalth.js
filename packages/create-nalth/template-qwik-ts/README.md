@@ -1,4 +1,4 @@
-# Qwik + Vite
+# Qwik + Nalth
 
 ## Qwik in CSR mode
 
@@ -7,7 +7,7 @@ This starter is using a pure CSR (Client-Side Rendering) mode. This means, that 
 ```ts
 export default defineConfig({
   plugins: [
-    qwikVite({
+    qwikNalth({
       csr: true,
     }),
   ],
