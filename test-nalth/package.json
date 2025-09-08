@@ -1,0 +1,14 @@
+{
+  "name": "test-nalth",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "nalth dev",
+    "build": "nalth build",
+    "preview": "nalth preview"
+  },
+  "devDependencies": {
+    "nalth": "file:../packages/nalth"
+  }
+}

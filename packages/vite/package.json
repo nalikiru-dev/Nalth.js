@@ -1,20 +1,22 @@
 {
-  "name": "vite",
+  "name": "nalth",
   "version": "7.1.2",
   "type": "module",
   "license": "MIT",
-  "author": "Evan You",
-  "description": "Native-ESM powered web dev build tool",
+  "author": "Nalth Team",
+  "description": "Security-first Native-ESM powered web dev build tool",
   "bin": {
-    "vite": "bin/vite.js"
+    "nalth": "bin/nalth.js"
   },
   "keywords": [
     "frontend",
     "framework",
+    "security",
     "hmr",
     "dev-server",
     "build-tool",
-    "vite"
+    "secure-build",
+    "nalth"
   ],
   "main": "./dist/node/index.js",
   "types": "./dist/node/index.d.ts",
@@ -58,14 +60,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vitejs/vite.git",
+    "url": "git+https://github.com/nalth/nalth.git",
     "directory": "packages/vite"
   },
   "bugs": {
-    "url": "https://github.com/vitejs/vite/issues"
+    "url": "https://github.com/nalth/nalth/issues"
   },
-  "homepage": "https://vite.dev",
-  "funding": "https://github.com/vitejs/vite?sponsor=1",
+  "homepage": "https://nalth.dev",
+  "funding": "https://github.com/nalth/nalth?sponsor=1",
   "scripts": {
     "dev": "premove dist && pnpm build-bundle -w",
     "build": "premove dist && pnpm build-bundle && pnpm build-types",

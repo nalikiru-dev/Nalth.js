@@ -1,0 +1,15 @@
+{
+  "name": "demo-secure-app",
+  "version": "0.1.0",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "nalth dev",
+    "build": "nalth build",
+    "preview": "nalth preview"
+  },
+  "dependencies": {
+    "nalth": "^1.0.0"
+  },
+  "devDependencies": {}
+}

@@ -154,7 +154,7 @@ importers:
         specifier: ^3.0.5
         version: 3.0.5(typescript@5.9.2)
 
-  packages/create-vite:
+  packages/create-nalth:
     devDependencies:
       '@clack/prompts':
         specifier: ^0.11.0

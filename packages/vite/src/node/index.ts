@@ -21,6 +21,17 @@ export { formatPostcssSourceMap, preprocessCSS } from './plugins/css'
 export { transformWithEsbuild } from './plugins/esbuild'
 export { buildErrorMessage } from './server/middlewares/error'
 
+// Nalth Security Features
+export { securityPlugin, securityMiddlewarePlugin } from './plugins/security'
+export { 
+  defaultSecurityConfig, 
+  createSecurityMiddleware, 
+  generateSRIHash, 
+  auditCode,
+  type SecurityConfig 
+} from './security.config'
+export { resolveNalthHttpsConfig, generateSelfSignedCert } from './https-security'
+
 export {
   createRunnableDevEnvironment,
   isRunnableDevEnvironment,

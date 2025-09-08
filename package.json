@@ -1,24 +1,25 @@
 {
-  "name": "@vitejs/vite-monorepo",
+  "name": "@nalth/nalth-monorepo",
   "private": true,
   "type": "module",
   "engines": {
     "node": "^20.19.0 || >=22.12.0"
   },
-  "homepage": "https://vite.dev/",
+  "homepage": "https://nalth.dev/",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vitejs/vite.git"
+    "url": "git+https://github.com/nalth/nalth.git"
   },
   "keywords": [
     "frontend",
+    "security",
     "hmr",
     "dev-server",
     "build-tool",
-    "vite"
+    "secure-build",
+    "nalth"
   ],
   "scripts": {
-    "preinstall": "npx only-allow pnpm",
     "postinstall": "simple-git-hooks",
     "format": "prettier --write --cache .",
     "lint": "eslint --cache .",
@@ -70,7 +71,7 @@
     "tsx": "^4.20.3",
     "typescript": "~5.9.2",
     "typescript-eslint": "^8.39.1",
-    "vite": "workspace:*",
+    "nalth": "workspace:*",
     "vitest": "^3.2.4"
   },
   "simple-git-hooks": {
