@@ -146,7 +146,7 @@ We welcome contributions! Please see our [Contributing Guide](../../CONTRIBUTING
 
 ## Community Templates
 
-create-nalth is a tool to quickly start a project from a basic template for popular frameworks. Check out Awesome Vite for [community maintained templates](https://github.com/vitejs/awesome-vite#templates) that include other tools or target different frameworks. You can use a tool like [degit](https://github.com/Rich-Harris/degit) to scaffold your project with one of the templates.
+create-nalth is a tool to quickly start a project from a basic template for popular frameworks. Check out Awesome Nalth for [community maintained templates](https://github.com/Nalthjs/awesome-Nalth#templates) that include other tools or target different frameworks. You can use a tool like [degit](https://github.com/Rich-Harris/degit) to scaffold your project with one of the templates.
 
 ```bash
 npx degit user/project my-project

@@ -180,11 +180,11 @@ Every new Nalth project comes with a beautiful demo page showcasing:
 - ✅ Simpler configuration (Next.js can be complex)
 - ✅ Built-in security headers (Next.js requires manual setup)
 
-### vs. Vite
-- ✅ Production-ready security (Vite is development-focused)
-- ✅ Built-in server features (Vite requires additional setup)
-- ✅ HTTPS by default (Vite needs manual configuration)
-- ✅ Security middleware included (Vite has none)
+### vs. Nalth
+- ✅ Production-ready security (Nalth is development-focused)
+- ✅ Built-in server features (Nalth requires additional setup)
+- ✅ HTTPS by default (Nalth needs manual configuration)
+- ✅ Security middleware included (Nalth has none)
 
 ## 🛠️ Development
 
@@ -264,7 +264,7 @@ MIT License - see [LICENSE](LICENSE) file for details.
 ## 🙏 Acknowledgments
 
 - Built with security best practices from OWASP
-- Inspired by the simplicity of Vite and the power of Express
+- Inspired by the simplicity of Nalth and the power of Express
 - SSL certificate generation powered by node-forge
 
 ## 📞 Support
