@@ -22,6 +22,8 @@ import {
   resolveHttpsConfig,
   setClientErrorHandler,
 } from '../http'
+import { resolveNalthHttpsConfig } from '../https-security'
+import { createSecurityMiddleware } from '../security.config'
 import type { InlineConfig, ResolvedConfig } from '../config'
 import { isResolvedConfig, resolveConfig } from '../config'
 import {
@@ -452,7 +454,13 @@ export async function _createServer(
   const initPublicFilesPromise = initPublicFiles(config)
 
   const { root, server: serverConfig } = config
-  const httpsOptions = await resolveHttpsConfig(config.server.https)
+  // Enable HTTPS by default for Nalth with security enhancements
+  const nalthHttpsOptions = await resolveNalthHttpsConfig(
+    serverConfig.https,
+    config.cacheDir,
+    config.logger
+  )
+  const httpsOptions = nalthHttpsOptions || await resolveHttpsConfig(serverConfig.https)
   const { middlewareMode } = serverConfig
 
   const resolvedOutDirs = getResolvedOutDirs(
@@ -871,6 +879,9 @@ export async function _createServer(
   if (cors !== false) {
     middlewares.use(corsMiddleware(typeof cors === 'boolean' ? {} : cors))
   }
+
+  // security middleware - add security headers and CSP
+  middlewares.use(createSecurityMiddleware())
 
   // host check (to prevent DNS rebinding attacks)
   const { allowedHosts } = serverConfig

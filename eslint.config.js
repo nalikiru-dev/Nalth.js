@@ -18,7 +18,7 @@ const shouldTypeCheck = typeof process.env.VSCODE_PID === 'string'
 export default tseslint.config(
   {
     ignores: [
-      'packages/create-vite/template-*',
+      'packages/create-nalth/template-*',
       '**/dist/**',
       '**/fixtures/**',
       '**/playground-temp/**',
@@ -272,9 +272,9 @@ export default tseslint.config(
     },
   },
   {
-    name: 'disables/create-vite/templates',
+    name: 'disables/create-nalth/templates',
     files: [
-      'packages/create-vite/template-*/**/*.?([cm])[jt]s?(x)',
+      'packages/create-nalth/template-*/**/*.?([cm])[jt]s?(x)',
       '**/build.config.ts',
     ],
     rules: {

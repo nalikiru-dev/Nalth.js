@@ -14,16 +14,16 @@ Currently, Vite is working on an improved SSR API with the [Environment API](htt
 
 ## Example Projects
 
-Vite provides built-in support for server-side rendering (SSR). [`create-vite-extra`](https://github.com/bluwy/create-vite-extra) contains example SSR setups you can use as references for this guide:
+Vite provides built-in support for server-side rendering (SSR). [`create-nalth-extra`](https://github.com/bluwy/create-nalth-extra) contains example SSR setups you can use as references for this guide:
 
-- [Vanilla](https://github.com/bluwy/create-vite-extra/tree/master/template-ssr-vanilla)
-- [Vue](https://github.com/bluwy/create-vite-extra/tree/master/template-ssr-vue)
-- [React](https://github.com/bluwy/create-vite-extra/tree/master/template-ssr-react)
-- [Preact](https://github.com/bluwy/create-vite-extra/tree/master/template-ssr-preact)
-- [Svelte](https://github.com/bluwy/create-vite-extra/tree/master/template-ssr-svelte)
-- [Solid](https://github.com/bluwy/create-vite-extra/tree/master/template-ssr-solid)
+- [Vanilla](https://github.com/bluwy/create-nalth-extra/tree/master/template-ssr-vanilla)
+- [Vue](https://github.com/bluwy/create-nalth-extra/tree/master/template-ssr-vue)
+- [React](https://github.com/bluwy/create-nalth-extra/tree/master/template-ssr-react)
+- [Preact](https://github.com/bluwy/create-nalth-extra/tree/master/template-ssr-preact)
+- [Svelte](https://github.com/bluwy/create-nalth-extra/tree/master/template-ssr-svelte)
+- [Solid](https://github.com/bluwy/create-nalth-extra/tree/master/template-ssr-solid)
 
-You can also scaffold these projects locally by [running `create-vite`](./index.md#scaffolding-your-first-vite-project) and choose `Others > create-vite-extra` under the framework option.
+You can also scaffold these projects locally by [running `create-nalth`](./index.md#scaffolding-your-first-vite-project) and choose `Others > create-nalth-extra` under the framework option.
 
 ## Source Structure
 

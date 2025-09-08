@@ -57,7 +57,7 @@ export async function updateTemplateVersions(): Promise<void> {
   const viteVersion = vitePkgJson.version
   if (/beta|alpha|rc/.test(viteVersion)) return
 
-  const dir = 'packages/create-vite'
+  const dir = 'packages/create-nalth'
   const templates = (await fs.readdir(dir)).filter((dir) =>
     dir.startsWith('template-'),
   )
