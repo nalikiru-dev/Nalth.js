@@ -1,20 +1,18 @@
 {
-  "name": "nalth-lit-app",
+  "name": "vite-lit-ts-starter",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "nalth dev",
-    "build": "tsc && nalth build",
-    "preview": "nalth preview",
-    "security:audit": "nalth audit",
-    "security:report": "nalth security:report"
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
   },
   "dependencies": {
     "lit": "^3.3.1"
   },
   "devDependencies": {
-    "typescript": "^5.3.0",
-    "nalth": "^1.2.0"
+    "typescript": "~5.8.3",
+    "vite": "^7.1.2"
   }
 }

@@ -49,58 +49,24 @@ function showVersion() {
 async function runDev() {
   console.log(chalk.blue('🚀 Starting Nalth development server...'))
   
-  // Import and run the development server using the CLI
+  // Look for nalth.config.js in current directory
+  const configPath = join(process.cwd(), 'nalth.config.js')
+  
+  if (!existsSync(configPath)) {
+    console.log(chalk.yellow('⚠ No nalth.config.js found, creating default configuration...'))
+    await createDefaultConfig()
+  }
+
+  // Import and run the development server
   try {
-    const { createServer } = await import('../dist/node/server/index.js')
+    const { default: config } = await import(configPath)
+    const { NalthServer } = await import('../dist/index.js')
     
-    const server = await createServer({
-      root: process.cwd(),
-      server: {
-        host: 'localhost',
-        port: 3000,
-        https: false // Set to true for HTTPS in production
-      },
-      security: {
-        level: 'balanced'
-      }
-    })
+    const server = new NalthServer(config)
     
-    await server.listen()
-    
-    console.log(chalk.green('✅ Development server started successfully!'))
-    console.log(chalk.cyan('🛡️ Security features enabled'))
-    console.log(chalk.gray('Press Ctrl+C to stop the server'))
-  } catch (error) {
-    console.error(chalk.red('✗ Failed to start development server:'), error.message)
-    
-    // Fallback to basic server
-    console.log(chalk.yellow('🔄 Falling back to basic server...'))
-    const http = await import('node:http')
-    const fs = await import('node:fs')
-    const path = await import('node:path')
-    
-    const server = http.createServer((req, res) => {
-      const filePath = req.url === '/' ? '/index.html' : req.url
-      const fullPath = path.join(process.cwd(), filePath)
-      
-      if (fs.existsSync(fullPath)) {
-        const ext = path.extname(fullPath)
-        const contentType = {
-          '.html': 'text/html',
-          '.js': 'application/javascript',
-          '.css': 'text/css',
-          '.json': 'application/json',
-          '.png': 'image/png',
-          '.jpg': 'image/jpeg',
-          '.gif': 'image/gif',
-          '.svg': 'image/svg+xml'
-        }[ext] || 'text/plain'
-        
-        res.writeHead(200, { 'Content-Type': contentType })
-        fs.createReadStream(fullPath).pipe(res)
-      } else {
-        res.writeHead(404, { 'Content-Type': 'text/html' })
-        res.end(`
+    // Setup basic routes if none exist
+    server.get('/', (req, res) => {
+      res.send(`
         <!DOCTYPE html>
         <html>
         <head>

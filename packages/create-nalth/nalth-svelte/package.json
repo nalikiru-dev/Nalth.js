@@ -17,6 +17,6 @@
     "svelte": "^5.38.1",
     "svelte-check": "^4.3.1",
     "typescript": "~5.8.3",
-    "nalth": "^1.2.0"
+    "nalth": "^1.0.0"
   }
 }
