@@ -1,19 +1,20 @@
 {
-  "name": "vite-qwik",
+  "name": "nalth-qwik-app",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
-    "preview": "serve dist"
-  },
-  "devDependencies": {
-    "serve": "^14.2.4",
-    "typescript": "~5.8.3",
-    "vite": "^7.1.2"
+    "dev": "nalth dev",
+    "build": "tsc -b && nalth build",
+    "preview": "nalth preview",
+    "security:audit": "nalth audit",
+    "security:report": "nalth security:report"
   },
   "dependencies": {
     "@builder.io/qwik": "^1.15.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.0",
+    "nalth": "^1.2.0"
   }
 }

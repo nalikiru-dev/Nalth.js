@@ -2,10 +2,17 @@
 
 **Scaffolding for Nalth - The Security-First Web Framework**
 
-With `create-nalth`, you can quickly bootstrap secure web applications with HTTPS enabled by default, comprehensive security headers, and modern development tools.
+Bootstrap enterprise-ready, secure web applications in seconds. Create-nalth provides professionally designed templates with HTTPS enabled by default, comprehensive security headers, real-time threat monitoring, and modern development tools.
 
-> **Compatibility Note:**
-> Nalth requires [Node.js](https://nodejs.org/en/) version 18+ or 20+. All templates include security features out of the box.
+🎆 **What's New in v2.1.0:**
+- 🎨 Completely redesigned UI with professional security-focused interfaces
+- 📊 Interactive security dashboards with real-time metrics
+- 🔍 Built-in security auditing and threat detection
+- 🌍 Enterprise-grade security features out of the box
+- ⚡ Enhanced developer experience with better CLI and documentation
+
+> **System Requirements:**
+> Nalth requires [Node.js](https://nodejs.org/en/) version 20.19.0+ or 22.12.0+. All templates include enterprise-grade security features and beautiful, responsive designs.
 
 ## 🚀 Quick Start
 
@@ -53,29 +60,82 @@ pnpm create nalth my-secure-app --template secure-vanilla
 bun create nalth my-secure-app --template secure-vanilla
 ```
 
-## 🛡️ Available Security Templates
+## 🎨 Available Security Templates
 
-All templates include HTTPS, security headers, hot reload, and production-ready configurations:
+All templates feature beautiful, professionally designed interfaces with enterprise-grade security:
 
-- `secure-vanilla` / `secure-vanilla-ts` - Pure JavaScript/TypeScript with security
-- `secure-vue` / `secure-vue-ts` - Vue.js with security features
-- `secure-react` / `secure-react-ts` - React with security middleware
-- `secure-preact` / `secure-preact-ts` - Preact with HTTPS and CSP
-- `secure-lit` / `secure-lit-ts` - Lit web components with security
-- `secure-svelte` / `secure-svelte-ts` - Svelte with security headers
-- `secure-solid` / `secure-solid-ts` - SolidJS with built-in protection
+### 🟡 **nalth-vanilla** - Pure TypeScript Excellence
+- Modern, responsive design with CSS variables and animations
+- Interactive security dashboard with real-time metrics
+- Built-in security utilities and CSP violation monitoring
+- Beautiful gradient interfaces and professional typography
+
+### 🟢 **nalth-vue** - Vue.js with Security Middleware
+- Vue 3 Composition API with TypeScript
+- Integrated security monitoring and threat detection
+- Modern UI components with Tailwind CSS
+
+### 🔵 **nalth-react** - Enterprise React Security
+- React 19 with TypeScript and shadcn/ui components
+- Interactive security dashboard with tabs and real-time updates
+- Beautiful card-based layouts with security metrics
+- Professional badges, progress bars, and status indicators
+
+### 🟣 **nalth-preact** - Lightweight Security Power
+- Preact with full TypeScript support
+- Real-time HTTPS monitoring and security headers
+- Compact bundle size with enterprise features
+
+### 🔴 **nalth-lit** - Web Components Security
+- Lit web components with security features
+- Custom elements with built-in protection
+- Modern shadow DOM security patterns
+
+### ⭐ **nalth-svelte** - Compiled Security
+- SvelteKit with built-in security protection
+- Compile-time optimizations with runtime security
+- Beautiful animations and transitions
+
+### 💙 **nalth-solid** - Performance + Security
+- SolidJS with enterprise security suite
+- Fine-grained reactivity with security monitoring
+- Minimal runtime with maximum protection
+
+### ⚡ **nalth-qwik** - Zero-Config Security
+- Qwik with automatic security configuration
+- Edge-ready with built-in security features
+- Progressive loading with security headers
 
 ## ✨ What You Get
 
-Every Nalth project includes:
+Every Nalth project includes enterprise-grade features and beautiful design:
 
-- **🔒 HTTPS by Default** - Auto-generated SSL certificates for development
-- **🛡️ Security Headers** - CSP, HSTS, X-Frame-Options, and more
-- **🔥 Hot Reload** - Lightning-fast development with WebSocket updates
-- **⚡ Performance** - Optimized asset serving and compression
-- **🎨 Beautiful Demo** - Stunning landing page showcasing security features
-- **📱 Responsive Design** - Mobile-first, modern UI components
-- **🔧 Zero Config** - Works out of the box, customize as needed
+### 🔒 **Security & Protection**
+- **HTTPS by Default** - Auto-generated SSL certificates with TLS 1.3
+- **Advanced Security Headers** - CSP, HSTS, X-Frame-Options, CSRF protection
+- **Real-time Threat Monitoring** - Live security event tracking and alerts
+- **Dependency Auditing** - Continuous vulnerability scanning
+- **CSP Violation Detection** - Automatic policy enforcement and reporting
+
+### 🎨 **Modern Design & UX**
+- **Professional UI Components** - Beautiful, accessible design systems
+- **Interactive Dashboards** - Real-time security metrics and monitoring
+- **Responsive Design** - Mobile-first, adaptive layouts
+- **Dark/Light Mode** - Automatic theme switching
+- **Smooth Animations** - Professional transitions and micro-interactions
+
+### ⚡ **Developer Experience**
+- **Hot Reload** - Lightning-fast development with WebSocket updates
+- **TypeScript First** - Full type safety and IntelliSense
+- **Zero Config** - Works out of the box, customize as needed
+- **Enhanced CLI** - Beautiful, informative command-line interface
+- **Security Auditing** - Built-in security testing and reporting
+
+### 📊 **Monitoring & Analytics**
+- **Security Dashboard** - Real-time security posture monitoring
+- **Performance Metrics** - Built-in performance tracking
+- **Event Logging** - Comprehensive security event management
+- **Violation Tracking** - CSP and security policy monitoring
 
 ## 🏗️ Project Structure
 

@@ -31,27 +31,45 @@ const cwd = process.cwd()
 
 // prettier-ignore
 const helpMessage = `\
-🛡️  ${blue('Nalth')} - Security-First Web Framework
+${blue('┌─────────────────────────────────────────────────────────────┐')}
+${blue('│')}                      ${blue('🛡️  NALTH')}                          ${blue('│')}
+${blue('│')}            ${cyan('Security-First Web Framework')}                ${blue('│')}
+${blue('└─────────────────────────────────────────────────────────────┘')}
 
-Usage: create-nalth [OPTION]... [DIRECTORY]
+${yellow('USAGE:')}
+  ${green('create-nalth')} ${magenta('[OPTIONS]')} ${cyan('[DIRECTORY]')}
 
-Create a new secure Nalth project with HTTPS by default.
-With no arguments, start the CLI in interactive mode.
+${yellow('DESCRIPTION:')}
+  Bootstrap secure, enterprise-ready web applications with:
+  ${green('✓')} HTTPS & TLS encryption by default
+  ${green('✓')} Content Security Policy (CSP) auto-generation
+  ${green('✓')} Real-time security monitoring & auditing
+  ${green('✓')} Zero-config security headers & rate limiting
 
-Options:
-  -t, --template NAME        use a specific template
+${yellow('OPTIONS:')}
+  ${green('-t, --template')} ${cyan('NAME')}     Use a specific framework template
+  ${green('-h, --help')}                Show this help message
+  ${green('--overwrite')}               Overwrite existing directory
 
-Available templates:
-${yellow    ('nalth-vanilla')}
-${green     ('nalth-vue')}
-${cyan      ('nalth-react')}
-${magenta   ('nalth-preact')}
-${redBright ('nalth-lit')}
-${red       ('nalth-svelte')}
-${blue      ('nalth-solid')}
-${cyan      ('nalth-qwik')}
+${yellow('AVAILABLE TEMPLATES:')}
+  ${yellow    ('🟡 nalth-vanilla')}   Pure TypeScript with enterprise security
+  ${green     ('🟢 nalth-vue')}       Vue.js with security middleware
+  ${cyan      ('🔵 nalth-react')}     React with CSP & security headers
+  ${magenta   ('🟣 nalth-preact')}    Preact with HTTPS & monitoring
+  ${redBright ('🔴 nalth-lit')}       Lit components with security features
+  ${red       ('⭐ nalth-svelte')}    Svelte with built-in protection
+  ${blue      ('💙 nalth-solid')}     SolidJS with enterprise security
+  ${cyan      ('⚡ nalth-qwik')}      Qwik with zero-config security
 
-🔒 All templates include HTTPS, security headers, and hot reload by default.`
+${yellow('EXAMPLES:')}
+  ${green('create-nalth')}                    # Interactive mode
+  ${green('create-nalth')} ${cyan('my-secure-app')}      # Create with default template
+  ${green('create-nalth')} ${cyan('my-app')} ${magenta('--template nalth-react')}  # Use React template
+
+${blue('────────────────────────────────────────────────────────────────')}
+${cyan('🌐 Learn more:')} https://nalth.dev
+${cyan('📚 Documentation:')} https://docs.nalth.dev
+${cyan('🔧 GitHub:')} https://github.com/nalth/nalth`
 
 type ColorFunc = (str: string | number) => string
 type Framework = {
@@ -70,97 +88,97 @@ type FrameworkVariant = {
 const FRAMEWORKS: Framework[] = [
   {
     name: 'nalth-vanilla',
-    display: '🛡️ Vanilla TypeScript',
+    display: '🟡 Vanilla TypeScript (Enterprise Security)',
     color: yellow,
     variants: [
       {
         name: 'nalth-vanilla',
-        display: 'TypeScript + Security',
+        display: '🛡️ TypeScript + Security Headers + HTTPS',
         color: blue,
       },
     ],
   },
   {
     name: 'nalth-vue',
-    display: '🛡️ Vue + TypeScript',
+    display: '🟢 Vue.js (Security + Reactivity)',
     color: green,
     variants: [
       {
         name: 'nalth-vue',
-        display: 'TypeScript + Security',
-        color: blue,
+        display: '🛡️ Vue.js + CSP + Security Middleware',
+        color: green,
       },
     ],
   },
   {
     name: 'nalth-react',
-    display: '🛡️ React + TypeScript',
+    display: '🔵 React (Enterprise Security)',
     color: cyan,
     variants: [
       {
         name: 'nalth-react',
-        display: 'TypeScript + Security',
-        color: blue,
+        display: '🛡️ React + Security Headers + Monitoring',
+        color: cyan,
       },
     ],
   },
   {
     name: 'nalth-preact',
-    display: '🛡️ Preact + TypeScript',
+    display: '🟣 Preact (Lightweight + Secure)',
     color: magenta,
     variants: [
       {
         name: 'nalth-preact',
-        display: 'TypeScript + Security',
-        color: blue,
+        display: '🛡️ Preact + HTTPS + Real-time Security',
+        color: magenta,
       },
     ],
   },
   {
     name: 'nalth-lit',
-    display: '🛡️ Lit + TypeScript',
+    display: '🔴 Lit (Web Components + Security)',
     color: redBright,
     variants: [
       {
         name: 'nalth-lit',
-        display: 'TypeScript + Security',
-        color: blue,
+        display: '🛡️ Lit Components + Security Features',
+        color: redBright,
       },
     ],
   },
   {
     name: 'nalth-svelte',
-    display: '🛡️ Svelte + TypeScript',
+    display: '⭐ Svelte (Compiled + Protected)',
     color: red,
     variants: [
       {
         name: 'nalth-svelte',
-        display: 'TypeScript + Security',
-        color: blue,
+        display: '🛡️ Svelte + Built-in Security Protection',
+        color: red,
       },
     ],
   },
   {
     name: 'nalth-solid',
-    display: '🛡️ Solid + TypeScript',
+    display: '💙 SolidJS (Performance + Security)',
     color: blue,
     variants: [
       {
         name: 'nalth-solid',
-        display: 'TypeScript + Security',
+        display: '🛡️ SolidJS + Enterprise Security Suite',
         color: blue,
       },
     ],
   },
   {
     name: 'nalth-qwik',
-    display: '🛡️ Qwik + TypeScript',
+    display: '⚡ Qwik (Zero-Config Security)',
     color: cyan,
     variants: [
       {
         name: 'nalth-qwik',
-        display: 'TypeScript + Security',
-        color: blue,
+        display: '🛡️ Qwik + Automatic Security Configuration',
+        color: cyan,
       },
     ],
   },
@@ -336,7 +354,8 @@ async function init() {
     process.exit(status ?? 0)
   }
 
-  prompts.log.step(`🛡️ Scaffolding secure Nalth project in ${root}...`)
+  prompts.log.step(`🛡️ Scaffolding secure Nalth project in ${green(root)}...`)
+  prompts.log.info(`🔍 Setting up enterprise-grade security features...`)
 
   const templateDir = path.resolve(
     fileURLToPath(import.meta.url),
@@ -372,25 +391,49 @@ async function init() {
 
   let doneMessage = ''
   const cdProjectName = path.relative(cwd, root)
-  doneMessage += `🛡️ ${green('Secure Nalth project created successfully!')}\n\n`
-  doneMessage += `${blue('Next steps:')}\n`
+  
+  // Header
+  doneMessage += `${blue('┌─────────────────────────────────────────────┐')}\n`
+  doneMessage += `${blue('│')}     🎉 ${green('PROJECT CREATED SUCCESSFULLY!')} 🎉     ${blue('│')}\n`
+  doneMessage += `${blue('└─────────────────────────────────────────────┘')}\n\n`
+  
+  // Project info
+  doneMessage += `📋 ${yellow('Project:')} ${cyan(path.basename(root))}\n`
+  doneMessage += `📁 ${yellow('Location:')} ${cyan(root)}\n`
+  doneMessage += `🔥 ${yellow('Template:')} ${magenta(template)}\n\n`
+  
+  // Security features
+  doneMessage += `${green('SECURITY FEATURES ENABLED:')}\n`
+  doneMessage += `  ${green('✓')} HTTPS & TLS encryption\n`
+  doneMessage += `  ${green('✓')} Content Security Policy (CSP)\n`
+  doneMessage += `  ${green('✓')} Security headers & rate limiting\n`
+  doneMessage += `  ${green('✓')} Real-time security monitoring\n\n`
+  
+  // Next steps
+  doneMessage += `${yellow('🚀 NEXT STEPS:')}\n`
   if (root !== cwd) {
-    doneMessage += `\n  ${cyan('cd')} ${
+    doneMessage += `\n  1. ${cyan('cd')} ${
       cdProjectName.includes(' ') ? `"${cdProjectName}"` : cdProjectName
     }`
   }
   switch (pkgManager) {
     case 'yarn':
-      doneMessage += `\n  ${cyan('yarn')} ${yellow('# Install dependencies')}`
-      doneMessage += `\n  ${cyan('yarn dev')} ${yellow('# Start secure HTTPS server')}`
+      doneMessage += `\n  ${root !== cwd ? '2' : '1'}. ${cyan('yarn')} ${magenta('# Install dependencies')}`
+      doneMessage += `\n  ${root !== cwd ? '3' : '2'}. ${cyan('yarn dev')} ${magenta('# Start secure HTTPS development server')}`
       break
     default:
-      doneMessage += `\n  ${cyan(`${pkgManager} install`)} ${yellow('# Install dependencies')}`
-      doneMessage += `\n  ${cyan(`${pkgManager} run dev`)} ${yellow('# Start secure HTTPS server')}`
+      doneMessage += `\n  ${root !== cwd ? '2' : '1'}. ${cyan(`${pkgManager} install`)} ${magenta('# Install dependencies')}`
+      doneMessage += `\n  ${root !== cwd ? '3' : '2'}. ${cyan(`${pkgManager} run dev`)} ${magenta('# Start secure HTTPS development server')}`
       break
   }
-  doneMessage += `\n\n🔒 ${green('Your app will run on HTTPS with security headers enabled!')}`
-  doneMessage += `\n🔥 ${green('Hot reload and development tools included!')}`
+  
+  // Additional info
+  doneMessage += `\n\n${blue('═══════════════════════════════════════════════')}\n`
+  doneMessage += `🌐 ${cyan('Your app will be available at:')} ${green('https://localhost:3000')}\n`
+  doneMessage += `🔒 ${cyan('Security dashboard:')} ${green('https://localhost:3000/__nalth')}\n`
+  doneMessage += `📚 ${cyan('Documentation:')} ${blue('https://docs.nalth.dev')}\n`
+  doneMessage += `${blue('═══════════════════════════════════════════════')}`
+  
   prompts.outro(doneMessage)
 }
 
