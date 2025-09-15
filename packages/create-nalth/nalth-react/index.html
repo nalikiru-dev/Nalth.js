@@ -2,12 +2,45 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/svg+xml" href="/nalth.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React + TS</title>
+    <title>🛡️ Nalth + React - Secure by Default</title>
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    <script type="module">
+      // Nalth HMR Client
+      if (import.meta.env.DEV) {
+        const ws = new WebSocket('ws://localhost:3000/__nalth_ws');
+        
+        ws.addEventListener('message', (event) => {
+          const data = JSON.parse(event.data);
+          
+          if (data.type === 'full-reload') {
+            window.location.reload();
+          } else if (data.type === 'update') {
+            // For now, just reload on any update
+            // TODO: Implement proper HMR for React components
+            window.location.reload();
+          } else if (data.type === 'security-violation') {
+            console.warn('🛡️ Security violation detected:', data.violation);
+          }
+        });
+        
+        ws.addEventListener('open', () => {
+          console.log('🛡️ Nalth HMR connected');
+        });
+        
+        ws.addEventListener('close', () => {
+          console.log('🛡️ Nalth HMR disconnected');
+          // Try to reconnect after 1 second
+          setTimeout(() => {
+            window.location.reload();
+          }, 1000);
+        });
+      }
+    </script>
   </body>
 </html>

@@ -3,6 +3,7 @@ import { createServer as createHttpsServer } from 'node:https'
 import { resolve, join } from 'node:path'
 import { existsSync, readFileSync } from 'node:fs'
 import { WebSocketServer } from 'ws'
+import { watch } from 'chokidar'
 import connect from 'connect'
 import corsMiddleware from 'cors'
 import compression from 'compression'
@@ -53,12 +54,59 @@ export async function createServer(
     }
   }
 
+  // Create file watcher for HMR
+  const watcher = watch([
+    resolve(root, 'src/**/*'),
+    resolve(root, 'public/**/*'),
+    resolve(root, 'index.html'),
+    resolve(root, '*.config.*')
+  ], {
+    ignored: ['**/node_modules/**', '**/.git/**', '**/dist/**'],
+    ignoreInitial: true,
+    persistent: true
+  })
+
+  // Set up HMR file watching
+  watcher.on('change', (file) => {
+    const relativePath = file.replace(root + '/', '')
+    config.logger.info(`File changed: ${relativePath}`)
+    
+    // Send HMR update to clients
+    ws.send({
+      type: 'update',
+      updates: [{
+        type: 'js-update',
+        path: `/${relativePath}`,
+        acceptedPath: `/${relativePath}`,
+        timestamp: Date.now()
+      }]
+    })
+  })
+
+  watcher.on('add', (file) => {
+    const relativePath = file.replace(root + '/', '')
+    config.logger.info(`File added: ${relativePath}`)
+    
+    ws.send({
+      type: 'full-reload'
+    })
+  })
+
+  watcher.on('unlink', (file) => {
+    const relativePath = file.replace(root + '/', '')
+    config.logger.info(`File removed: ${relativePath}`)
+    
+    ws.send({
+      type: 'full-reload'
+    })
+  })
+
   const server: NalthDevServer = {
     config,
     middlewares,
     httpServer,
     ws,
-    watcher: null, // TODO: implement file watcher
+    watcher,
     pluginContainer,
     moduleGraph,
     
@@ -107,6 +155,7 @@ export async function createServer(
     async close() {
       await Promise.all([
         ws.close(),
+        watcher?.close(),
         pluginContainer.close(),
         new Promise<void>((resolve) => {
           httpServer.close(() => resolve())
@@ -247,8 +296,8 @@ async function setupMiddlewares(server: NalthDevServer) {
     }
   })
 
-  // Static file serving
-  if (config.publicDir) {
+  // Static file serving for public directory
+  if (config.publicDir && existsSync(config.publicDir)) {
     middlewares.use(
       sirv(config.publicDir, {
         dev: true,
@@ -259,18 +308,52 @@ async function setupMiddlewares(server: NalthDevServer) {
     )
   }
 
-  // SPA fallback
+  // Serve static assets from project root
+  middlewares.use(
+    sirv(root, {
+      dev: true,
+      etag: true,
+      extensions: ['html', 'js', 'css', 'svg', 'png', 'jpg', 'jpeg', 'gif', 'ico'],
+      dotfiles: false,
+      single: false
+    })
+  )
+
+  // SPA fallback - serve index.html for non-asset requests
   middlewares.use((req: any, res: any, next: any) => {
-    if (req.method !== 'GET' || req.url?.includes('.')) {
+    if (req.method !== 'GET') {
+      return next()
+    }
+
+    // Skip if it's an API request or has file extension (except .html)
+    const url = req.url || ''
+    if (url.startsWith('/__nalth') || url.startsWith('/api') || 
+        (url.includes('.') && !url.endsWith('.html'))) {
       return next()
     }
 
     const indexPath = resolve(root, 'index.html')
     if (existsSync(indexPath)) {
       res.setHeader('Content-Type', 'text/html')
+      res.setHeader('Cache-Control', 'no-cache')
       res.end(readFileSync(indexPath, 'utf-8'))
     } else {
-      next()
+      // If no index.html, try to serve a basic HTML template for development
+      res.setHeader('Content-Type', 'text/html')
+      res.end(`
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nalth Dev Server</title>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.tsx"></script>
+</body>
+</html>
+      `)
     }
   })
 }

@@ -1,19 +1,21 @@
 {
-  "name": "vite-preact-ts-starter",
+  "name": "nalth-preact-app",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
-    "preview": "vite preview"
+    "dev": "nalth dev",
+    "build": "tsc -b && nalth build",
+    "preview": "nalth preview",
+    "security:audit": "nalth audit",
+    "security:report": "nalth security:report"
   },
   "dependencies": {
     "preact": "^10.27.0"
   },
   "devDependencies": {
     "@preact/preset-vite": "^2.10.2",
-    "typescript": "~5.8.3",
-    "vite": "^7.1.2"
+    "typescript": "^5.3.0",
+    "nalth": "^1.2.0"
   }
 }

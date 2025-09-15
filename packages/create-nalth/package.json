@@ -1,10 +1,10 @@
 {
   "name": "create-nalth",
-  "version": "2.0.7",
+  "version": "2.1.2",
   "type": "module",
   "license": "MIT",
-  "author": "Nalth Team",
-  "description": "Create secure Nalth projects with HTTPS and security features by default",
+  "author": "Nalth Team <team@nalth.dev>",
+  "description": "🛡️ Create secure, modern web applications with the Nalth framework - HTTPS, CSP, and enterprise-grade security by default",
   "bin": {
     "create-nalth": "index.js",
     "cva": "index.js"
@@ -32,21 +32,30 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/your-org/nalth.git",
+    "url": "git+https://github.com/nalth/nalth.git",
     "directory": "packages/create-nalth"
   },
   "bugs": {
-    "url": "https://github.com/your-org/nalth/issues"
+    "url": "https://github.com/nalth/nalth/issues"
   },
-  "homepage": "https://github.com/your-org/nalth/tree/main/packages/create-nalth#readme",
+  "homepage": "https://nalth.dev",
   "keywords": [
     "nalth",
-    "security",
+    "security-first",
     "https",
+    "csp",
     "web-framework",
-    "create",
+    "vite",
+    "typescript",
+    "react",
+    "vue",
+    "svelte",
+    "enterprise-security",
+    "zero-config",
+    "scaffolding",
     "template",
-    "secure"
+    "cli",
+    "secure-development"
   ],
   "dependencies": {
     "@clack/prompts": "^0.11.0",

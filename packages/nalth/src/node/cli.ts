@@ -7,6 +7,7 @@ import { createServer } from './server'
 import { build } from './build'
 import { resolveConfig } from './config'
 import { logSecurityMetrics } from './logger'
+import { auditCommand, securityReportCommand, scanPackageCommand, securityInitCommand } from './cli/security-commands.js'
 
 const cli = cac('nalth')
 
@@ -110,29 +111,54 @@ cli
 
 // Security audit command
 cli
-  .command('audit [root]', 'Run security audit')
-  .option('--fix', 'Automatically fix issues when possible')
-  .option('--report <format>', 'Generate report: json | html | console', { default: 'console' })
-  .option('--fail-on <severity>', 'Fail on severity: low | medium | high | critical')
-  .action(async (root: string, options: any) => {
-    try {
-      const { runSecurityAudit } = await import('./security/audit')
-      
-      const results = await runSecurityAudit({
-        root: root || process.cwd(),
-        fix: options.fix,
-        reportFormat: options.report,
-        failOnSeverity: options.failOn
-      })
+  .command('audit [path]', 'Run comprehensive security audit')
+  .option('--format <format>', 'Output format: json | text', { default: 'text' })
+  .option('--severity <level>', 'Minimum severity: low | moderate | high | critical')
+  .option('--fix', 'Automatically fix vulnerabilities when possible')
+  .action(async (path: string, options: any) => {
+    await auditCommand({
+      path,
+      format: options.format,
+      severity: options.severity,
+      fix: options.fix
+    })
+  })
 
-      if (results.failed > 0 && options.failOn) {
-        process.exit(1)
-      }
+// Security report command
+cli
+  .command('security:report [path]', 'Generate detailed security report')
+  .option('--output <file>', 'Save report to file')
+  .option('--detailed', 'Include detailed analysis')
+  .action(async (path: string, options: any) => {
+    await securityReportCommand({
+      path,
+      output: options.output,
+      detailed: options.detailed
+    })
+  })
 
-    } catch (e: any) {
-      console.error(colors.red(`Security audit failed:\n${e.stack}`))
-      process.exit(1)
-    }
+// Package scan command
+cli
+  .command('security:scan <package>', 'Scan a specific package for vulnerabilities')
+  .option('--version <version>', 'Specific version to scan')
+  .option('--detailed', 'Show detailed analysis')
+  .action(async (packageName: string, options: any) => {
+    await scanPackageCommand(packageName, {
+      version: options.version,
+      detailed: options.detailed
+    })
+  })
+
+// Security initialization command
+cli
+  .command('security:init', 'Initialize security configuration')
+  .option('--strict', 'Use strict security settings')
+  .option('--framework <name>', 'Framework-specific configuration')
+  .action(async (options: any) => {
+    await securityInitCommand({
+      strict: options.strict,
+      framework: options.framework
+    })
   })
 
 // Create project command
@@ -218,6 +244,9 @@ ${colors.yellow('Usage:')}
   ${colors.green('nalth')}                     Start development server
   ${colors.green('nalth build')}               Build for production
   ${colors.green('nalth audit')}               Run security audit
+  ${colors.green('nalth security:report')}     Generate security report
+  ${colors.green('nalth security:scan <pkg>')} Scan package for vulnerabilities
+  ${colors.green('nalth security:init')}       Initialize security config
   ${colors.green('nalth create <name>')}       Create new project
   ${colors.green('nalth dashboard')}           Open security dashboard
 
