@@ -232,7 +232,7 @@ function createCommonJSPlugin(): Plugin {
   }
 }
 
-async function createMinifyPlugin(config: ResolvedConfig): Plugin {
+async function createMinifyPlugin(config: ResolvedConfig): Promise<Plugin> {
   const minifier = config.build.minify === true ? 'esbuild' : config.build.minify
 
   if (minifier === 'terser') {

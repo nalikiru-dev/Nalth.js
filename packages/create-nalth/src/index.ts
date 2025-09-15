@@ -42,13 +42,14 @@ Options:
   -t, --template NAME        use a specific template
 
 Available templates:
-${yellow    ('secure-vanilla-ts    secure-vanilla'  )}
-${green     ('secure-vue-ts        secure-vue'      )}
-${cyan      ('secure-react-ts      secure-react'    )}
-${magenta   ('secure-preact-ts     secure-preact'   )}
-${redBright ('secure-lit-ts        secure-lit'      )}
-${red       ('secure-svelte-ts     secure-svelte'   )}
-${blue      ('secure-solid-ts      secure-solid'    )}
+${yellow    ('nalth-vanilla')}
+${green     ('nalth-vue')}
+${cyan      ('nalth-react')}
+${magenta   ('nalth-preact')}
+${redBright ('nalth-lit')}
+${red       ('nalth-svelte')}
+${blue      ('nalth-solid')}
+${cyan      ('nalth-qwik')}
 
 🔒 All templates include HTTPS, security headers, and hot reload by default.`
 
@@ -68,121 +69,98 @@ type FrameworkVariant = {
 
 const FRAMEWORKS: Framework[] = [
   {
-    name: 'secure-vanilla',
-    display: '🛡️ Secure Vanilla',
+    name: 'nalth-vanilla',
+    display: '🛡️ Vanilla TypeScript',
     color: yellow,
     variants: [
       {
-        name: 'secure-vanilla-ts',
+        name: 'nalth-vanilla',
         display: 'TypeScript + Security',
         color: blue,
-      },
-      {
-        name: 'secure-vanilla',
-        display: 'JavaScript + Security',
-        color: yellow,
       },
     ],
   },
   {
-    name: 'secure-vue',
-    display: '🛡️ Secure Vue',
+    name: 'nalth-vue',
+    display: '🛡️ Vue + TypeScript',
     color: green,
     variants: [
       {
-        name: 'secure-vue-ts',
+        name: 'nalth-vue',
         display: 'TypeScript + Security',
         color: blue,
-      },
-      {
-        name: 'secure-vue',
-        display: 'JavaScript + Security',
-        color: yellow,
       },
     ],
   },
   {
-    name: 'secure-react',
-    display: '🛡️ Secure React',
+    name: 'nalth-react',
+    display: '🛡️ React + TypeScript',
     color: cyan,
     variants: [
       {
-        name: 'secure-react-ts',
+        name: 'nalth-react',
         display: 'TypeScript + Security',
         color: blue,
-      },
-      {
-        name: 'secure-react',
-        display: 'JavaScript + Security',
-        color: yellow,
       },
     ],
   },
   {
-    name: 'secure-preact',
-    display: '🛡️ Secure Preact',
+    name: 'nalth-preact',
+    display: '🛡️ Preact + TypeScript',
     color: magenta,
     variants: [
       {
-        name: 'secure-preact-ts',
+        name: 'nalth-preact',
         display: 'TypeScript + Security',
         color: blue,
-      },
-      {
-        name: 'secure-preact',
-        display: 'JavaScript + Security',
-        color: yellow,
       },
     ],
   },
   {
-    name: 'secure-lit',
-    display: '🛡️ Secure Lit',
+    name: 'nalth-lit',
+    display: '🛡️ Lit + TypeScript',
     color: redBright,
     variants: [
       {
-        name: 'secure-lit-ts',
+        name: 'nalth-lit',
         display: 'TypeScript + Security',
         color: blue,
-      },
-      {
-        name: 'secure-lit',
-        display: 'JavaScript + Security',
-        color: yellow,
       },
     ],
   },
   {
-    name: 'secure-svelte',
-    display: '🛡️ Secure Svelte',
+    name: 'nalth-svelte',
+    display: '🛡️ Svelte + TypeScript',
     color: red,
     variants: [
       {
-        name: 'secure-svelte-ts',
+        name: 'nalth-svelte',
         display: 'TypeScript + Security',
         color: blue,
-      },
-      {
-        name: 'secure-svelte',
-        display: 'JavaScript + Security',
-        color: yellow,
       },
     ],
   },
   {
-    name: 'secure-solid',
-    display: '🛡️ Secure Solid',
+    name: 'nalth-solid',
+    display: '🛡️ Solid + TypeScript',
     color: blue,
     variants: [
       {
-        name: 'secure-solid-ts',
+        name: 'nalth-solid',
         display: 'TypeScript + Security',
         color: blue,
       },
+    ],
+  },
+  {
+    name: 'nalth-qwik',
+    display: '🛡️ Qwik + TypeScript',
+    color: cyan,
+    variants: [
       {
-        name: 'secure-solid',
-        display: 'JavaScript + Security',
-        color: yellow,
+        name: 'nalth-qwik',
+        display: 'TypeScript + Security',
+        color: blue,
       },
     ],
   },
@@ -363,7 +341,7 @@ async function init() {
   const templateDir = path.resolve(
     fileURLToPath(import.meta.url),
     '../..',
-    `template-${template}`,
+    template,
   )
 
   const write = (file: string, content?: string) => {

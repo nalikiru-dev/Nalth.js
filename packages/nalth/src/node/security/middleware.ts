@@ -285,7 +285,7 @@ function detectXSSPatterns(req: Request): SecurityViolation[] {
 declare global {
   namespace Express {
     interface Request {
-      securityViolations?: SecurityViolation[]
+      securityViolations?: string[]
       session?: {
         csrfToken?: string
         [key: string]: any

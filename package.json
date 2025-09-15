@@ -5,7 +5,7 @@
   "engines": {
     "node": "^20.19.0 || >=22.12.0"
   },
-  "homepage": "https://nalth.dev/",
+  "homepage": "https://nalth.pages.dev",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/nalth/nalth.git"

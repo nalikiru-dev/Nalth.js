@@ -1,0 +1,23 @@
+{
+  "name": "nalth-vue-app",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "nalth dev",
+    "build": "vue-tsc -b && nalth build",
+    "preview": "nalth preview",
+    "security:audit": "nalth audit",
+    "security:report": "nalth security:report"
+  },
+  "dependencies": {
+    "vue": "^3.5.18"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^6.0.1",
+    "@vue/tsconfig": "^0.7.0",
+    "typescript": "~5.8.3",
+    "nalth": "workspace:*",
+    "vue-tsc": "^3.0.5"
+  }
+}

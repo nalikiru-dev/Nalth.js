@@ -1,0 +1,19 @@
+{
+  "name": "vite-solid-typescript-starter",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "nalth dev",
+    "build": "tsc -b && nalth build",
+    "preview": "nalth preview"
+  },
+  "dependencies": {
+    "solid-js": "^1.8.5"
+  },
+  "devDependencies": {
+    "nalth": "^1.0.0",
+    "typescript": "^5.2.2",
+    "vite-plugin-solid": "^2.8.0"
+  }
+}

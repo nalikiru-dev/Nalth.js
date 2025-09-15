@@ -175,11 +175,11 @@ export function validateCertificate(certPem: string): boolean {
     const keyUsage = cert.getExtension('keyUsage')
     const extKeyUsage = cert.getExtension('extKeyUsage')
     
-    if (!keyUsage || !keyUsage.digitalSignature || !keyUsage.keyEncipherment) {
+    if (!keyUsage || !(keyUsage as any).digitalSignature || !(keyUsage as any).keyEncipherment) {
       return false
     }
 
-    if (!extKeyUsage || !extKeyUsage.serverAuth) {
+    if (!extKeyUsage || !(extKeyUsage as any).serverAuth) {
       return false
     }
 
