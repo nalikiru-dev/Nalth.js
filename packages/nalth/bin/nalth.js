@@ -1097,7 +1097,7 @@ switch (command) {
         process.exit(code)
       }
     })
-    return
+    break
   case '--version':
   case '-v':
     showVersion()

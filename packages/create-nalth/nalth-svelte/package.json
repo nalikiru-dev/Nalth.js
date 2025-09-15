@@ -1,0 +1,22 @@
+{
+  "name": "nalth-svelte-app",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "nalth dev",
+    "build": "tsc && nalth build",
+    "preview": "nalth preview",
+    "check": "svelte-check --tsconfig ./tsconfig.app.json && tsc -p tsconfig.node.json",
+    "security:audit": "nalth audit",
+    "security:report": "nalth security:report"
+  },
+  "devDependencies": {
+    "@sveltejs/vite-plugin-svelte": "^6.1.1",
+    "@tsconfig/svelte": "^5.0.4",
+    "svelte": "^5.38.1",
+    "svelte-check": "^4.3.1",
+    "typescript": "~5.8.3",
+    "nalth": "^1.0.0"
+  }
+}

@@ -194,7 +194,7 @@ async function setupMiddlewares(server: NalthDevServer) {
   }
 
   // Security dashboard middleware
-  middlewares.use('/__nalth_security', (req, res, next) => {
+  middlewares.use('/__nalth_security', (req: any, res: any, next: any) => {
     if (req.url === '/metrics') {
       res.setHeader('Content-Type', 'application/json')
       res.end(JSON.stringify(server.getSecurityMetrics()))
@@ -207,7 +207,7 @@ async function setupMiddlewares(server: NalthDevServer) {
   })
 
   // Transform middleware for ES modules
-  middlewares.use(async (req, res, next) => {
+  middlewares.use(async (req: any, res: any, next: any) => {
     if (req.method !== 'GET' || !req.url) {
       return next()
     }
@@ -241,7 +241,7 @@ async function setupMiddlewares(server: NalthDevServer) {
         next()
       }
     } catch (error) {
-      config.logger.error(`Transform error for ${pathname}:`, { error })
+      config.logger.error(`Transform error for ${pathname}:`, { error: error as Error })
       res.statusCode = 500
       res.end(`Transform error: ${error}`)
     }
@@ -260,7 +260,7 @@ async function setupMiddlewares(server: NalthDevServer) {
   }
 
   // SPA fallback
-  middlewares.use((req, res, next) => {
+  middlewares.use((req: any, res: any, next: any) => {
     if (req.method !== 'GET' || req.url?.includes('.')) {
       return next()
     }
@@ -333,7 +333,7 @@ function createWebSocketServer(httpServer: any, config: ResolvedConfig) {
         clients.forEach((client) => {
           client.terminate()
         })
-        wsServer.close(resolve)
+        wsServer.close(() => resolve())
       })
     }
   }

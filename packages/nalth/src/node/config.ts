@@ -168,6 +168,10 @@ export async function resolveConfig(
 
   const resolved: ResolvedConfig = {
     ...config,
+    logLevel: config.logLevel || 'info',
+    clearScreen: config.clearScreen ?? true,
+    customLogger: config.customLogger,
+    envPrefix: config.envPrefix || 'VITE_',
     configFile: loadResult?.path,
     configFileDependencies,
     inlineConfig,
@@ -297,7 +301,7 @@ export async function loadConfigFromFile(
     }
 
     const config = typeof userConfig === 'function' 
-      ? await userConfig(configEnv)
+      ? await (userConfig as any)(configEnv)
       : userConfig
 
     if (!config || typeof config !== 'object') {
@@ -377,7 +381,7 @@ function loadEnv(mode: string, envDir: string, prefixes: string | string[] = ['N
       
       for (const [key, value] of Object.entries(parsed)) {
         if (prefixes.some(prefix => key.startsWith(prefix))) {
-          env[key] = value
+          env[key] = String(value)
         }
       }
     }

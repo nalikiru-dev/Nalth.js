@@ -67,7 +67,7 @@ export function createPluginContainer(
       
       for (const plugin of plugins) {
         if (plugin.transform) {
-          const transformResult = await plugin.transform(result.code, id)
+          const transformResult = await plugin.transform(result.code || '', id)
           if (transformResult) {
             if (typeof transformResult === 'string') {
               result.code = transformResult

@@ -1,26 +1,10 @@
-import path from 'node:path'
-import url from 'node:url'
 import { defineConfig } from 'tsdown'
-import licensePlugin from '../vite/rollupLicensePlugin.ts'
-
-const __dirname = path.dirname(url.fileURLToPath(import.meta.url))
 
 export default defineConfig(() => ({
   entry: ['src/index.ts'],
   target: 'node20',
   minify: true,
-  plugins: [
-    licensePlugin(
-      path.resolve(__dirname, './LICENSE'),
-      'create-nalth license',
-      'create-nalth',
-      '# License of the files in the directories starting with "template-" in create-nalth\n' +
-        'The files in the directories starting with "template-" in create-nalth and files\n' +
-        'generated from those files are licensed under the CC0 1.0 Universal license:\n\n' +
-        cc0LicenseText +
-        '\n\n',
-    ),
-  ],
+  plugins: [],
 }))
 
 const cc0LicenseText = `

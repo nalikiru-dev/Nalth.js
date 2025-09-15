@@ -117,13 +117,13 @@ async function scanDependencies(root: string, fix: boolean): Promise<{
         
         const vuln: VulnerabilityReport = {
           package: packageName,
-          version: vulnData.via?.[0]?.range || 'unknown',
-          severity: vulnData.severity || 'medium',
-          title: vulnData.via?.[0]?.title || 'Security vulnerability',
-          description: vulnData.via?.[0]?.url || 'No description available',
+          version: (vulnData as any).via?.[0]?.range || 'unknown',
+          severity: (vulnData as any).severity || 'medium',
+          title: (vulnData as any).via?.[0]?.title || 'Security vulnerability',
+          description: (vulnData as any).via?.[0]?.url || 'No description available',
           recommendation: `Update ${packageName} to a secure version`,
-          cve: vulnData.via?.[0]?.cve,
-          cwe: vulnData.via?.[0]?.cwe
+          cve: (vulnData as any).via?.[0]?.cve,
+          cwe: (vulnData as any).via?.[0]?.cwe
         }
 
         vulnerabilities.push(vuln)

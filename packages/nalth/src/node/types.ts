@@ -8,8 +8,16 @@ export interface NalthConfig {
   mode?: string
   define?: Record<string, any>
   plugins?: NalthPlugin[]
-  publicDir?: string
+  publicDir?: string | false
   cacheDir?: string
+  
+  // Logging configuration
+  logLevel?: 'info' | 'warn' | 'error' | 'silent'
+  clearScreen?: boolean
+  customLogger?: any
+  
+  // Environment configuration
+  envPrefix?: string | string[]
   
   // Server configuration
   server?: ServerOptions
@@ -183,7 +191,12 @@ export interface NalthPlugin {
   configureSecurityRules?: (rules: SecurityRules) => SecurityRules | Promise<SecurityRules>
 }
 
-export interface ResolvedConfig extends Required<NalthConfig> {
+export interface ResolvedConfig extends Omit<Required<NalthConfig>, 'publicDir' | 'logLevel' | 'clearScreen' | 'customLogger' | 'envPrefix'> {
+  publicDir: string | false
+  logLevel: 'info' | 'warn' | 'error' | 'silent'
+  clearScreen: boolean
+  customLogger?: any
+  envPrefix: string | string[]
   configFile?: string
   configFileDependencies: string[]
   inlineConfig: NalthConfig
