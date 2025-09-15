@@ -8,7 +8,7 @@ import tseslint from 'typescript-eslint'
 import globals from 'globals'
 
 const require = createRequire(import.meta.url)
-const pkgNalth = require('./packages/nalth/package.json')
+const pkgVite = require('./packages/vite/package.json')
 
 // Some rules work better with typechecking enabled, but as enabling it is slow,
 // we only do so when linting in IDEs for now. If you want to lint with typechecking
@@ -41,6 +41,7 @@ export default tseslint.config(
         project: shouldTypeCheck
           ? [
               './packages/*/tsconfig.json',
+              './packages/vite/src/*/tsconfig.json',
             ]
           : undefined,
       },
@@ -87,7 +88,7 @@ export default tseslint.config(
         'error',
         {
           // for try-catching yarn pnp
-          allowModules: ['pnpapi', 'nalth'],
+          allowModules: ['pnpapi', 'vite'],
           tryExtensions: ['.ts', '.js', '.jsx', '.tsx', '.d.ts'],
         },
       ],
@@ -95,7 +96,7 @@ export default tseslint.config(
         'error',
         {
           allowModules: [
-            'nalth',
+            'vite',
             'less',
             'sass',
             'sass-embedded',
@@ -109,7 +110,7 @@ export default tseslint.config(
       'n/no-extraneous-require': [
         'error',
         {
-          allowModules: ['nalth'],
+          allowModules: ['vite'],
         },
       ],
       'n/prefer-node-protocol': 'error',
@@ -197,17 +198,17 @@ export default tseslint.config(
     },
   },
   {
-    name: 'nalth/node',
-    files: ['packages/nalth/src/node/**/*.?([cm])[jt]s?(x)'],
+    name: 'vite/node',
+    files: ['packages/vite/src/node/**/*.?([cm])[jt]s?(x)'],
     rules: {
       'no-console': ['error'],
       'n/no-restricted-require': [
         'error',
-        Object.keys(pkgNalth.devDependencies).map((d) => ({
+        Object.keys(pkgVite.devDependencies).map((d) => ({
           name: d,
           message:
             `devDependencies can only be imported using ESM syntax so ` +
-            `that they are included in the bundle. If you are trying to ` +
+            `that they are included in the rolldown bundle. If you are trying to ` +
             `lazy load a dependency, use (await import('dependency')).default instead.`,
         })),
       ],
@@ -244,14 +245,30 @@ export default tseslint.config(
   },
 
   {
-    name: 'disables/nalth/types',
+    name: 'disables/vite/client',
+    files: ['packages/vite/src/client/**/*.?([cm])[jt]s?(x)'],
+    ignores: ['**/__tests__/**'],
+    rules: {
+      'n/no-unsupported-features/node-builtins': 'off',
+    },
+  },
+  {
+    name: 'disables/vite/types',
     files: [
-      'packages/nalth/src/types/**/*.?([cm])[jt]s?(x)',
-      'packages/nalth/scripts/**/*.?([cm])[jt]s?(x)',
+      'packages/vite/src/types/**/*.?([cm])[jt]s?(x)',
+      'packages/vite/scripts/**/*.?([cm])[jt]s?(x)',
       '**/*.spec.ts',
     ],
     rules: {
       'n/no-extraneous-import': 'off',
+    },
+  },
+  {
+    name: 'disables/vite/cjs',
+    files: ['packages/vite/index.cjs'],
+    rules: {
+      'no-restricted-globals': 'off',
+      'n/no-missing-require': 'off',
     },
   },
   {
