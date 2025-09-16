@@ -69,7 +69,7 @@ ${yellow('EXAMPLES:')}
 ${blue('────────────────────────────────────────────────────────────────')}
 ${cyan('🌐 Learn more:')} https://nalth.dev
 ${cyan('📚 Documentation:')} https://docs.nalth.dev
-${cyan('🔧 GitHub:')} https://github.com/nalth/nalth`
+${cyan('🔧 GitHub:')} https://github.com/nalikiru-dev/nalth.js`
 
 type ColorFunc = (str: string | number) => string
 type Framework = {
