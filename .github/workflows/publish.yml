@@ -5,12 +5,12 @@ on:
     tags:
       - "v*" # Push events to matching v*, i.e. v1.0, v20.15.10
       - "plugin-*" # Push events to matching plugin-*, i.e. plugin-(vue|vue-jsx|react|legacy)@1.0.0
-      - "create-nalth*" 
+      - "create-nalth*"
 
 jobs:
   publish:
     # prevents this action from running on forks
-    if: github.repository == 'vitejs/vite'
+    if: github.repository == 'nalikiru-dev/nalth'
     runs-on: ubuntu-latest
     permissions:
       contents: read
