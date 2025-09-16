@@ -263,7 +263,7 @@ function App() {
               <ExternalLink className="w-3 h-3" />
             </a>
             <a 
-              href="https://github.com/nalth/nalth" 
+              href="https://github.com/nalikiru-dev/nalth.js" 
               className="text-blue-600 hover:text-blue-800 transition-colors flex items-center gap-1"
               target="_blank"
               rel="noopener noreferrer"

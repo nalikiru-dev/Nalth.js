@@ -32,11 +32,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nalth/nalth.git",
+    "url": "git+https://github.com/nalikiru-dev/nalth.js.git",
     "directory": "packages/create-nalth"
   },
   "bugs": {
-    "url": "https://github.com/nalth/nalth/issues"
+    "url": "https://github.com/nalikiru-dev/nalth.js/issues"
   },
   "homepage": "https://nalth.dev",
   "keywords": [
