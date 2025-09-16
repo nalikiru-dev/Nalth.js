@@ -6,15 +6,7 @@ import mri from 'mri'
 import * as prompts from '@clack/prompts'
 import colors from 'picocolors'
 
-const {
-  blue,
-  cyan,
-  green,
-  magenta,
-  red,
-  redBright,
-  yellow,
-} = colors
+const { blue, cyan, green, magenta, red, redBright, yellow } = colors
 
 // Unused color variables removed: blueBright, greenBright, reset
 
@@ -391,24 +383,24 @@ async function init() {
 
   let doneMessage = ''
   const cdProjectName = path.relative(cwd, root)
-  
+
   // Header
   doneMessage += `${blue('┌─────────────────────────────────────────────┐')}\n`
   doneMessage += `${blue('│')}     🎉 ${green('PROJECT CREATED SUCCESSFULLY!')} 🎉     ${blue('│')}\n`
   doneMessage += `${blue('└─────────────────────────────────────────────┘')}\n\n`
-  
+
   // Project info
   doneMessage += `📋 ${yellow('Project:')} ${cyan(path.basename(root))}\n`
   doneMessage += `📁 ${yellow('Location:')} ${cyan(root)}\n`
   doneMessage += `🔥 ${yellow('Template:')} ${magenta(template)}\n\n`
-  
+
   // Security features
   doneMessage += `${green('SECURITY FEATURES ENABLED:')}\n`
   doneMessage += `  ${green('✓')} HTTPS & TLS encryption\n`
   doneMessage += `  ${green('✓')} Content Security Policy (CSP)\n`
   doneMessage += `  ${green('✓')} Security headers & rate limiting\n`
   doneMessage += `  ${green('✓')} Real-time security monitoring\n\n`
-  
+
   // Next steps
   doneMessage += `${yellow('🚀 NEXT STEPS:')}\n`
   if (root !== cwd) {
@@ -426,14 +418,14 @@ async function init() {
       doneMessage += `\n  ${root !== cwd ? '3' : '2'}. ${cyan(`${pkgManager} run dev`)} ${magenta('# Start secure HTTPS development server')}`
       break
   }
-  
+
   // Additional info
   doneMessage += `\n\n${blue('═══════════════════════════════════════════════')}\n`
   doneMessage += `🌐 ${cyan('Your app will be available at:')} ${green('https://localhost:3000')}\n`
   doneMessage += `🔒 ${cyan('Security dashboard:')} ${green('https://localhost:3000/__nalth')}\n`
   doneMessage += `📚 ${cyan('Documentation:')} ${blue('https://docs.nalth.dev')}\n`
   doneMessage += `${blue('═══════════════════════════════════════════════')}`
-  
+
   prompts.outro(doneMessage)
 }
 

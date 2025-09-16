@@ -1,6 +1,6 @@
 import { defineConfig } from 'nalth'
 
-// https://nalth.dev/config/
+// https://nalth.pages.dev/config/
 export default defineConfig({
   // NALTH Security Features
   security: {

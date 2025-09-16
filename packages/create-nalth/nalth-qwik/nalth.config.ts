@@ -1,7 +1,7 @@
 import { defineConfig } from 'nalth'
 import { qwikVite } from '@builder.io/qwik/optimizer'
 
-// https://nalth.dev/config/
+// https://nalth.pages.dev/config/
 export default defineConfig({
   plugins: [
     qwikVite({

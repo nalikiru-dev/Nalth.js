@@ -13,7 +13,7 @@
     "index.js",
     "dist",
     "nalth-lit",
-    "nalth-preact", 
+    "nalth-preact",
     "nalth-qwik",
     "nalth-react",
     "nalth-solid",
