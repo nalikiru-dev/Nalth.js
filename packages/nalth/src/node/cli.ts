@@ -263,7 +263,7 @@ ${colors.yellow('Examples:')}
   ${colors.dim('nalth audit --fix --fail-on high')}
 
 ${colors.yellow('Learn more:')}
-  ${colors.blue('https://nalth.dev/docs')}
+  ${colors.blue('https://nalth.pages.dev/docs')}
 `)
 })
 

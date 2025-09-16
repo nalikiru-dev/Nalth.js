@@ -2,7 +2,7 @@ import { defineConfig } from 'nalth'
 import { resolve } from 'path'
 import react from '@vitejs/plugin-react'
 
-// https://nalth.dev/config/
+// https://nalth.pages.dev/config/
 export default defineConfig({
   plugins: [react()],
   

@@ -1,7 +1,7 @@
 import { defineConfig } from 'nalth'
 import preact from '@preact/preset-vite'
 
-// https://nalth.dev/config/
+// https://nalth.pages.dev/config/
 export default defineConfig({
   plugins: [preact()],
   
