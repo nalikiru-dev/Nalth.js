@@ -1,0 +1,18 @@
+{
+  "name": "nalth-lit-ts-starter",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "nalth",
+    "build": "tsc && nalth build",
+    "preview": "nalth preview"
+  },
+  "dependencies": {
+    "lit": "^3.3.1"
+  },
+  "devDependencies": {
+    "typescript": "~5.8.3",
+    "nalth": "2.1.93"
+  }
+}

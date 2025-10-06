@@ -1,0 +1,19 @@
+{
+  "name": "nalth-preact-ts-starter",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "nalth",
+    "build": "tsc -b && nalth build",
+    "preview": "nalth preview"
+  },
+  "dependencies": {
+    "preact": "^10.27.0"
+  },
+  "devDependencies": {
+    "@preact/preset-vite": "^2.10.2",
+    "typescript": "~5.8.3",
+    "nalth": "2.1.93"
+  }
+}

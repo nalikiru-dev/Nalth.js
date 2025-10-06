@@ -1,0 +1,20 @@
+{
+  "name": "nalth-qwik",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "nalth",
+    "build": "tsc -b && nalth build",
+    "preview": "serve dist"
+  },
+  "devDependencies": {
+    "serve": "^14.2.4",
+    "typescript": "~5.8.3",
+    "nalth": "2.1.93"
+
+  },
+  "dependencies": {
+    "@builder.io/qwik": "^1.15.0"
+  }
+}
