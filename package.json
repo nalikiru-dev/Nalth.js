@@ -12,7 +12,7 @@
   "homepage": "https://nalth.pages.dev",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nalikiru-dev/nalth.js.js.git"
+    "url": "git+https://github.com/nalikiru-dev/nalth.js.git"
   },
   "keywords": [
     "frontend",

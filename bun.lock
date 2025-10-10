@@ -2,7 +2,7 @@
   "lockfileVersion": 1,
   "workspaces": {
     "": {
-      "name": "@nalth/nalth-monorepo",
+      "name": "@nalikiru-dev/Nalth.js-monorepo",
       "devDependencies": {
         "@eslint/js": "^9.33.0",
         "@type-challenges/utils": "^0.1.1",
