@@ -1,4 +1,4 @@
-# 🛡️ NALTH Documentation
+# 🛡️ NALTH.js
 
 **The Security-First Web Framework**
 
