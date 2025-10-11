@@ -3832,7 +3832,7 @@ packages:
   '@vitejs/test-dep-with-optional-peer-dep-cjs@file:playground/optimize-deps/dep-with-optional-peer-dep-cjs':
     resolution: {directory: playground/optimize-deps/dep-with-optional-peer-dep-cjs, type: directory}
     peerDependencies:
-      foobar: 0.0.0
+      foobar: 1.1.0
     peerDependenciesMeta:
       foobar:
         optional: true
@@ -3840,7 +3840,7 @@ packages:
   '@vitejs/test-dep-with-optional-peer-dep-submodule@file:playground/optimize-deps/dep-with-optional-peer-dep-submodule':
     resolution: {directory: playground/optimize-deps/dep-with-optional-peer-dep-submodule, type: directory}
     peerDependencies:
-      foobar: 0.0.0
+      foobar: 1.1.0
     peerDependenciesMeta:
       foobar:
         optional: true
@@ -3848,7 +3848,7 @@ packages:
   '@vitejs/test-dep-with-optional-peer-dep@file:playground/optimize-deps/dep-with-optional-peer-dep':
     resolution: {directory: playground/optimize-deps/dep-with-optional-peer-dep, type: directory}
     peerDependencies:
-      foobar: 0.0.0
+      foobar: 1.1.0
     peerDependenciesMeta:
       foobar:
         optional: true
