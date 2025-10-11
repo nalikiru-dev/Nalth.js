@@ -179,7 +179,7 @@ importers:
         version: 1.30.1
       magic-string:
         specifier: ^0.30.17
-        version: 0.30.17
+        version: 0.30.19
       mlly:
         specifier: ^1.7.4
         version: 1.7.4
@@ -467,7 +467,7 @@ importers:
         version: 3.45.0
       magic-string:
         specifier: ^0.30.17
-        version: 0.30.17
+        version: 0.30.19
       regenerator-runtime:
         specifier: ^0.14.1
         version: 0.14.1
@@ -635,7 +635,7 @@ importers:
         version: 1.30.1
       magic-string:
         specifier: ^0.30.17
-        version: 0.30.17
+        version: 0.30.19
       sass:
         specifier: ^1.90.0
         version: 1.90.0
@@ -811,7 +811,7 @@ importers:
         version: file:playground/js-sourcemap/importee-pkg
       magic-string:
         specifier: ^0.30.17
-        version: 0.30.17
+        version: 0.30.19
 
   playground/js-sourcemap/importee-pkg: {}
 
@@ -2781,6 +2781,9 @@ packages:
 
   '@jridgewell/sourcemap-codec@1.5.0':
     resolution: {integrity: sha512-gv3ZRaISU3fjPAgNsriBRqGWQL6quFx04YMPW/zD8XMLsU32mhCCbfbO6KZFLjvYpCZ8zyDEgqsgf+PwPaM7GQ==}
+
+  '@jridgewell/sourcemap-codec@1.5.5':
+    resolution: {integrity: sha512-cYQ9310grqxueWbl+WuIUIaiUaDcj7WOq5fVhEljNVgRfOUhY9fy2zTvfoqWsnebh8Sl70VScFbICvJnLKB0Og==}
 
   '@jridgewell/trace-mapping@0.3.29':
     resolution: {integrity: sha512-uw6guiW/gcAGPDhLmd77/6lW8QLeiV5RUTsAX46Db6oLhGaVj4lhnPwb184s1bkc8kdVg/+h988dro8GRDpmYQ==}
@@ -5385,6 +5388,9 @@ packages:
 
   magic-string@0.30.17:
     resolution: {integrity: sha512-sNPKHvyjVf7gyjwS4xGTaW/mCnF8wnjtifKBEhxfZ7E/S8tQ0rssrwGNn6q8JH/ohItJfSQp9mBtQYuTlH5QnA==}
+
+  magic-string@0.30.19:
+    resolution: {integrity: sha512-2N21sPY9Ws53PZvsEpVtNuSW+ScYbQdp4b9qUaL+9QkHUrGFKo56Lg9Emg5s9V/qrtNBmiR01sYhUOwu3H+VOw==}
 
   make-dir@2.1.0:
     resolution: {integrity: sha512-LS9X+dc8KLxXCb8dni79fLIIUA5VyZoyjSMCwTluaXA0o27cCK0bhXkpgw+sTXVpPy/lSO57ilRixqk0vDmtRA==}
@@ -8002,6 +8008,8 @@ snapshots:
 
   '@jridgewell/sourcemap-codec@1.5.0': {}
 
+  '@jridgewell/sourcemap-codec@1.5.5': {}
+
   '@jridgewell/trace-mapping@0.3.29':
     dependencies:
       '@jridgewell/resolve-uri': 3.1.2
@@ -8010,7 +8018,7 @@ snapshots:
   '@jridgewell/trace-mapping@0.3.9':
     dependencies:
       '@jridgewell/resolve-uri': 3.1.2
-      '@jridgewell/sourcemap-codec': 1.5.0
+      '@jridgewell/sourcemap-codec': 1.5.5
 
   '@napi-rs/wasm-runtime@0.2.11':
     dependencies:
@@ -8303,7 +8311,7 @@ snapshots:
       estree-walker: 2.0.2
       fdir: 6.4.6(picomatch@4.0.3)
       is-reference: 1.2.1
-      magic-string: 0.30.17
+      magic-string: 0.30.19
       picomatch: 4.0.3
     optionalDependencies:
       rollup: 4.43.0
@@ -8314,7 +8322,7 @@ snapshots:
       astring: 1.9.0
       estree-walker: 2.0.2
       fast-glob: 3.3.3
-      magic-string: 0.30.17
+      magic-string: 0.30.19
     optionalDependencies:
       rollup: 4.43.0
 
@@ -8409,7 +8417,7 @@ snapshots:
       enhanced-resolve: 5.18.1
       jiti: 2.4.2
       lightningcss: 1.30.1
-      magic-string: 0.30.17
+      magic-string: 0.30.19
       source-map-js: 1.2.1
       tailwindcss: 4.1.11
 
@@ -8751,7 +8759,7 @@ snapshots:
       browserslist: 4.25.2
       browserslist-to-esbuild: 2.1.1(browserslist@4.25.2)
       core-js: 3.45.0
-      magic-string: 0.30.17
+      magic-string: 0.30.19
       regenerator-runtime: 0.14.1
       systemjs: 6.15.1
       terser: 5.43.1
@@ -9063,7 +9071,7 @@ snapshots:
       '@vue/compiler-ssr': 3.4.38
       '@vue/shared': 3.4.38
       estree-walker: 2.0.2
-      magic-string: 0.30.17
+      magic-string: 0.30.19
       postcss: 8.5.6
       source-map-js: 1.2.1
 
@@ -9075,7 +9083,7 @@ snapshots:
       '@vue/compiler-ssr': 3.5.18
       '@vue/shared': 3.5.18
       estree-walker: 2.0.2
-      magic-string: 0.30.17
+      magic-string: 0.30.19
       postcss: 8.5.6
       source-map-js: 1.2.1
 
@@ -10475,6 +10483,10 @@ snapshots:
     dependencies:
       '@jridgewell/sourcemap-codec': 1.5.0
 
+  magic-string@0.30.19:
+    dependencies:
+      '@jridgewell/sourcemap-codec': 1.5.5
+
   make-dir@2.1.0:
     dependencies:
       pify: 4.0.1
@@ -11128,7 +11140,7 @@ snapshots:
       commenting: 1.1.0
       fdir: 6.4.6(picomatch@4.0.3)
       lodash: 4.17.21
-      magic-string: 0.30.17
+      magic-string: 0.30.19
       moment: 2.30.1
       package-name-regex: 2.0.6
       rollup: 4.43.0
