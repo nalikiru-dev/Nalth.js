@@ -9,7 +9,7 @@
     "preview": "nalth preview"
   },
   "dependencies": {
-    "nalth": "^1.0.0"
+    "nalth": "^2.0.0"
   },
   "devDependencies": {}
 }
