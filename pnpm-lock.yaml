@@ -239,7 +239,7 @@ importers:
         version: 5.43.1
       tinyglobby:
         specifier: ^0.2.14
-        version: 0.2.14
+        version: 0.2.15
       tsconfck:
         specifier: ^3.1.6
         version: 3.1.6(typescript@5.9.2)
@@ -541,7 +541,7 @@ importers:
         version: 4.1.11
       tinyglobby:
         specifier: ^0.2.14
-        version: 0.2.14
+        version: 0.2.15
 
   playground/build-old: {}
 
@@ -594,7 +594,7 @@ importers:
         version: 5.0.1(postcss@8.5.6)
       tinyglobby:
         specifier: ^0.2.14
-        version: 0.2.14
+        version: 0.2.15
 
   playground/css-codesplit: {}
 
@@ -11639,7 +11639,7 @@ snapshots:
 
   tinyglobby@0.2.14:
     dependencies:
-      fdir: 6.4.6(picomatch@4.0.3)
+      fdir: 6.5.0(picomatch@4.0.3)
       picomatch: 4.0.3
 
   tinyglobby@0.2.15:
@@ -11695,7 +11695,7 @@ snapshots:
       rolldown-plugin-dts: 0.15.10(rolldown@1.0.0-beta.42)(typescript@5.9.2)
       semver: 7.7.2
       tinyexec: 1.0.1
-      tinyglobby: 0.2.14
+      tinyglobby: 0.2.15
       tree-kill: 1.2.2
       unconfig: 7.3.3
     optionalDependencies:
