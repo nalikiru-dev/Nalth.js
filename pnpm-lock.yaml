@@ -226,8 +226,8 @@ importers:
         specifier: ^4.43.0
         version: 4.43.0
       selfsigned:
-        specifier: ^2.4.1
-        version: 2.4.1
+        specifier: ^3.0.0
+        version: 3.0.1
       sirv:
         specifier: ^3.0.1
         version: 3.0.1(patch_hash=95b663b930c5cc6e609c7fa15b69a86ff3b30df68978611d1d3d724c65135cb1)
@@ -3494,9 +3494,6 @@ packages:
   '@types/ms@2.1.0':
     resolution: {integrity: sha512-GsCCIZDE/p3i96vtEqx+7dBUGXrc7zeSK3wwPHIaRThS+9OhWIXRqzs4d6k1SVU8g91DrNRWxWUGhp5KXQb2VA==}
 
-  '@types/node-forge@1.3.14':
-    resolution: {integrity: sha512-mhVF2BnD4BO+jtOp7z1CdzaK4mbuK0LLQYAvdOLqHTavxFNq4zA1EmYkpnFjP8HOUzedfQkRnp0E2ulSAYSzAw==}
-
   '@types/node@22.17.1':
     resolution: {integrity: sha512-y3tBaz+rjspDTylNjAX37jEC3TETEFGNJL6uQDxwF9/8GLLIjW1rvVHlynyuUKMnMr1Roq8jOv3vkopBjC4/VA==}
 
@@ -6223,8 +6220,8 @@ packages:
   select@1.1.2:
     resolution: {integrity: sha512-OwpTSOfy6xSs1+pwcNrv0RBMOzI39Lp3qQKUTPVVPRjCdNa5JH/oPRiqsesIskK8TVgmRiHwO4KXlV2Li9dANA==}
 
-  selfsigned@2.4.1:
-    resolution: {integrity: sha512-th5B4L2U+eGLq1TVh7zNRGBapioSORUeymIydxgFpwww9d2qyKvtuPU2jJuHvYAwwqi2Y596QBL3eEqcPEYL8Q==}
+  selfsigned@3.0.1:
+    resolution: {integrity: sha512-6U6w6kSLrM9Zxo0D7mC7QdGS6ZZytMWBnj/vhF9p+dAHx6CwGezuRcO4VclTbrrI7mg7SD6zNiqXUuBHOVopNQ==}
     engines: {node: '>=10'}
 
   semver@5.7.2:
@@ -8562,10 +8559,6 @@ snapshots:
   '@types/lodash@4.17.16': {}
 
   '@types/ms@2.1.0': {}
-
-  '@types/node-forge@1.3.14':
-    dependencies:
-      '@types/node': 22.17.1
 
   '@types/node@22.17.1':
     dependencies:
@@ -11312,9 +11305,8 @@ snapshots:
 
   select@1.1.2: {}
 
-  selfsigned@2.4.1:
+  selfsigned@3.0.1:
     dependencies:
-      '@types/node-forge': 1.3.14
       node-forge: 1.3.1
 
   semver@5.7.2:
