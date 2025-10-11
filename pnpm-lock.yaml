@@ -124,8 +124,8 @@ importers:
         specifier: ^6.7.14
         version: 6.7.14
       chokidar:
-        specifier: ^3.6.0
-        version: 3.6.0(patch_hash=8a4f9e2b397e6034b91a0508faae3cecb97f222313faa129d7cb0eb71e9d0e84)
+        specifier: ^4.0.0
+        version: 4.0.3
       connect:
         specifier: ^3.7.0
         version: 3.7.0
