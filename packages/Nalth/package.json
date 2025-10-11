@@ -144,7 +144,7 @@
     "@rollup/pluginutils": "^5.2.0",
     "@types/escape-html": "^1.0.4",
     "@types/pnpapi": "^0.0.5",
-    "artichokie": "^0.3.2",
+    "artichokie": "^0.4.0",
     "baseline-browser-mapping": "^2.6.3",
     "cac": "^6.7.14",
     "chokidar": "^3.6.0",
