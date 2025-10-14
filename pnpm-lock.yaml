@@ -503,8 +503,8 @@ importers:
         specifier: ^1.0.1
         version: 1.0.1
       kill-port:
-        specifier: ^1.6.1
-        version: 1.6.1
+        specifier: ^2.0.0
+        version: 2.0.1
 
   playground/alias:
     dependencies:
@@ -5435,8 +5435,8 @@ packages:
   keyv@4.5.4:
     resolution: {integrity: sha512-oxVHkHR/EJf2CNXnWxRLW6mg7JyCCUcG0DtEGmL2ctUo1PNTin1PUil+r/+4r5MpVgC/fn1kjsx7mjSujKqIpw==}
 
-  kill-port@1.6.1:
-    resolution: {integrity: sha512-un0Y55cOM7JKGaLnGja28T38tDDop0AQ8N0KlAdyh+B1nmMoX8AnNmqPNZbS3mUMgiST51DCVqmbFT1gNJpVNw==}
+  kill-port@2.0.1:
+    resolution: {integrity: sha512-e0SVOV5jFo0mx8r7bS29maVWp17qGqLBZ5ricNSajON6//kmb7qqqNnml4twNE8Dtj97UQD+gNFOaipS/q1zzQ==}
     hasBin: true
 
   kleur@3.0.3:
@@ -10694,7 +10694,7 @@ snapshots:
     dependencies:
       json-buffer: 3.0.1
 
-  kill-port@1.6.1:
+  kill-port@2.0.1:
     dependencies:
       get-them-args: 1.3.2
       shell-exec: 1.0.2
