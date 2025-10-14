@@ -1042,7 +1042,7 @@ importers:
         version: 4.5.0
       phoenix:
         specifier: ^1.8.0
-        version: 1.8.0
+        version: 1.8.1
       react:
         specifier: ^19.1.1
         version: 19.1.1
@@ -5722,8 +5722,8 @@ packages:
   periscopic@4.0.2:
     resolution: {integrity: sha512-sqpQDUy8vgB7ycLkendSKS6HnVz1Rneoc3Rc+ZBUCe2pbqlVuCC5vF52l0NJ1aiMg/r1qfYF9/myz8CZeI2rjA==}
 
-  phoenix@1.8.0:
-    resolution: {integrity: sha512-hRBoaOuxQIGrN/JPbCYjC5Xkdz83sbkzBLT41lSROsQmkFUyE+w3ElhwaW4z/i2nkPtrLYoXyVunvntE6Zm1DA==}
+  phoenix@1.8.1:
+    resolution: {integrity: sha512-7i2a5f5y0Qhzi2g/+iuaGr4TzRt5ucqI0JeV2Q9K0swqY8L2C7CLR66RcGCpcQKGOY73B5GLKMYEl13o/9l/Cg==}
 
   picocolors@1.1.1:
     resolution: {integrity: sha512-xceH2snhtb5M9liqDsmEw56le376mTZkEX/jEb/RxNFyegNul7eNslCXP9FDj/Lcu0X8KEyMceP2ntpaHrDEVA==}
@@ -10824,7 +10824,7 @@ snapshots:
       is-reference: 3.0.3
       zimmerframe: 1.1.2
 
-  phoenix@1.8.0: {}
+  phoenix@1.8.1: {}
 
   picocolors@1.1.1: {}
 
