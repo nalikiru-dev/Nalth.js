@@ -55,32 +55,68 @@ export interface SecurityConfig {
 export const defaultSecurityConfig: SecurityConfig = {
   https: {
     enabled: true,
-    autoGenerate: true
+    autoGenerate: true,
   },
   csp: {
     enabled: true,
     directives: {
       'default-src': ["'self'"],
-      'script-src': ["'self'", "'unsafe-inline'", "'unsafe-eval'"],
-      'style-src': ["'self'", "'unsafe-inline'"],
-      'img-src': ["'self'", 'data:', 'https:'],
-      'font-src': ["'self'", 'https:'],
-      'connect-src': ["'self'", 'ws:', 'wss:'],
-      'media-src': ["'self'"],
+      'script-src': [
+        "'self'",
+        "'unsafe-inline'", // Required for HMR and development
+        "'unsafe-eval'", // Required for development tools
+        'localhost:*', // Local development servers
+        '127.0.0.1:*', // Local development servers
+        'ws:', // WebSocket for HMR
+        'wss:', // Secure WebSocket for HMR
+      ],
+      'style-src': [
+        "'self'",
+        "'unsafe-inline'", // Required for CSS-in-JS and HMR
+        'fonts.googleapis.com',
+        'fonts.gstatic.com',
+      ],
+      'img-src': [
+        "'self'",
+        'data:', // Allow data URLs for images
+        'https:', // Allow HTTPS images
+        'blob:', // Allow blob URLs
+      ],
+      'font-src': [
+        "'self'",
+        'https:',
+        'data:',
+        'fonts.gstatic.com',
+        'fonts.googleapis.com',
+      ],
+      'connect-src': [
+        "'self'",
+        'ws:', // WebSocket connections
+        'wss:', // Secure WebSocket connections
+        'localhost:*', // Local development
+        '127.0.0.1:*', // Local development
+        'https://api.github.com', // Common API endpoint
+        'https://*.vercel.app', // Vercel deployments
+        'https://*.netlify.app', // Netlify deployments
+      ],
+      'media-src': ["'self'", 'data:', 'blob:'],
       'object-src': ["'none'"],
-      'child-src': ["'self'"],
+      'child-src': ["'self'", 'blob:'],
       'worker-src': ["'self'", 'blob:'],
       'frame-ancestors': ["'none'"],
       'form-action': ["'self'"],
       'base-uri': ["'self'"],
-      'manifest-src': ["'self'"]
-    }
+      'manifest-src': ["'self'"],
+      'upgrade-insecure-requests': [],
+    },
+    reportOnly: false,
+    reportUri: '/__nalth/csp-report',
   },
   headers: {
     hsts: {
       maxAge: 31536000, // 1 year
       includeSubDomains: true,
-      preload: true
+      preload: true,
     },
     frameOptions: 'DENY',
     contentTypeOptions: true,
@@ -93,13 +129,13 @@ export const defaultSecurityConfig: SecurityConfig = {
       usb: [],
       magnetometer: [],
       gyroscope: [],
-      accelerometer: []
-    }
+      accelerometer: [],
+    },
   },
   sri: {
     enabled: true,
     algorithms: ['sha384'],
-    includeInline: false
+    includeInline: false,
   },
   audit: {
     enabled: true,
@@ -117,21 +153,30 @@ export const defaultSecurityConfig: SecurityConfig = {
       'window\\.open\\(',
       'location\\.href\\s*=',
       'location\\.replace\\(',
-      'location\\.assign\\('
+      'location\\.assign\\(',
     ],
-    failOnViolations: false
-  }
+    failOnViolations: false,
+  },
 }
 
 /**
  * Create security middleware for Connect/Express
  */
-export function createSecurityMiddleware(config: Partial<SecurityConfig> = {}): Connect.NextHandleFunction {
+export function createSecurityMiddleware(
+  config: Partial<SecurityConfig> = {},
+): Connect.NextHandleFunction {
   const securityConfig = { ...defaultSecurityConfig, ...config }
 
-  return (req: IncomingMessage, res: ServerResponse, next: Connect.NextFunction) => {
+  return (
+    req: IncomingMessage,
+    res: ServerResponse,
+    next: Connect.NextFunction,
+  ) => {
     // Set security headers
-    if (securityConfig.headers.hsts && req.headers['x-forwarded-proto'] === 'https') {
+    if (
+      securityConfig.headers.hsts &&
+      req.headers['x-forwarded-proto'] === 'https'
+    ) {
       const { maxAge, includeSubDomains, preload } = securityConfig.headers.hsts
       let hstsValue = `max-age=${maxAge}`
       if (includeSubDomains) hstsValue += '; includeSubDomains'
@@ -154,7 +199,8 @@ export function createSecurityMiddleware(config: Partial<SecurityConfig> = {}): 
     if (securityConfig.headers.permissionsPolicy) {
       const policies = Object.entries(securityConfig.headers.permissionsPolicy)
         .map(([directive, allowlist]) => {
-          const allowlistStr = allowlist.length > 0 ? `(${allowlist.join(' ')})` : '()'
+          const allowlistStr =
+            allowlist.length > 0 ? `(${allowlist.join(' ')})` : '()'
           return `${directive}=${allowlistStr}`
         })
         .join(', ')
@@ -170,10 +216,10 @@ export function createSecurityMiddleware(config: Partial<SecurityConfig> = {}): 
         })
         .join('; ')
 
-      const headerName = securityConfig.csp.reportOnly 
-        ? 'Content-Security-Policy-Report-Only' 
+      const headerName = securityConfig.csp.reportOnly
+        ? 'Content-Security-Policy-Report-Only'
         : 'Content-Security-Policy'
-      
+
       res.setHeader(headerName, cspDirectives)
     }
 
@@ -184,18 +230,28 @@ export function createSecurityMiddleware(config: Partial<SecurityConfig> = {}): 
 /**
  * Generate SRI hash for content
  */
-export function generateSRIHash(content: string, algorithm: 'sha256' | 'sha384' | 'sha512' = 'sha384'): string {
-  const crypto = require('node:crypto')
-  const hash = crypto.createHash(algorithm).update(content, 'utf8').digest('base64')
+export function generateSRIHash(
+  content: string,
+  algorithm: 'sha256' | 'sha384' | 'sha512' = 'sha384',
+): string {
+  // Use dynamic import in a sync way - this is acceptable for node built-ins
+  const crypto = eval('require')('node:crypto')
+  const hash = crypto
+    .createHash(algorithm)
+    .update(content, 'utf8')
+    .digest('base64')
   return `${algorithm}-${hash}`
 }
 
 /**
  * Audit code for security violations
  */
-export function auditCode(code: string, patterns: string[]): { violations: string[], safe: boolean } {
+export function auditCode(
+  code: string,
+  patterns: string[],
+): { violations: string[]; safe: boolean } {
   const violations: string[] = []
-  
+
   for (const pattern of patterns) {
     const regex = new RegExp(pattern, 'gi')
     const matches = regex.exec(code)
@@ -205,7 +261,7 @@ export function auditCode(code: string, patterns: string[]): { violations: strin
   }
 
   return {
-    violations: [...new Set(violations)], 
-    safe: violations.length === 0
+    violations: [...new Set(violations)],
+    safe: violations.length === 0,
   }
 }

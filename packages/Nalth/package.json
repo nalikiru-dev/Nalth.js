@@ -1,18 +1,24 @@
 {
   "name": "nalth",
-  "version": "2.1.93",
+  "version": "2.1.96",
   "type": "module",
   "license": "MIT",
   "author": "Nalth Team",
   "description": "Security-first Native-ESM powered web dev build tool",
-  "bin": { 
+  "bin": {
     "nalth": "bin/nalth.js"
   },
   "keywords": [
-    "frontend",
+    "security-first",
     "framework",
     "security",
     "hmr",
+    "csp",
+    "sri",
+    "audit",
+    "security-headers",
+    "security-report",
+    "security-audit",
     "dev-server",
     "build-tool",
     "secure-build",
@@ -60,14 +66,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nalikiru-dev/nalth.git",
-    "directory": "packages/vite"
+    "url": "git+https://github.com/nalikiru-dev/nalth.js.git",
+    "directory": "packages/nalth"
   },
   "bugs": {
-    "url": "https://github.com/nalikiru-dev/Nalth.js/issues"
+    "url": "https://github.com/nalikiru-dev/nalth.js/issues"
   },
   "homepage": "https://nalth.pages.dev",
-  "funding": "https://github.com/nalikiru-dev/Nalth.js?sponsor=1",
+  "funding": "https://github.com/nalikiru-dev/nalth.js?sponsor=1",
   "scripts": {
     "dev": "premove dist && pnpm build-bundle -w",
     "build": "premove dist && pnpm build-bundle && pnpm build-types",

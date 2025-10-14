@@ -5,6 +5,7 @@ Nalth is a security-enhanced fork of Vite.js that provides enterprise-grade secu
 ## 🛡️ Security Features
 
 ### 1. HTTPS by Default
+
 - **Auto-generated certificates**: Nalth automatically generates self-signed certificates for development
 - **Secure TLS configuration**: Uses modern cipher suites and disables insecure protocols
 - **Production-ready**: Easy configuration for production certificates
@@ -19,12 +20,13 @@ export default {
       autoGenerate: true,
       certDir: './certs',
       // Additional TLS options...
-    }
-  }
+    },
+  },
 }
 ```
 
 ### 2. Content Security Policy (CSP)
+
 - **Strict default policy**: Prevents XSS and injection attacks
 - **Development-friendly**: Allows necessary resources for HMR and dev tools
 - **Customizable**: Easy to configure for your application needs
@@ -42,6 +44,7 @@ export default {
 ```
 
 ### 3. Security Headers
+
 - **HSTS**: HTTP Strict Transport Security with preload
 - **X-Frame-Options**: Prevents clickjacking attacks
 - **X-Content-Type-Options**: Prevents MIME sniffing
@@ -49,16 +52,22 @@ export default {
 - **Permissions-Policy**: Restricts browser features
 
 ### 4. Subresource Integrity (SRI)
+
 - **Automatic hash generation**: SHA-384 hashes for all assets
 - **Build-time integration**: No runtime performance impact
 - **Tamper detection**: Prevents malicious asset modification
 
 ```html
 <!-- Automatically generated -->
-<script src="/assets/main.js" integrity="sha384-oqVuAfXRKap7fdgcCY5uykM6+R9GqQ8K/uxy9rx7HNQlGYl1kPzQho1wx4JwY8wC" crossorigin="anonymous"></script>
+<script
+  src="/assets/main.js"
+  integrity="sha384-oqVuAfXRKap7fdgcCY5uykM6+R9GqQ8K/uxy9rx7HNQlGYl1kPzQho1wx4JwY8wC"
+  crossorigin="anonymous"
+></script>
 ```
 
 ### 5. Security Auditing
+
 - **Pattern detection**: Identifies potentially unsafe code patterns
 - **Build-time warnings**: Alerts during development
 - **Configurable rules**: Customize security checks
@@ -76,6 +85,7 @@ export default {
 ## 🚀 Getting Started
 
 ### Installation
+
 ```bash
 npm install nalth
 # or
@@ -85,6 +95,7 @@ pnpm add nalth
 ```
 
 ### Basic Usage
+
 Nalth is a drop-in replacement for Vite with security enabled by default:
 
 ```javascript
@@ -96,12 +107,12 @@ export default defineConfig({
   plugins: [
     // Your existing plugins work unchanged
   ],
-  
+
   // Security is enabled by default, but you can customize:
   security: {
     https: {
       enabled: true,
-      autoGenerate: true
+      autoGenerate: true,
     },
     csp: {
       enabled: true,
@@ -109,17 +120,18 @@ export default defineConfig({
     },
     sri: {
       enabled: true,
-      algorithms: ['sha384']
+      algorithms: ['sha384'],
     },
     audit: {
       enabled: true,
-      failOnViolations: false // Set to true for strict mode
-    }
-  }
+      failOnViolations: false, // Set to true for strict mode
+    },
+  },
 })
 ```
 
 ### CLI Usage
+
 ```bash
 # Development server (HTTPS by default)
 nalth dev
@@ -134,6 +146,7 @@ nalth preview
 ## 🔧 Configuration
 
 ### Security Configuration
+
 Create a `security.config.ts` file for advanced security settings:
 
 ```typescript
@@ -143,9 +156,9 @@ export default defineSecurityConfig({
   https: {
     enabled: true,
     autoGenerate: true,
-    certDir: './certs'
+    certDir: './certs',
   },
-  
+
   csp: {
     enabled: true,
     directives: {
@@ -154,26 +167,26 @@ export default defineSecurityConfig({
       // Add your custom directives
     },
     reportOnly: false, // Set to true for testing
-    reportUri: '/csp-report' // CSP violation reporting
+    reportUri: '/csp-report', // CSP violation reporting
   },
-  
+
   headers: {
     hsts: {
       maxAge: 31536000,
       includeSubDomains: true,
-      preload: true
+      preload: true,
     },
     frameOptions: 'DENY',
     contentTypeOptions: true,
-    referrerPolicy: 'strict-origin-when-cross-origin'
+    referrerPolicy: 'strict-origin-when-cross-origin',
   },
-  
+
   sri: {
     enabled: true,
     algorithms: ['sha384'],
-    includeInline: false
+    includeInline: false,
   },
-  
+
   audit: {
     enabled: true,
     unsafePatterns: [
@@ -181,12 +194,13 @@ export default defineSecurityConfig({
       'innerHTML\\s*=',
       // Add custom patterns
     ],
-    failOnViolations: false
-  }
+    failOnViolations: false,
+  },
 })
 ```
 
 ### Environment-Specific Configuration
+
 ```javascript
 // nalth.config.ts
 export default defineConfig({
@@ -195,23 +209,23 @@ export default defineConfig({
     ...(process.env.NODE_ENV === 'development' && {
       csp: {
         directives: {
-          'script-src': ["'self'", "'unsafe-inline'", "'unsafe-eval'"]
-        }
-      }
+          'script-src': ["'self'", "'unsafe-inline'", "'unsafe-eval'"],
+        },
+      },
     }),
-    
+
     // Production settings
     ...(process.env.NODE_ENV === 'production' && {
       audit: {
-        failOnViolations: true
+        failOnViolations: true,
       },
       csp: {
         directives: {
-          'script-src': ["'self'"]
-        }
-      }
-    })
-  }
+          'script-src': ["'self'"],
+        },
+      },
+    }),
+  },
 })
 ```
 
@@ -229,26 +243,27 @@ export default defineConfig({
     react(), // Works exactly as with Vite
     // Any other Vite plugins work unchanged
   ],
-  
+
   // Nalth-specific security features
   security: {
     // Security configuration
-  }
+  },
 })
 ```
 
 ## 🛠️ Advanced Features
 
 ### Custom Security Middleware
+
 ```javascript
 import { createSecurityMiddleware } from 'nalth'
 
 const customSecurity = createSecurityMiddleware({
   csp: {
     directives: {
-      'connect-src': ["'self'", 'https://api.example.com']
-    }
-  }
+      'connect-src': ["'self'", 'https://api.example.com'],
+    },
+  },
 })
 
 // Use in custom server
@@ -256,6 +271,7 @@ app.use(customSecurity)
 ```
 
 ### SRI Hash Generation
+
 ```javascript
 import { generateSRIHash } from 'nalth'
 
@@ -264,12 +280,13 @@ console.log(hash) // sha384-oqVuAfXRKap7fdgcCY5uykM6+R9GqQ8K/uxy9rx7HNQlGYl1kPzQ
 ```
 
 ### Security Auditing
+
 ```javascript
 import { auditCode } from 'nalth'
 
 const { violations, safe } = auditCode(sourceCode, [
   'eval\\(',
-  'innerHTML\\s*='
+  'innerHTML\\s*=',
 ])
 
 if (!safe) {

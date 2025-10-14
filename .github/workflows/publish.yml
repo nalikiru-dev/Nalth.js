@@ -10,7 +10,7 @@ on:
 jobs:
   publish:
     # prevents this action from running on forks
-    if: github.repository == 'nalikiru-dev/nalth'
+    if: github.repository == 'nalikiru-dev/nalth.js'
     runs-on: ubuntu-latest
     permissions:
       contents: read
