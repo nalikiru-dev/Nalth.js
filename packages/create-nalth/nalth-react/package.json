@@ -42,7 +42,7 @@
     "postcss": "^8.4.47",
     "tailwindcss": "^4.0.0",
     "tailwindcss-animate": "^1.0.7",
-    "typescript": "~5.8.3",
+    "typescript": "~5.9.0",
     "typescript-eslint": "^8.39.1",
     "nalth": "^2.2.0"
   }
