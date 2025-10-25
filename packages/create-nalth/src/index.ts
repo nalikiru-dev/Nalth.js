@@ -25,7 +25,7 @@ const cwd = process.cwd()
 const helpMessage = `\
 ${blue('┌─────────────────────────────────────────────────────────────┐')}
 ${blue('│')}                      ${blue('🛡️  NALTH')}                          ${blue('│')}
-${blue('│')}            ${cyan('Security-First Web Framework')}                ${blue('│')}
+${blue('│')}         ${cyan('Security-First Unified Toolchain')}               ${blue('│')}
 ${blue('└─────────────────────────────────────────────────────────────┘')}
 
 ${yellow('USAGE:')}
@@ -35,6 +35,8 @@ ${yellow('DESCRIPTION:')}
   Bootstrap secure, enterprise-ready web applications with:
   ${green('✓')} HTTPS & TLS encryption by default
   ${green('✓')} Content Security Policy (CSP) auto-generation
+  ${green('✓')} Built-in testing, linting, and formatting
+  ${green('✓')} Secure package management with typosquatting detection
   ${green('✓')} Real-time security monitoring & auditing
   ${green('✓')} Zero-config security headers & rate limiting
 
@@ -394,12 +396,16 @@ async function init() {
   doneMessage += `📁 ${yellow('Location:')} ${cyan(root)}\n`
   doneMessage += `🔥 ${yellow('Template:')} ${magenta(template)}\n\n`
 
-  // Security features
-  doneMessage += `${green('SECURITY FEATURES ENABLED:')}\n`
+  // Security features and tooling
+  doneMessage += `${green('✨ UNIFIED TOOLCHAIN READY:')}\n`
   doneMessage += `  ${green('✓')} HTTPS & TLS encryption\n`
   doneMessage += `  ${green('✓')} Content Security Policy (CSP)\n`
   doneMessage += `  ${green('✓')} Security headers & rate limiting\n`
-  doneMessage += `  ${green('✓')} Real-time security monitoring\n\n`
+  doneMessage += `  ${green('✓')} Real-time security monitoring\n`
+  doneMessage += `  ${green('✓')} Testing with Vitest\n`
+  doneMessage += `  ${green('✓')} Linting with ESLint + security plugins\n`
+  doneMessage += `  ${green('✓')} Formatting with Prettier\n`
+  doneMessage += `  ${green('✓')} Secure package management\n\n`
 
   // Next steps
   doneMessage += `${yellow('🚀 NEXT STEPS:')}\n`

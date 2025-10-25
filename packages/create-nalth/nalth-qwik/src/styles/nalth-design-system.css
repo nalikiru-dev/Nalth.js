@@ -1,0 +1,340 @@
+/* 🛡️ Nalth Unified Design System */
+/* Security-First Professional Theme */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+:root {
+  /* 🎨 Security-Focused Color Palette */
+  --nalth-primary: #10b981;        /* Security Green */
+  --nalth-primary-dark: #059669;   /* Dark Security Green */
+  --nalth-secondary: #3b82f6;      /* Trust Blue */
+  --nalth-secondary-dark: #2563eb; /* Dark Trust Blue */
+  --nalth-accent: #f59e0b;         /* Warning Gold */
+  --nalth-accent-dark: #d97706;    /* Dark Warning Gold */
+  
+  /* 🌙 Dark Theme Base */
+  --nalth-bg-primary: #0f172a;     /* Deep Security Navy */
+  --nalth-bg-secondary: #1e293b;   /* Secondary Navy */
+  --nalth-bg-tertiary: #334155;    /* Tertiary Navy */
+  --nalth-bg-card: rgba(30, 41, 59, 0.8); /* Card Background */
+  --nalth-bg-glass: rgba(15, 23, 42, 0.8); /* Glassmorphism */
+  
+  /* 📝 Text Colors */
+  --nalth-text-primary: #f1f5f9;   /* Primary Text */
+  --nalth-text-secondary: #e2e8f0; /* Secondary Text */
+  --nalth-text-muted: #94a3b8;     /* Muted Text */
+  --nalth-text-disabled: #64748b;  /* Disabled Text */
+  
+  /* 🔒 Security Status Colors */
+  --nalth-success: #10b981;        /* Secure/Good */
+  --nalth-warning: #f59e0b;        /* Warning/Caution */
+  --nalth-error: #ef4444;          /* Error/Danger */
+  --nalth-info: #3b82f6;          /* Info/Neutral */
+  
+  /* 📏 Typography */
+  --nalth-font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --nalth-font-mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+  
+  /* 📐 Spacing Scale */
+  --nalth-space-xs: 0.25rem;   /* 4px */
+  --nalth-space-sm: 0.5rem;    /* 8px */
+  --nalth-space-md: 1rem;      /* 16px */
+  --nalth-space-lg: 1.5rem;    /* 24px */
+  --nalth-space-xl: 2rem;      /* 32px */
+  --nalth-space-2xl: 3rem;     /* 48px */
+  --nalth-space-3xl: 4rem;     /* 64px */
+  
+  /* 🎯 Border Radius */
+  --nalth-radius-sm: 0.375rem;  /* 6px */
+  --nalth-radius-md: 0.5rem;    /* 8px */
+  --nalth-radius-lg: 0.75rem;   /* 12px */
+  --nalth-radius-xl: 1rem;      /* 16px */
+  
+  /* 🌊 Shadows */
+  --nalth-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --nalth-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --nalth-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --nalth-shadow-glow: 0 0 20px rgba(16, 185, 129, 0.3);
+  
+  /* ⚡ Transitions */
+  --nalth-transition-fast: 150ms ease-in-out;
+  --nalth-transition-normal: 250ms ease-in-out;
+  --nalth-transition-slow: 350ms ease-in-out;
+}
+
+/* 🌐 Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--nalth-font-family);
+  background: linear-gradient(135deg, var(--nalth-bg-primary) 0%, var(--nalth-bg-secondary) 100%);
+  color: var(--nalth-text-primary);
+  line-height: 1.6;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 📱 Responsive Container */
+.nalth-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--nalth-space-md);
+}
+
+/* 🎯 Header Component */
+.nalth-header {
+  text-align: center;
+  margin-bottom: var(--nalth-space-3xl);
+  padding: var(--nalth-space-2xl);
+  background: var(--nalth-bg-glass);
+  border-radius: var(--nalth-radius-xl);
+  border: 1px solid var(--nalth-bg-tertiary);
+  backdrop-filter: blur(10px);
+}
+
+.nalth-logo-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--nalth-space-lg);
+  margin-bottom: var(--nalth-space-lg);
+  flex-wrap: wrap;
+}
+
+.nalth-logo {
+  height: 6rem;
+  width: 6rem;
+  transition: var(--nalth-transition-normal);
+  filter: drop-shadow(var(--nalth-shadow-md));
+}
+
+.nalth-logo:hover {
+  transform: translateY(-2px);
+  filter: drop-shadow(var(--nalth-shadow-lg));
+}
+
+.nalth-logo.nalth {
+  filter: drop-shadow(0 0 20px rgba(16, 185, 129, 0.5));
+}
+
+.nalth-title {
+  font-size: 3rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--nalth-primary) 0%, var(--nalth-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: var(--nalth-space-md);
+  text-shadow: var(--nalth-shadow-glow);
+}
+
+.nalth-subtitle {
+  font-size: 1.25rem;
+  color: var(--nalth-text-muted);
+  font-weight: 400;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* 🎯 Security Badge */
+.nalth-security-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--nalth-space-sm);
+  padding: var(--nalth-space-sm) var(--nalth-space-md);
+  background: var(--nalth-bg-card);
+  border: 1px solid var(--nalth-bg-tertiary);
+  border-radius: var(--nalth-radius-lg);
+  backdrop-filter: blur(10px);
+  margin-top: var(--nalth-space-md);
+  transition: var(--nalth-transition-normal);
+}
+
+.nalth-security-badge:hover {
+  transform: translateY(-2px);
+  border-color: var(--nalth-primary);
+  box-shadow: var(--nalth-shadow-glow);
+}
+
+.nalth-security-score {
+  font-weight: 700;
+  font-size: 1.125rem;
+}
+
+.nalth-security-score.excellent { color: var(--nalth-success); }
+.nalth-security-score.good { color: var(--nalth-warning); }
+.nalth-security-score.needs-attention { color: var(--nalth-error); }
+
+/* 🎯 Feature Grid */
+.nalth-features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--nalth-space-xl);
+  margin-bottom: var(--nalth-space-3xl);
+}
+
+.nalth-feature-card {
+  background: var(--nalth-bg-card);
+  border: 1px solid var(--nalth-bg-tertiary);
+  border-radius: var(--nalth-radius-lg);
+  padding: var(--nalth-space-xl);
+  transition: var(--nalth-transition-normal);
+  backdrop-filter: blur(10px);
+}
+
+.nalth-feature-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--nalth-primary);
+  box-shadow: var(--nalth-shadow-lg);
+}
+
+.nalth-feature-icon {
+  font-size: 2.5rem;
+  margin-bottom: var(--nalth-space-md);
+  display: block;
+}
+
+.nalth-feature-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--nalth-text-primary);
+  margin-bottom: var(--nalth-space-sm);
+}
+
+.nalth-feature-description {
+  color: var(--nalth-text-muted);
+  line-height: 1.7;
+}
+
+/* 🎯 Interactive Elements */
+.nalth-button {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--nalth-space-sm);
+  padding: var(--nalth-space-md) var(--nalth-space-lg);
+  background: linear-gradient(135deg, var(--nalth-primary) 0%, var(--nalth-primary-dark) 100%);
+  color: white;
+  border: none;
+  border-radius: var(--nalth-radius-md);
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: var(--nalth-transition-normal);
+  text-decoration: none;
+  font-family: var(--nalth-font-family);
+}
+
+.nalth-button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--nalth-shadow-lg);
+  background: linear-gradient(135deg, var(--nalth-primary-dark) 0%, var(--nalth-primary) 100%);
+}
+
+.nalth-button.secondary {
+  background: linear-gradient(135deg, var(--nalth-secondary) 0%, var(--nalth-secondary-dark) 100%);
+}
+
+.nalth-button.secondary:hover {
+  background: linear-gradient(135deg, var(--nalth-secondary-dark) 0%, var(--nalth-secondary) 100%);
+}
+
+/* 🎯 Counter Component */
+.nalth-counter {
+  text-align: center;
+  margin: var(--nalth-space-2xl) 0;
+}
+
+.nalth-counter-display {
+  font-size: 4rem;
+  font-weight: 700;
+  color: var(--nalth-primary);
+  margin-bottom: var(--nalth-space-md);
+  font-family: var(--nalth-font-mono);
+  text-shadow: var(--nalth-shadow-glow);
+}
+
+/* 🎯 Footer */
+.nalth-footer {
+  text-align: center;
+  padding: var(--nalth-space-2xl);
+  margin-top: var(--nalth-space-3xl);
+  border-top: 1px solid var(--nalth-bg-tertiary);
+  color: var(--nalth-text-muted);
+}
+
+.nalth-footer-links {
+  display: flex;
+  justify-content: center;
+  gap: var(--nalth-space-lg);
+  margin-bottom: var(--nalth-space-md);
+  flex-wrap: wrap;
+}
+
+.nalth-footer-link {
+  color: var(--nalth-text-muted);
+  text-decoration: none;
+  transition: var(--nalth-transition-fast);
+}
+
+.nalth-footer-link:hover {
+  color: var(--nalth-primary);
+}
+
+/* 📱 Responsive Design */
+@media (max-width: 768px) {
+  .nalth-title {
+    font-size: 2rem;
+  }
+  
+  .nalth-logo-group {
+    gap: var(--nalth-space-md);
+  }
+  
+  .nalth-logo {
+    height: 4rem;
+    width: 4rem;
+  }
+  
+  .nalth-features {
+    grid-template-columns: 1fr;
+    gap: var(--nalth-space-lg);
+  }
+  
+  .nalth-counter-display {
+    font-size: 2.5rem;
+  }
+}
+
+/* 🎯 Utility Classes */
+.nalth-text-center { text-align: center; }
+.nalth-text-left { text-align: left; }
+.nalth-text-right { text-align: right; }
+
+.nalth-mb-sm { margin-bottom: var(--nalth-space-sm); }
+.nalth-mb-md { margin-bottom: var(--nalth-space-md); }
+.nalth-mb-lg { margin-bottom: var(--nalth-space-lg); }
+.nalth-mb-xl { margin-bottom: var(--nalth-space-xl); }
+
+.nalth-mt-sm { margin-top: var(--nalth-space-sm); }
+.nalth-mt-md { margin-top: var(--nalth-space-md); }
+.nalth-mt-lg { margin-top: var(--nalth-space-lg); }
+.nalth-mt-xl { margin-top: var(--nalth-space-xl); }
+
+/* 🎯 Animation Classes */
+@keyframes nalth-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+@keyframes nalth-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(16, 185, 129, 0.3); }
+  50% { box-shadow: 0 0 30px rgba(16, 185, 129, 0.6); }
+}
+
+.nalth-pulse { animation: nalth-pulse 2s infinite; }
+.nalth-glow { animation: nalth-glow 2s infinite; }

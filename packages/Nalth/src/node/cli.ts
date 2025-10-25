@@ -12,6 +12,38 @@ import { createLogger } from './logger'
 import { resolveConfig } from './config'
 import type { InlineConfig } from './config'
 
+// Project detection function
+function isNalthProject(cwd: string): boolean {
+  // Check for nalth.config.js/ts
+  const configFiles = [
+    'nalth.config.js',
+    'nalth.config.ts', 
+    'nalth.config.mjs',
+    'nalth.config.cjs'
+  ]
+  
+  for (const config of configFiles) {
+    if (fs.existsSync(path.join(cwd, config))) {
+      return true
+    }
+  }
+  
+  // Check package.json for nalth dependency
+  const pkgPath = path.join(cwd, 'package.json')
+  if (fs.existsSync(pkgPath)) {
+    try {
+      const pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf8'))
+      return !!(
+        pkg.dependencies?.nalth ||
+        pkg.devDependencies?.nalth ||
+        pkg.peerDependencies?.nalth
+      )
+    } catch {}
+  }
+  
+  return false
+}
+
 const cli = cac('nalth')
 
 // global options
@@ -177,6 +209,27 @@ cli
     `[boolean] force the optimizer to ignore the cache and re-bundle`,
   )
   .action(async (root: string, options: ServerOptions & GlobalCLIOptions) => {
+    // Check if this is a Nalth project
+    const cwd = root ? path.resolve(root) : process.cwd()
+    
+    if (!isNalthProject(cwd) && !options.force) {
+      // eslint-disable-next-line no-console
+      console.error(`
+${colors.red('🚨 Not a Nalth project!')}
+
+${colors.yellow('Nalth CLI should only be used in projects created with create-nalth.')}
+
+${colors.cyan('To create a new Nalth project:')}
+  ${colors.white('npx create-nalth my-app')}
+
+${colors.cyan('To force run anyway (not recommended):')}
+  ${colors.white('nalth dev --force')}
+
+${colors.gray('Current directory:')} ${cwd}
+`)
+      process.exit(1)
+    }
+
     filterDuplicateOptions(options)
     // output structure is preserved even after bundling so require()
     // is ok here
@@ -306,6 +359,27 @@ cli
       root: string,
       options: BuildEnvironmentOptions & BuilderCLIOptions & GlobalCLIOptions,
     ) => {
+      // Check if this is a Nalth project
+      const cwd = root ? path.resolve(root) : process.cwd()
+      
+      if (!isNalthProject(cwd) && !options.force) {
+        // eslint-disable-next-line no-console
+        console.error(`
+${colors.red('🚨 Not a Nalth project!')}
+
+${colors.yellow('Nalth CLI should only be used in projects created with create-nalth.')}
+
+${colors.cyan('To create a new Nalth project:')}
+  ${colors.white('npx create-nalth my-app')}
+
+${colors.cyan('To force run anyway (not recommended):')}
+  ${colors.white('nalth build --force')}
+
+${colors.gray('Current directory:')} ${cwd}
+`)
+        process.exit(1)
+      }
+
       filterDuplicateOptions(options)
       const { createBuilder } = await import('./build')
 
@@ -428,6 +502,193 @@ cli
       }
     },
   )
+
+// test
+cli
+  .command('test [pattern]', 'run tests with Vitest')
+  .option('--watch', `[boolean] run tests in watch mode`)
+  .option('--run', `[boolean] run tests once`)
+  .option('--coverage', `[boolean] generate coverage report`)
+  .option('--ui', `[boolean] open Vitest UI`)
+  .option('--reporter <name>', `[string] test reporter`)
+  .option('--mode <mode>', `[string] test mode (unit|integration|e2e|browser)`)
+  .option('--security', `[boolean] run with security checks`)
+  .option('--bail', `[boolean] stop on first failure`)
+  .option('--threads', `[boolean] enable/disable threads`)
+  .option('--isolate', `[boolean] enable/disable test isolation`)
+  .action(async (pattern: string | undefined, options: any) => {
+    const { testCommand } = await import('./cli/test-command.js')
+    await testCommand(pattern, options)
+  })
+
+// test:init
+cli
+  .command('test:init', 'initialize test configuration')
+  .option('--template <name>', `[string] test template`)
+  .action(async (options: any) => {
+    const { initTestCommand } = await import('./cli/test-command.js')
+    await initTestCommand(options)
+  })
+
+// lint
+cli
+  .command('lint [pattern]', 'lint code with ESLint and security checks')
+  .option('--fix', `[boolean] automatically fix problems`)
+  .option('--cache', `[boolean] use cache (default: true)`)
+  .option('--security', `[boolean] run security-focused linting`)
+  .option('--strict', `[boolean] use strict rules`)
+  .option('--format <format>', `[string] output format (stylish|json|compact|html)`)
+  .option('--quiet', `[boolean] report errors only`)
+  .option('--max-warnings <number>', `[number] max warnings before error`)
+  .action(async (pattern: string | undefined, options: any) => {
+    const { lintCommand } = await import('./cli/lint-command.js')
+    await lintCommand(pattern, options)
+  })
+
+// lint:init
+cli
+  .command('lint:init', 'initialize linting configuration')
+  .option('--strict', `[boolean] use strict rules`)
+  .option('--security', `[boolean] enable security plugins`)
+  .action(async (options: any) => {
+    const { initLintCommand } = await import('./cli/lint-command.js')
+    await initLintCommand(options)
+  })
+
+// fmt
+cli
+  .command('fmt [pattern]', 'format code with Prettier')
+  .option('--check', `[boolean] check formatting without writing`)
+  .option('--write', `[boolean] write formatted files (default: true)`)
+  .option('--cache', `[boolean] use cache (default: true)`)
+  .action(async (pattern: string | undefined, options: any) => {
+    const { fmtCommand } = await import('./cli/fmt-command.js')
+    await fmtCommand(pattern, options)
+  })
+
+// fmt:init
+cli
+  .command('fmt:init', 'initialize formatting configuration')
+  .option('--strict', `[boolean] use strict formatting rules`)
+  .action(async (options: any) => {
+    const { initFmtCommand } = await import('./cli/fmt-command.js')
+    await initFmtCommand(options)
+  })
+
+// run
+cli
+  .command('run <task>', 'run tasks with smart caching')
+  .option('--cache', `[boolean] use task cache (default: true)`)
+  .option('--force', `[boolean] force run, skip cache`)
+  .option('--parallel', `[boolean] run tasks in parallel`)
+  .option('--dry-run', `[boolean] show what would run`)
+  .action(async (task: string, options: any) => {
+    const { runCommand } = await import('./cli/run-command.js')
+    await runCommand(task, options)
+  })
+
+// run:init
+cli
+  .command('run:init', 'initialize task runner')
+  .action(async () => {
+    const { initRunCommand } = await import('./cli/run-command.js')
+    await initRunCommand()
+  })
+
+// ui
+cli
+  .command('ui', 'open advanced devtools UI')
+  .action(async () => {
+    const { uiCommand } = await import('./cli/ui-command.js')
+    await uiCommand()
+  })
+
+// lib
+cli
+  .command('lib', 'build library with best practices')
+  .option('--watch', `[boolean] watch mode`)
+  .action(async (options: any) => {
+    const { libCommand } = await import('./cli/lib-command.js')
+    await libCommand(options)
+  })
+
+// lib:init
+cli
+  .command('lib:init', 'initialize library configuration')
+  .action(async () => {
+    const { initLibCommand } = await import('./cli/lib-command.js')
+    await initLibCommand()
+  })
+
+// install
+cli
+  .command('install [packages...]', 'securely install packages')
+  .alias('i')
+  .option('--secure', `[boolean] enable security checks (default: true)`)
+  .option('--verify', `[boolean] verify package integrity (default: true)`)
+  .option('--audit', `[boolean] audit after installation (default: true)`)
+  .option('--use-bun', `[boolean] use Bun package manager`)
+  .option('--save-dev', `[boolean] save as dev dependency`)
+  .option('--production', `[boolean] production install`)
+  .option('--frozen', `[boolean] use frozen lockfile`)
+  .option('--registry <url>', `[string] custom registry URL`)
+  .action(async (packages: string[], options: any) => {
+    const { installCommand } = await import('./cli/install-command.js')
+    await installCommand(packages, options)
+  })
+
+// uninstall
+cli
+  .command('uninstall <packages...>', 'uninstall packages')
+  .alias('remove')
+  .alias('rm')
+  .action(async (packages: string[], options: any) => {
+    const { uninstallCommand } = await import('./cli/install-command.js')
+    await uninstallCommand(packages, options)
+  })
+
+// audit (existing security command)
+cli
+  .command('audit', 'run security audit')
+  .option('--path <path>', `[string] project path`)
+  .option('--format <format>', `[string] output format (json|text)`)
+  .option('--severity <level>', `[string] minimum severity (low|moderate|high|critical)`)
+  .option('--fix', `[boolean] auto-fix vulnerabilities`)
+  .action(async (options: any) => {
+    const { auditCommand } = await import('./cli/security-commands.js')
+    await auditCommand(options)
+  })
+
+// security:report
+cli
+  .command('security:report', 'generate security report')
+  .option('--path <path>', `[string] project path`)
+  .option('--output <file>', `[string] output file`)
+  .option('--detailed', `[boolean] detailed report`)
+  .action(async (options: any) => {
+    const { securityReportCommand } = await import('./cli/security-commands.js')
+    await securityReportCommand(options)
+  })
+
+// security:scan
+cli
+  .command('security:scan <package>', 'scan package for security issues')
+  .option('--version <version>', `[string] package version`)
+  .option('--detailed', `[boolean] detailed output`)
+  .action(async (packageName: string, options: any) => {
+    const { scanPackageCommand } = await import('./cli/security-commands.js')
+    await scanPackageCommand(packageName, options)
+  })
+
+// security:init
+cli
+  .command('security:init', 'initialize security configuration')
+  .option('--strict', `[boolean] strict security mode`)
+  .option('--framework <name>', `[string] framework name`)
+  .action(async (options: any) => {
+    const { securityInitCommand } = await import('./cli/security-commands.js')
+    await securityInitCommand(options)
+  })
 
 cli.help()
 cli.version(VERSION)

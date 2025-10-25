@@ -22,6 +22,7 @@ import { assetImportMetaUrlPlugin } from './assetImportMetaUrl'
 import { metadataPlugin } from './metadata'
 import { dynamicImportVarsPlugin } from './dynamicImportVars'
 import { importGlobPlugin } from './importMetaGlob'
+import { vue } from './vue'
 import {
   type PluginFilter,
   type TransformHookFilter,
@@ -227,3 +228,6 @@ export const viteAliasCustomResolver: ResolverFunction = async function (
   const resolved = await this.resolve(id, importer, options)
   return resolved || { id, meta: { 'vite:alias': { noResolved: true } } }
 }
+
+// Export plugins for external use
+export { vue }

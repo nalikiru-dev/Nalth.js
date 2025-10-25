@@ -1,28 +1,175 @@
-## Usage
+# SolidJS + Nalth
 
+
+**Framework:** SolidJS
+**Description:** SolidJS with fine-grained reactivity and security
+
+Created with [Nalth](https://nalth.pages.dev) - Security-First Unified Toolchain
+
+## 🛡️ Built with Enterprise Security
+
+This project is powered by **Nalth v2.2.0**, featuring:
+
+- ✅ **HTTPS by Default** - TLS 1.3 encryption with auto-generated certificates
+- ✅ **Content Security Policy (CSP)** - XSS protection built-in
+- ✅ **Security Headers** - HSTS, X-Frame-Options, CSP, and more
+- ✅ **Secure Package Management** - Typosquatting detection & vulnerability scanning
+- ✅ **Real-time Monitoring** - Security event tracking and alerts
+
+## 🛠️ Unified Toolchain
+
+Everything you need in one command-line interface:
+
+### Development
 ```bash
-$ npm install # or pnpm install or yarn install
+npm run dev          # Start HTTPS dev server (https://localhost:3000)
+npm run build        # Production build with security optimizations
+npm run preview      # Preview production build
 ```
 
-### Learn more on the [Solid Website](https://solidjs.com) and come chat with us on our [Discord](https://discord.com/inNalth/solidjs)
+### Testing
+```bash
+npm test             # Run tests with Vitest
+npm run test:ui      # Open interactive test UI
+npm run test:coverage # Generate coverage reports
+```
 
-## Available Scripts
+### Code Quality
+```bash
+npm run lint         # Lint with ESLint + security plugins
+npm run lint:fix     # Auto-fix linting issues
+npm run format       # Format code with Prettier
+npm run format:check # Check formatting (CI-friendly)
+npm run typecheck    # TypeScript type checking
+```
 
-In the project directory, you can run:
+### Security
+```bash
+npm run audit        # Run comprehensive security audit
+nalth install <pkg>  # Securely install packages with checks
+```
 
-### `npm run dev`
+## 📁 Project Structure
 
-Runs the app in the development mode.<br>
-Open [http://localhost:5173](http://localhost:5173) to view it in the browser.
+```
+.
+├── src/
+│   ├── test/              # Test files
+│   │   ├── example.test.ts
+│   │   └── setup.ts
+│   └── ...                # Your source files
+├── .prettierrc            # Prettier configuration
+├── eslint.config.js       # ESLint configuration
+├── vitest.config.ts       # Vitest configuration
+├── nalth.config.ts        # Nalth configuration
+└── package.json
+```
 
-### `npm run build`
+## 🧪 Testing
 
-Builds the app for production to the `dist` folder.<br>
-It correctly bundles Solid in production mode and optimizes the build for the best performance.
+This project uses **Vitest** for testing with:
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+- Jest-compatible API
+- Fast test execution
+- Built-in coverage reporting
+- Interactive UI mode
 
-## Deployment
+Run tests:
+```bash
+npm test                    # Watch mode
+npm test -- --run           # Run once
+npm run test:coverage       # With coverage
+npm run test:ui             # Open UI
+```
 
-Learn more about deploying your application with the [documentations](https://nalth.pages.dev/guide/static-deploy.html)
+## 🔍 Linting
+
+ESLint is configured with:
+
+- TypeScript support
+- Security plugins (eslint-plugin-security)
+- Modern ES2024 syntax
+- Customizable rules in `eslint.config.js`
+
+Run linting:
+```bash
+npm run lint                # Check for issues
+npm run lint:fix            # Auto-fix issues
+```
+
+## ✨ Formatting
+
+Prettier is configured for consistent code style:
+
+- Single quotes
+- No semicolons
+- 2-space indentation
+- Trailing commas
+- 100 character line width
+
+Format code:
+```bash
+npm run format              # Format all files
+npm run format:check        # Check only (CI)
+```
+
+## 🔒 Secure Package Management
+
+Nalth includes **secure package installation** with:
+
+1. **Typosquatting Detection** - Prevents installing `raect` instead of `react`
+2. **Vulnerability Scanning** - Pre-installation security checks
+3. **License Compliance** - Automatic license verification
+4. **Integrity Verification** - Package checksum validation
+
+Install packages securely:
+```bash
+nalth install <package>           # Secure install
+nalth install axios react-query   # Multiple packages
+nalth install lodash -D           # Dev dependency
+nalth install --use-bun           # Use Bun package manager
+```
+
+## 📊 Security Dashboard
+
+Access the security dashboard at: `https://localhost:3000/__nalth`
+
+Features:
+- Real-time security metrics
+- CSP violation monitoring
+- Dependency vulnerability tracking
+- Security event logging
+
+## 🚀 Deployment
+
+Before deploying:
+
+1. Run full test suite: `npm test -- --run`
+2. Check code quality: `npm run lint && npm run typecheck`
+3. Security audit: `npm run audit`
+4. Build for production: `npm run build`
+5. Preview build: `npm run preview`
+
+## 📚 Learn More
+
+- [Nalth Documentation](https://nalth.pages.dev/docs)
+- [Security Best Practices](https://nalth.pages.dev/docs/security)
+- [CLI Commands](https://nalth.pages.dev/docs/cli)
+- [Configuration Guide](https://nalth.pages.dev/docs/config)
+
+## 🤝 Contributing
+
+Contributions are welcome! Please ensure:
+
+- All tests pass (`npm test -- --run`)
+- Code is linted (`npm run lint`)
+- Code is formatted (`npm run format`)
+- Security audit passes (`npm run audit`)
+
+## 📄 License
+
+MIT
+
+---
+
+**Powered by Nalth v2.2.0** - Security-First Unified Toolchain 🛡️⚡

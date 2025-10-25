@@ -23,6 +23,9 @@ export { buildErrorMessage } from './server/middlewares/error'
 
 // Nalth Security Features
 export { securityPlugin, securityMiddlewarePlugin } from './plugins/security'
+
+// Nalth Plugins
+export * as plugins from './plugins'
 export { 
   defaultSecurityConfig, 
   createSecurityMiddleware, 

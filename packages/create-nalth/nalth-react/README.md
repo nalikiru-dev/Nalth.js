@@ -1,122 +1,175 @@
-# React + TypeScript + Nalth
+# React + Nalth
 
-This template provides a **security-first** setup for React with the Nalth framework, featuring enterprise-grade security, Hot Module Replacement (HMR), TypeScript, and modern tooling.
 
-## 🚀 Quick Start
+**Framework:** React 19
+**Description:** React with shadcn/ui components and enterprise security
 
-1. **Install Dependencies**
-   ```bash
-   npm install
-   ```
+Created with [Nalth](https://nalth.pages.dev) - Security-First Unified Toolchain
 
-2. **Start Development Server**
-   ```bash
-   npm run dev
-   ```
-   Your app will be available at `http://localhost:5173` with hot reload enabled.
+## 🛡️ Built with Enterprise Security
 
-3. **Build for Production**
-   ```bash
-   npm run build
-   ```
-   Creates an optimized production build in the `dist` folder.
+This project is powered by **Nalth v2.2.0**, featuring:
 
-4. **Preview Production Build**
-   ```bash
-   npm run preview
-   ```
-   Serves the production build locally for testing.
+- ✅ **HTTPS by Default** - TLS 1.3 encryption with auto-generated certificates
+- ✅ **Content Security Policy (CSP)** - XSS protection built-in
+- ✅ **Security Headers** - HSTS, X-Frame-Options, CSP, and more
+- ✅ **Secure Package Management** - Typosquatting detection & vulnerability scanning
+- ✅ **Real-time Monitoring** - Security event tracking and alerts
 
-## 🛡️ Security Features
+## 🛠️ Unified Toolchain
 
-Nalth provides enterprise-grade security features out of the box:
+Everything you need in one command-line interface:
 
-- ✅ **Content Security Policy (CSP)** - Prevents XSS attacks with strict CSP headers
-- ✅ **Security Headers** - HSTS, X-Frame-Options, X-Content-Type-Options, and more
-- ✅ **HTTPS Support** - Optional HTTPS for development (configure in `nalth.config.ts`)
-- ✅ **Dependency Auditing** - Built-in vulnerability scanning
-- ✅ **Rate Limiting** - Protection against abuse
-- ✅ **CORS Configuration** - Secure cross-origin resource sharing
-
-### Configuration
-
-Edit `nalth.config.ts` to customize security settings:
-
-```typescript
-export default defineConfig({
-  security: {
-    https: true,              // Enable HTTPS in development
-    csp: {
-      enabled: true,          // Enable Content Security Policy
-      nonce: true,            // Use nonces for inline scripts
-      strictDynamic: true     // Enable strict-dynamic
-    },
-    sri: true,                // Subresource Integrity
-    headers: {
-      hsts: true,             // HTTP Strict Transport Security
-      frameOptions: 'DENY'    // Prevent clickjacking
-    }
-  }
-})
+### Development
+```bash
+npm run dev          # Start HTTPS dev server (https://localhost:3000)
+npm run build        # Production build with security optimizations
+npm run preview      # Preview production build
 ```
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Testing
+```bash
+npm test             # Run tests with Vitest
+npm run test:ui      # Open interactive test UI
+npm run test:coverage # Generate coverage reports
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Code Quality
+```bash
+npm run lint         # Lint with ESLint + security plugins
+npm run lint:fix     # Auto-fix linting issues
+npm run format       # Format code with Prettier
+npm run format:check # Check formatting (CI-friendly)
+npm run typecheck    # TypeScript type checking
 ```
+
+### Security
+```bash
+npm run audit        # Run comprehensive security audit
+nalth install <pkg>  # Securely install packages with checks
+```
+
+## 📁 Project Structure
+
+```
+.
+├── src/
+│   ├── test/              # Test files
+│   │   ├── example.test.ts
+│   │   └── setup.ts
+│   └── ...                # Your source files
+├── .prettierrc            # Prettier configuration
+├── eslint.config.js       # ESLint configuration
+├── vitest.config.ts       # Vitest configuration
+├── nalth.config.ts        # Nalth configuration
+└── package.json
+```
+
+## 🧪 Testing
+
+This project uses **Vitest** for testing with:
+
+- Jest-compatible API
+- Fast test execution
+- Built-in coverage reporting
+- Interactive UI mode
+
+Run tests:
+```bash
+npm test                    # Watch mode
+npm test -- --run           # Run once
+npm run test:coverage       # With coverage
+npm run test:ui             # Open UI
+```
+
+## 🔍 Linting
+
+ESLint is configured with:
+
+- TypeScript support
+- Security plugins (eslint-plugin-security)
+- Modern ES2024 syntax
+- Customizable rules in `eslint.config.js`
+
+Run linting:
+```bash
+npm run lint                # Check for issues
+npm run lint:fix            # Auto-fix issues
+```
+
+## ✨ Formatting
+
+Prettier is configured for consistent code style:
+
+- Single quotes
+- No semicolons
+- 2-space indentation
+- Trailing commas
+- 100 character line width
+
+Format code:
+```bash
+npm run format              # Format all files
+npm run format:check        # Check only (CI)
+```
+
+## 🔒 Secure Package Management
+
+Nalth includes **secure package installation** with:
+
+1. **Typosquatting Detection** - Prevents installing `raect` instead of `react`
+2. **Vulnerability Scanning** - Pre-installation security checks
+3. **License Compliance** - Automatic license verification
+4. **Integrity Verification** - Package checksum validation
+
+Install packages securely:
+```bash
+nalth install <package>           # Secure install
+nalth install axios react-query   # Multiple packages
+nalth install lodash -D           # Dev dependency
+nalth install --use-bun           # Use Bun package manager
+```
+
+## 📊 Security Dashboard
+
+Access the security dashboard at: `https://localhost:3000/__nalth`
+
+Features:
+- Real-time security metrics
+- CSP violation monitoring
+- Dependency vulnerability tracking
+- Security event logging
+
+## 🚀 Deployment
+
+Before deploying:
+
+1. Run full test suite: `npm test -- --run`
+2. Check code quality: `npm run lint && npm run typecheck`
+3. Security audit: `npm run audit`
+4. Build for production: `npm run build`
+5. Preview build: `npm run preview`
+
+## 📚 Learn More
+
+- [Nalth Documentation](https://nalth.pages.dev/docs)
+- [Security Best Practices](https://nalth.pages.dev/docs/security)
+- [CLI Commands](https://nalth.pages.dev/docs/cli)
+- [Configuration Guide](https://nalth.pages.dev/docs/config)
+
+## 🤝 Contributing
+
+Contributions are welcome! Please ensure:
+
+- All tests pass (`npm test -- --run`)
+- Code is linted (`npm run lint`)
+- Code is formatted (`npm run format`)
+- Security audit passes (`npm run audit`)
+
+## 📄 License
+
+MIT
+
+---
+
+**Powered by Nalth v2.2.0** - Security-First Unified Toolchain 🛡️⚡

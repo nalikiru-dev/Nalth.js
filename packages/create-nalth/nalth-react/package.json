@@ -6,13 +6,28 @@
   "scripts": {
     "dev": "nalth dev",
     "build": "tsc -b && nalth build",
-    "lint": "eslint .",
     "preview": "nalth preview",
+    "test": "nalth test",
+    "test:ui": "nalth test --ui",
+    "test:coverage": "nalth test --coverage",
+    "lint": "nalth lint",
+    "lint:fix": "nalth lint --fix",
+    "format": "nalth fmt",
+    "format:check": "nalth fmt --check",
+    "audit": "nalth audit",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "react": "^19.1.1",
-    "react-dom": "^19.1.1"
+    "react-dom": "^19.1.1",
+    "@radix-ui/react-alert-dialog": "^1.0.5",
+    "@radix-ui/react-badge": "^1.0.4",
+    "@radix-ui/react-button": "^1.0.4",
+    "@radix-ui/react-card": "^1.0.4",
+    "lucide-react": "^0.294.0",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.0.0",
+    "tailwind-merge": "^2.0.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.33.0",
@@ -29,6 +44,6 @@
     "tailwindcss-animate": "^1.0.7",
     "typescript": "~5.8.3",
     "typescript-eslint": "^8.39.1",
-    "nalth": "^2.1.93"
+    "nalth": "^2.2.0"
   }
 }

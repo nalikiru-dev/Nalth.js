@@ -7,6 +7,15 @@
     "dev": "nalth dev",
     "build": "tsc && nalth build",
     "preview": "nalth preview",
+    "test": "nalth test",
+    "test:ui": "nalth test --ui",
+    "test:coverage": "nalth test --coverage",
+    "lint": "nalth lint",
+    "lint:fix": "nalth lint --fix",
+    "format": "nalth fmt",
+    "format:check": "nalth fmt --check",
+    "audit": "nalth audit",
+    "typecheck": "tsc --noEmit",
     "check": "svelte-check --tsconfig ./tsconfig.app.json && tsc -p tsconfig.node.json",
     "security:audit": "nalth audit",
     "security:report": "nalth security:report"
@@ -17,6 +26,6 @@
     "svelte": "^5.38.1",
     "svelte-check": "^4.3.1",
     "typescript": "~5.8.3",
-    "nalth": "^2.1.93"
+    "nalth": "^2.2.0"
   }
 }

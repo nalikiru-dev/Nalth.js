@@ -1,47 +1,175 @@
-# Svelte + TS + Nalth
+# Svelte + Nalth
 
-This template should help get you started developing with Svelte and TypeScript in Nalth.
 
-## Recommended IDE Setup
+**Framework:** SvelteKit
+**Description:** Svelte with built-in security protection
 
-[VS Code](https://code.visualstudio.com/) + [Svelte](https://marketplace.visualstudio.com/items?itemName=svelte.svelte-vscode).
+Created with [Nalth](https://nalth.pages.dev) - Security-First Unified Toolchain
 
-## Need an official Svelte framework?
+## 🛡️ Built with Enterprise Security
 
-Check out [SvelteKit](https://github.com/sveltejs/kit#readme), which is also powered by Nalth. Deploy anywhere with its serverless-first approach and adapt to various platforms, with out of the box support for TypeScript, SCSS, and Less, and easily-added support for mdsvex, GraphQL, PostCSS, Tailwind CSS, and more.
+This project is powered by **Nalth v2.2.0**, featuring:
 
-## Technical considerations
+- ✅ **HTTPS by Default** - TLS 1.3 encryption with auto-generated certificates
+- ✅ **Content Security Policy (CSP)** - XSS protection built-in
+- ✅ **Security Headers** - HSTS, X-Frame-Options, CSP, and more
+- ✅ **Secure Package Management** - Typosquatting detection & vulnerability scanning
+- ✅ **Real-time Monitoring** - Security event tracking and alerts
 
-**Why use this over SvelteKit?**
+## 🛠️ Unified Toolchain
 
-- It brings its own routing solution which might not be preferable for some users.
-- It is first and foremost a framework that just happens to use Nalth under the hood, not a Nalth app.
+Everything you need in one command-line interface:
 
-This template contains as little as possible to get started with Nalth + TypeScript + Svelte, while taking into account the developer experience with regards to HMR and intellisense. It demonstrates capabilities on par with the other `create-nalth` templates and is a good starting point for beginners dipping their toes into a Nalth + Svelte project.
-
-Should you later need the extended capabilities and extensibility provided by SvelteKit, the template has been structured similarly to SvelteKit so that it is easy to migrate.
-
-**Why `global.d.ts` instead of `compilerOptions.types` inside `jsconfig.json` or `tsconfig.json`?**
-
-Setting `compilerOptions.types` shuts out all other types not explicitly listed in the configuration. Using triple-slash references keeps the default TypeScript setting of accepting type information from the entire workspace, while also adding `svelte` and `Nalth/client` type information.
-
-**Why include `.vscode/extensions.json`?**
-
-Other templates indirectly recommend extensions via the README, but this file allows VS Code to prompt the user to install the recommended extension upon opening the project.
-
-**Why enable `allowJs` in the TS template?**
-
-While `allowJs: false` would indeed prevent the use of `.js` files in the project, it does not prevent the use of JavaScript syntax in `.svelte` files. In addition, it would force `checkJs: false`, bringing the worst of both worlds: not being able to guarantee the entire codebase is TypeScript, and also having worse typechecking for the existing JavaScript. In addition, there are valid use cases in which a mixed codebase may be relevant.
-
-**Why is HMR not preserving my local component state?**
-
-HMR state preservation comes with a number of gotchas! It has been disabled by default in both `svelte-hmr` and `@sveltejs/Nalth-plugin-svelte` due to its often surprising behavior. You can read the details [here](https://github.com/rixo/svelte-hmr#svelte-hmr).
-
-If you have state that's important to retain within a component, consider creating an external store which would not be replaced by HMR.
-
-```ts
-// store.ts
-// An extremely simple external store
-import { writable } from 'svelte/store'
-export default writable(0)
+### Development
+```bash
+npm run dev          # Start HTTPS dev server (https://localhost:3000)
+npm run build        # Production build with security optimizations
+npm run preview      # Preview production build
 ```
+
+### Testing
+```bash
+npm test             # Run tests with Vitest
+npm run test:ui      # Open interactive test UI
+npm run test:coverage # Generate coverage reports
+```
+
+### Code Quality
+```bash
+npm run lint         # Lint with ESLint + security plugins
+npm run lint:fix     # Auto-fix linting issues
+npm run format       # Format code with Prettier
+npm run format:check # Check formatting (CI-friendly)
+npm run typecheck    # TypeScript type checking
+```
+
+### Security
+```bash
+npm run audit        # Run comprehensive security audit
+nalth install <pkg>  # Securely install packages with checks
+```
+
+## 📁 Project Structure
+
+```
+.
+├── src/
+│   ├── test/              # Test files
+│   │   ├── example.test.ts
+│   │   └── setup.ts
+│   └── ...                # Your source files
+├── .prettierrc            # Prettier configuration
+├── eslint.config.js       # ESLint configuration
+├── vitest.config.ts       # Vitest configuration
+├── nalth.config.ts        # Nalth configuration
+└── package.json
+```
+
+## 🧪 Testing
+
+This project uses **Vitest** for testing with:
+
+- Jest-compatible API
+- Fast test execution
+- Built-in coverage reporting
+- Interactive UI mode
+
+Run tests:
+```bash
+npm test                    # Watch mode
+npm test -- --run           # Run once
+npm run test:coverage       # With coverage
+npm run test:ui             # Open UI
+```
+
+## 🔍 Linting
+
+ESLint is configured with:
+
+- TypeScript support
+- Security plugins (eslint-plugin-security)
+- Modern ES2024 syntax
+- Customizable rules in `eslint.config.js`
+
+Run linting:
+```bash
+npm run lint                # Check for issues
+npm run lint:fix            # Auto-fix issues
+```
+
+## ✨ Formatting
+
+Prettier is configured for consistent code style:
+
+- Single quotes
+- No semicolons
+- 2-space indentation
+- Trailing commas
+- 100 character line width
+
+Format code:
+```bash
+npm run format              # Format all files
+npm run format:check        # Check only (CI)
+```
+
+## 🔒 Secure Package Management
+
+Nalth includes **secure package installation** with:
+
+1. **Typosquatting Detection** - Prevents installing `raect` instead of `react`
+2. **Vulnerability Scanning** - Pre-installation security checks
+3. **License Compliance** - Automatic license verification
+4. **Integrity Verification** - Package checksum validation
+
+Install packages securely:
+```bash
+nalth install <package>           # Secure install
+nalth install axios react-query   # Multiple packages
+nalth install lodash -D           # Dev dependency
+nalth install --use-bun           # Use Bun package manager
+```
+
+## 📊 Security Dashboard
+
+Access the security dashboard at: `https://localhost:3000/__nalth`
+
+Features:
+- Real-time security metrics
+- CSP violation monitoring
+- Dependency vulnerability tracking
+- Security event logging
+
+## 🚀 Deployment
+
+Before deploying:
+
+1. Run full test suite: `npm test -- --run`
+2. Check code quality: `npm run lint && npm run typecheck`
+3. Security audit: `npm run audit`
+4. Build for production: `npm run build`
+5. Preview build: `npm run preview`
+
+## 📚 Learn More
+
+- [Nalth Documentation](https://nalth.pages.dev/docs)
+- [Security Best Practices](https://nalth.pages.dev/docs/security)
+- [CLI Commands](https://nalth.pages.dev/docs/cli)
+- [Configuration Guide](https://nalth.pages.dev/docs/config)
+
+## 🤝 Contributing
+
+Contributions are welcome! Please ensure:
+
+- All tests pass (`npm test -- --run`)
+- Code is linted (`npm run lint`)
+- Code is formatted (`npm run format`)
+- Security audit passes (`npm run audit`)
+
+## 📄 License
+
+MIT
+
+---
+
+**Powered by Nalth v2.2.0** - Security-First Unified Toolchain 🛡️⚡

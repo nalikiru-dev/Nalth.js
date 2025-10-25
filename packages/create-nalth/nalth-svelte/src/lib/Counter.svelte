@@ -5,6 +5,18 @@
   }
 </script>
 
-<button onclick={increment}>
-  count is {count}
-</button>
+<div class="counter-display">
+  <div class="nalth-counter-display">{count}</div>
+  <button class="nalth-button" onclick={increment}>
+    🚀 Increment Securely
+  </button>
+</div>
+
+<style>
+  .counter-display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--nalth-space-md);
+  }
+</style>

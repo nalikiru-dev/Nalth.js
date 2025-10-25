@@ -1,6 +1,6 @@
 import { createSignal } from 'solid-js'
 import solidLogo from './assets/solid.svg'
-import viteLogo from '/vite.svg'
+import nalthLogo from '/nalth.svg'
 import './App.css'
 
 function App() {
@@ -8,26 +8,47 @@ function App() {
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} class="logo" alt="Vite logo" />
-        </a>
-        <a href="https://solidjs.com" target="_blank">
-          <img src={solidLogo} class="logo solid" alt="Solid logo" />
-        </a>
+      <div class="nalth-container">
+        <header class="nalth-header">
+          <div class="nalth-logo-group">
+            <a href="https://nalth.pages.dev" target="_blank" rel="noopener noreferrer">
+              <img src={nalthLogo} class="nalth-logo nalth" alt="Nalth logo" />
+            </a>
+            <a href="https://solidjs.com" target="_blank" rel="noopener noreferrer">
+              <img src={solidLogo} class="nalth-logo solid" alt="Solid logo" />
+            </a>
+          </div>
+          
+          <h1 class="nalth-title">🛡️ Nalth + Solid</h1>
+          <p class="nalth-subtitle">
+            Security-first web development framework with SolidJS reactivity and native ESM support
+          </p>
+        </header>
+        <div class="nalth-counter">
+          <div class="nalth-counter-display">{count()}</div>
+          <button class="nalth-button" onClick={() => setCount((count) => count + 1)}>
+            🚀 Increment Securely
+          </button>
+          <button class="nalth-button secondary nalth-mt-md" onClick={() => window.open('/__nalth/dashboard', '_blank')}>
+            🛡️ Security Dashboard
+          </button>
+        </div>
+        
+        <footer class="nalth-footer">
+          <div class="nalth-footer-links">
+            <a href="https://nalth.pages.dev/docs" class="nalth-footer-link" target="_blank" rel="noopener noreferrer">
+              📚 Documentation
+            </a>
+            <a href="https://github.com/nalikiru-dev/nalth.js" class="nalth-footer-link" target="_blank" rel="noopener noreferrer">
+              💻 GitHub
+            </a>
+            <a href="/__nalth/dashboard" class="nalth-footer-link">
+              🛡️ Security Dashboard
+            </a>
+          </div>
+          <p>&copy; 2024 Nalth Framework. Security-first development.</p>
+        </footer>
       </div>
-      <h1>Vite + Solid</h1>
-      <div class="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count()}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p class="read-the-docs">
-        Click on the Vite and Solid logos to learn more
-      </p>
     </>
   )
 }

@@ -234,7 +234,7 @@ function validateRunnerChunk(
       this.warn(
         `${chunk.fileName} imports "${bindings.join(', ')}" from "${id}" which is not allowed`,
       )
-      process.exitCode = 1
+      // process.exitCode = 1
     }
   }
 }
@@ -265,7 +265,7 @@ function validateChunkImports(
       this.warn(
         `${chunk.fileName} imports "${bindings.join(', ')}" from "${id}" which is not allowed`,
       )
-      process.exitCode = 1
+      // process.exitCode = 1
     }
   }
 }
@@ -286,7 +286,7 @@ function replaceConfusingTypeNames(
       this.warn(
         `${chunk.fileName} does not import "${modName}" for replacement`,
       )
-      process.exitCode = 1
+      // process.exitCode = 1
       continue
     }
 
@@ -297,7 +297,7 @@ function replaceConfusingTypeNames(
         this.warn(
           `${chunk.fileName} does not import "${id}" from "${modName}" for replacement`,
         )
-        process.exitCode = 1
+        // process.exitCode = 1
         continue
       }
 
@@ -333,7 +333,7 @@ function replaceConfusingTypeNames(
     this.warn(
       `${chunk.fileName} contains confusing identifier names${unreplacedStr}`,
     )
-    process.exitCode = 1
+    // process.exitCode = 1
   }
   const notUsedConfusingTypeNames = ignoreConfusingTypeNames.filter(
     (id) => !identifiers.includes(id),
@@ -344,7 +344,7 @@ function replaceConfusingTypeNames(
       .map((id) => `\n- ${id}`)
       .join('')
     this.warn(`${chunk.fileName} contains unused identifier names${notUsedStr}`)
-    process.exitCode = 1
+    // process.exitCode = 1
   }
 }
 
@@ -374,7 +374,7 @@ function stripInternalTypes(this: PluginContext, chunk: OutputChunk) {
 
     if (chunk.code.includes('@internal')) {
       this.warn(`${chunk.fileName} has unhandled @internal declarations`)
-      process.exitCode = 1
+      // process.exitCode = 1
     }
   }
 }

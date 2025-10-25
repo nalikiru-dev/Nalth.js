@@ -14,12 +14,16 @@ Nalth is NOT just another build tool - it's a complete security-focused developm
 - ✅ **Framework Agnostic** - Supports React, Vue, Svelte, and more
 - ✅ **Production Ready** - Enterprise-grade security for real-world applications
 
-🎆 **What's New in v2.1.0:**
-- 🎨 Security-focused architecture with built-in protection
-- 📊 Native JSX/TSX support via esbuild (no external plugins needed)
-- 🔍 Simplified configuration with powerful security options
-- 🌍 Cross-platform support (Windows, macOS, Linux)
-- ⚡ Enhanced developer experience with clear documentation
+🎆 **What's New in v2.2.0:**
+- 🛠️ **Unified Toolchain** - Test, lint, format, build - all in one CLI
+- 🔒 **Secure Package Management** - Typosquatting detection & vulnerability scanning
+- 🧪 **Built-in Testing** - Vitest integration with security-enhanced testing
+- 🔍 **Smart Linting** - ESLint with security plugins (eslint-plugin-security)
+- ✨ **Auto Formatting** - Prettier with cache support
+- 🚀 **Task Runner** - Smart caching like Turborepo/Nx
+- 📦 **Library Bundling** - Build libraries with best practices
+- 🎨 **Security-focused architecture** with built-in protection
+- ⚡ **Enhanced developer experience** with comprehensive tooling
 
 > **System Requirements:**
 > Nalth requires [Node.js](https://nodejs.org/en/) version 20.19.0+ or 22.12.0+. All templates include enterprise-grade security features and modern tooling.
@@ -177,9 +181,23 @@ Your secure development server will start at `https://localhost:3000` with:
 
 ## 🔧 Available Scripts
 
-- `npm run dev` - Start secure development server
-- `npm run build` - Build for production
+### Development & Build
+- `npm run dev` - Start secure development server (HTTPS by default)
+- `npm run build` - Build for production with security optimizations
 - `npm run preview` - Preview production build
+
+### Testing & Quality (New in v2.2.0!)
+- `npm test` - Run tests with Vitest
+- `npm run test:ui` - Open interactive test UI
+- `npm run test:coverage` - Generate coverage reports
+- `npm run lint` - Lint code with ESLint + security plugins
+- `npm run lint:fix` - Auto-fix linting issues
+- `npm run format` - Format code with Prettier
+- `npm run format:check` - Check code formatting
+
+### Security
+- `npm run audit` - Run comprehensive security audit
+- `nalth install <package>` - Securely install packages with typosquatting detection
 
 ## 🛡️ Security Features
 

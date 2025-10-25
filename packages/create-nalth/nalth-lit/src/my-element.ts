@@ -1,7 +1,7 @@
 import { LitElement, css, html } from 'lit'
 import { customElement, property } from 'lit/decorators.js'
 import litLogo from './assets/lit.svg'
-import viteLogo from '/vite.svg'
+import nalthLogo from '/nalth.svg'
 
 /**
  * An example element.
@@ -15,7 +15,7 @@ export class MyElement extends LitElement {
    * Copy for the read the docs hint.
    */
   @property()
-  docsHint = 'Click on the Vite and Lit logos to learn more'
+  docsHint = 'Security-first web development with Lit components'
 
   /**
    * The number of times the button has been clicked.
@@ -25,21 +25,48 @@ export class MyElement extends LitElement {
 
   render() {
     return html`
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src=${viteLogo} class="logo" alt="Vite logo" />
-        </a>
-        <a href="https://lit.dev" target="_blank">
-          <img src=${litLogo} class="logo lit" alt="Lit logo" />
-        </a>
+      <div class="nalth-container">
+        <header class="nalth-header">
+          <div class="nalth-logo-group">
+            <a href="https://nalth.pages.dev" target="_blank" rel="noopener noreferrer">
+              <img src=${nalthLogo} class="nalth-logo nalth" alt="Nalth logo" />
+            </a>
+            <a href="https://lit.dev" target="_blank" rel="noopener noreferrer">
+              <img src=${litLogo} class="nalth-logo lit" alt="Lit logo" />
+            </a>
+          </div>
+          
+          <h1 class="nalth-title">🛡️ Nalth + Lit</h1>
+          <p class="nalth-subtitle">
+            Security-first web development framework with Lit's reactive components
+          </p>
+        </header>
+        
+        <div class="nalth-counter">
+          <div class="nalth-counter-display">${this.count}</div>
+          <button class="nalth-button" @click=${this._onClick} part="button">
+            🚀 Increment Securely
+          </button>
+          <button class="nalth-button secondary nalth-mt-md" @click=${this._openDashboard}>
+            🛡️ Security Dashboard
+          </button>
+        </div>
+        
+        <footer class="nalth-footer">
+          <div class="nalth-footer-links">
+            <a href="https://nalth.pages.dev/docs" class="nalth-footer-link" target="_blank" rel="noopener noreferrer">
+              📚 Documentation
+            </a>
+            <a href="https://github.com/nalikiru-dev/nalth.js" class="nalth-footer-link" target="_blank" rel="noopener noreferrer">
+              💻 GitHub
+            </a>
+            <a href="/__nalth/dashboard" class="nalth-footer-link">
+              🛡️ Security Dashboard
+            </a>
+          </div>
+          <p>&copy; 2024 Nalth Framework. Security-first development.</p>
+        </footer>
       </div>
-      <slot></slot>
-      <div class="card">
-        <button @click=${this._onClick} part="button">
-          count is ${this.count}
-        </button>
-      </div>
-      <p class="read-the-docs">${this.docsHint}</p>
     `
   }
 
@@ -47,75 +74,21 @@ export class MyElement extends LitElement {
     this.count++
   }
 
+  private _openDashboard() {
+    window.open('/__nalth/dashboard', '_blank')
+  }
+
   static styles = css`
+    @import url('./styles/nalth-design-system.css');
+    
     :host {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 2rem;
-      text-align: center;
+      display: block;
+      min-height: 100vh;
     }
 
-    .logo {
-      height: 6em;
-      padding: 1.5em;
-      will-change: filter;
-      transition: filter 300ms;
-    }
-    .logo:hover {
-      filter: drop-shadow(0 0 2em #646cffaa);
-    }
-    .logo.lit:hover {
-      filter: drop-shadow(0 0 2em #325cffaa);
-    }
-
-    .card {
-      padding: 2em;
-    }
-
-    .read-the-docs {
-      color: #888;
-    }
-
-    ::slotted(h1) {
-      font-size: 3.2em;
-      line-height: 1.1;
-    }
-
-    a {
-      font-weight: 500;
-      color: #646cff;
-      text-decoration: inherit;
-    }
-    a:hover {
-      color: #535bf2;
-    }
-
-    button {
-      border-radius: 8px;
-      border: 1px solid transparent;
-      padding: 0.6em 1.2em;
-      font-size: 1em;
-      font-weight: 500;
-      font-family: inherit;
-      background-color: #1a1a1a;
-      cursor: pointer;
-      transition: border-color 0.25s;
-    }
-    button:hover {
-      border-color: #646cff;
-    }
-    button:focus,
-    button:focus-visible {
-      outline: 4px auto -webkit-focus-ring-color;
-    }
-
-    @media (prefers-color-scheme: light) {
-      a:hover {
-        color: #747bff;
-      }
-      button {
-        background-color: #f9f9f9;
-      }
+    /* Lit-specific logo animation */
+    .nalth-logo.lit:hover {
+      filter: drop-shadow(0 0 20px #325cffaa);
     }
   `
 }

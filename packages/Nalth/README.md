@@ -1,8 +1,10 @@
 # 🛡️ NALTH Documentation
 
-**The Security-First Web Framework**
+**The Security-First Unified Toolchain for the Web**
 
 Welcome to NALTH, the world's first security-first web development framework. Built on TypeScript and powered by a security-enhanced Vite.js foundation, NALTH makes enterprise-grade security effortless while maintaining lightning-fast development speeds.
+
+**Now with Vite+ Inspired Features:** Everything you need in one unified toolchain - dev, build, test, lint, fmt, run, ui, and lib commands - all with security-first enhancements.
 
 ---
 
@@ -68,7 +70,7 @@ Welcome to NALTH, the world's first security-first web development framework. Bu
 
 ## 🌟 What Makes NALTH Special?
 
-### ⚡ **Zero-Config Security**
+### ⚡ **Unified Toolchain with Security-First Approach**
 
 ```bash
 # Create a secure app with one command
@@ -79,6 +81,17 @@ npx create-nalth my-secure-app --template nalth-react
 # ✅ Content Security Policy auto-generation
 # ✅ Security headers configuration
 # ✅ Real-time vulnerability scanning
+
+# Complete development workflow in one tool:
+nalth dev          # Start dev server
+nalth build        # Production build
+nalth test         # Run tests with Vitest
+nalth lint         # Lint with ESLint + security checks
+nalth fmt          # Format with Prettier
+nalth run build    # Run tasks with smart caching
+nalth ui           # Open advanced devtools
+nalth lib          # Build libraries
+nalth audit        # Security audit
 ```
 
 ### 🔒 **Enterprise-Grade Protection**
@@ -95,6 +108,56 @@ npx create-nalth my-secure-app --template nalth-react
 - **Hot Reload with Security** - Lightning-fast development with security monitoring
 - **Beautiful Security UI** - Professional security dashboards and monitoring interfaces
 
+### 🛠️ **Complete Unified Toolchain**
+
+All the tools you need in one command-line interface:
+
+#### Development & Build
+- `nalth dev` - Start dev server with HTTPS
+- `nalth build` - Production build with security optimizations
+- `nalth preview` - Preview production build
+
+#### Testing & Quality
+- `nalth test` - Run tests with Vitest (Jest-compatible API)
+- `nalth test --ui` - Open interactive test UI
+- `nalth test --coverage` - Generate coverage reports
+- `nalth test --security` - Security-enhanced testing
+
+#### Code Quality
+- `nalth lint` - ESLint with security plugins (100x faster potential with Oxlint)
+- `nalth lint --fix` - Auto-fix issues
+- `nalth lint --security` - Security-focused linting
+- `nalth fmt` - Format with Prettier
+- `nalth fmt --check` - Check formatting in CI
+
+#### Task Runner
+- `nalth run <task>` - Smart task runner with caching (Turborepo/Nx alternative)
+- `nalth run build --cache` - Cached task execution
+- `nalth run test --parallel` - Parallel task execution
+
+#### Library Development
+- `nalth lib` - Build libraries with best practices
+- `nalth lib --watch` - Watch mode for libraries
+- DTS generation & bundling included
+
+#### Security-First Package Management
+- `nalth install <package>` - **Secure package installation**
+  - ✅ Typosquatting detection
+  - ✅ Malicious package scanning
+  - ✅ Pre-installation vulnerability checks
+  - ✅ License compliance verification
+  - ✅ Post-installation audits
+  - ✅ Package integrity verification
+- `nalth audit` - Comprehensive security audit
+- `nalth security:report` - Generate security reports
+- `nalth security:scan <package>` - Scan specific packages
+
+#### Developer Tools
+- `nalth ui` - Advanced GUI devtools
+- Transform pipeline inspector
+- Module dependency graph visualization
+- Bundle analyzer
+
 ### 📊 **Real-Time Security Monitoring**
 
 - **Interactive Security Dashboard** - Live metrics and threat visualization
@@ -103,6 +166,47 @@ npx create-nalth my-secure-app --template nalth-react
 - **Security Event Logging** - Comprehensive audit trails and security events
 
 ---
+
+## 🚀 Quick Start
+
+```bash
+# Install Nalth
+npm install -g nalth
+
+# Create a new secure project
+npx create-nalth my-secure-app
+cd my-secure-app
+
+# Initialize all tooling
+nalth test:init
+nalth lint:init
+nalth fmt:init
+nalth security:init
+
+# Start development
+nalth dev
+
+# In another terminal - run tests
+nalth test
+
+# Install packages securely
+nalth install axios react-query
+
+# Run security audit
+nalth audit
+
+# Format code
+nalth fmt
+
+# Lint with security checks
+nalth lint --security
+
+# Build for production
+nalth build
+
+# Preview production build
+nalth preview
+```
 
 ## 📖 Documentation Sections
 

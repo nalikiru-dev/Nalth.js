@@ -1,21 +1,33 @@
 {
   "name": "nalth",
-  "version": "2.1.96",
+  "version": "2.2.0",
   "type": "module",
   "license": "MIT",
   "author": "Nalth Team",
-  "description": "Security-first Native-ESM powered web dev build tool",
+  "description": "Security-first unified toolchain for the web - dev, build, test, lint, fmt, and secure package management all in one",
   "bin": {
     "nalth": "bin/nalth.js"
   },
   "keywords": [
     "security-first",
+    "unified-toolchain",
+    "vite-plus",
     "framework",
     "security",
     "hmr",
     "csp",
     "sri",
     "audit",
+    "vitest",
+    "eslint",
+    "prettier",
+    "testing",
+    "linting",
+    "formatting",
+    "task-runner",
+    "secure-install",
+    "typosquatting",
+    "vulnerability-scanning",
     "security-headers",
     "security-report",
     "security-audit",
@@ -208,7 +220,10 @@
     "sugarss": "^5.0.0",
     "terser": "^5.16.0",
     "tsx": "^4.8.1",
-    "yaml": "^2.4.2"
+    "yaml": "^2.4.2",
+    "vitest": "^3.0.0",
+    "eslint": "^9.0.0",
+    "prettier": "^3.0.0"
   },
   "peerDependenciesMeta": {
     "@types/node": {
@@ -242,6 +257,15 @@
       "optional": true
     },
     "yaml": {
+      "optional": true
+    },
+    "vitest": {
+      "optional": true
+    },
+    "eslint": {
+      "optional": true
+    },
+    "prettier": {
       "optional": true
     }
   }

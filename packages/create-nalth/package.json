@@ -1,10 +1,10 @@
 {
   "name": "create-nalth",
-  "version": "2.1.96",
+  "version": "2.2.0",
   "type": "module",
   "license": "MIT",
   "author": "Nalth Team <team@nalth.pages.dev>",
-  "description": "🛡️ Create secure, modern web applications with the Nalth framework - HTTPS, CSP, and enterprise-grade security by default",
+  "description": "🛡️ Create secure, modern web applications with Nalth - Security-first unified toolchain with dev, build, test, lint, fmt, and secure package management all in one",
   "bin": {
     "create-nalth": "index.js",
     "cva": "index.js"
@@ -42,10 +42,14 @@
   "keywords": [
     "nalth",
     "security-first",
+    "unified-toolchain",
     "https",
     "csp",
     "web-framework",
     "vite",
+    "vitest",
+    "eslint",
+    "prettier",
     "typescript",
     "react",
     "vue",
@@ -55,7 +59,11 @@
     "scaffolding",
     "template",
     "cli",
-    "secure-development"
+    "secure-development",
+    "secure-install",
+    "testing",
+    "linting",
+    "formatting"
   ],
   "dependencies": {
     "@clack/prompts": "^0.11.0",
