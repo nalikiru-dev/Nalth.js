@@ -226,8 +226,8 @@ importers:
         specifier: ^4.43.0
         version: 4.52.5
       selfsigned:
-        specifier: ^2.4.1
-        version: 2.4.1
+        specifier: ^3.0.0
+        version: 3.0.1
       sirv:
         specifier: ^3.0.1
         version: 3.0.1(patch_hash=95b663b930c5cc6e609c7fa15b69a86ff3b30df68978611d1d3d724c65135cb1)
@@ -248,7 +248,7 @@ importers:
         version: 1.6.1
       vite:
         specifier: ^5.4.0
-        version: 5.4.20(@types/node@24.9.1)(less@4.4.2)(lightningcss@1.30.2)(sass-embedded@1.90.0(source-map-js@1.2.1))(sass@1.93.2)(stylus@0.64.0)(sugarss@5.0.1(postcss@8.5.6))(terser@5.44.0)
+        version: 5.4.20(@types/node@22.18.12)(less@4.4.2)(lightningcss@1.30.2)(sass-embedded@1.90.0(source-map-js@1.2.1))(sass@1.93.2)(stylus@0.64.0)(sugarss@5.0.1(postcss@8.5.6))(terser@5.44.0)
       ws:
         specifier: ^8.18.3
         version: 8.18.3
@@ -477,7 +477,7 @@ importers:
     devDependencies:
       '@vitejs/plugin-legacy-for-rolldown-vite':
         specifier: https://pkg.pr.new/vitejs/rolldown-vite/@vitejs/plugin-legacy@a2594ec
-        version: '@vitejs/plugin-legacy@https://pkg.pr.new/vitejs/rolldown-vite/@vitejs/plugin-legacy@a2594ec(terser@5.44.0)(vite@7.1.9(@types/node@24.9.1)(jiti@2.6.1)(less@4.4.2)(lightningcss@1.30.2)(sass-embedded@1.90.0(source-map-js@1.2.1))(sass@1.93.2)(stylus@0.64.0)(sugarss@5.0.1(postcss@8.5.6))(terser@5.44.0)(tsx@4.20.6)(yaml@2.8.1))'
+        version: '@vitejs/plugin-legacy@https://pkg.pr.new/vitejs/rolldown-vite/@vitejs/plugin-legacy@a2594ec(terser@5.44.0)(vite@7.1.9(@types/node@22.18.12)(jiti@2.6.1)(less@4.4.2)(lightningcss@1.30.2)(sass-embedded@1.90.0(source-map-js@1.2.1))(sass@1.93.2)(stylus@0.64.0)(sugarss@5.0.1(postcss@8.5.6))(terser@5.44.0)(tsx@4.20.6)(yaml@2.8.1))'
       acorn:
         specifier: ^8.15.0
         version: 8.15.0
@@ -532,7 +532,7 @@ importers:
     devDependencies:
       '@tailwindcss/vite':
         specifier: ^4.1.11
-        version: 4.1.16(vite@7.1.9(@types/node@24.9.1)(jiti@2.6.1)(less@4.4.2)(lightningcss@1.30.2)(sass-embedded@1.90.0(source-map-js@1.2.1))(sass@1.93.2)(stylus@0.64.0)(sugarss@5.0.1(postcss@8.5.6))(terser@5.44.0)(tsx@4.20.6)(yaml@2.8.1))
+        version: 4.1.16(vite@7.1.9(@types/node@22.18.12)(jiti@2.6.1)(less@4.4.2)(lightningcss@1.30.2)(sass-embedded@1.90.0(source-map-js@1.2.1))(sass@1.93.2)(stylus@0.64.0)(sugarss@5.0.1(postcss@8.5.6))(terser@5.44.0)(tsx@4.20.6)(yaml@2.8.1))
       sass:
         specifier: ^1.90.0
         version: 1.93.2
@@ -1648,7 +1648,7 @@ importers:
     dependencies:
       '@tailwindcss/vite':
         specifier: ^4.1.11
-        version: 4.1.16(vite@7.1.9(@types/node@24.9.1)(jiti@2.6.1)(less@4.4.2)(lightningcss@1.30.2)(sass-embedded@1.90.0(source-map-js@1.2.1))(sass@1.93.2)(stylus@0.64.0)(sugarss@5.0.1(postcss@8.5.6))(terser@5.44.0)(tsx@4.20.6)(yaml@2.8.1))
+        version: 4.1.16(vite@7.1.9(@types/node@22.18.12)(jiti@2.6.1)(less@4.4.2)(lightningcss@1.30.2)(sass-embedded@1.90.0(source-map-js@1.2.1))(sass@1.93.2)(stylus@0.64.0)(sugarss@5.0.1(postcss@8.5.6))(terser@5.44.0)(tsx@4.20.6)(yaml@2.8.1))
       tailwindcss:
         specifier: ^4.1.11
         version: 4.1.16
@@ -3677,14 +3677,8 @@ packages:
   '@types/ms@2.1.0':
     resolution: {integrity: sha512-GsCCIZDE/p3i96vtEqx+7dBUGXrc7zeSK3wwPHIaRThS+9OhWIXRqzs4d6k1SVU8g91DrNRWxWUGhp5KXQb2VA==}
 
-  '@types/node-forge@1.3.14':
-    resolution: {integrity: sha512-mhVF2BnD4BO+jtOp7z1CdzaK4mbuK0LLQYAvdOLqHTavxFNq4zA1EmYkpnFjP8HOUzedfQkRnp0E2ulSAYSzAw==}
-
   '@types/node@22.18.12':
     resolution: {integrity: sha512-BICHQ67iqxQGFSzfCFTT7MRQ5XcBjG5aeKh5Ok38UBbPe5fxTyE+aHFxwVrGyr8GNlqFMLKD1D3P2K/1ks8tog==}
-
-  '@types/node@24.9.1':
-    resolution: {integrity: sha512-QoiaXANRkSXK6p0Duvt56W208du4P9Uye9hWLWgGMDTEoKPhuenzNcC4vGUmrNkiOKTlIrBoyNQYNpSwfEZXSg==}
 
   '@types/normalize-package-data@2.4.4':
     resolution: {integrity: sha512-37i+OaWTh9qeK4LSHPsyRC7NahnGotNuZvjLSgcPzblpHB3rrCJxAOgI5gCdKm7coonsaX1Of0ILiTcnZjbfxA==}
@@ -6344,8 +6338,8 @@ packages:
   select@1.1.2:
     resolution: {integrity: sha512-OwpTSOfy6xSs1+pwcNrv0RBMOzI39Lp3qQKUTPVVPRjCdNa5JH/oPRiqsesIskK8TVgmRiHwO4KXlV2Li9dANA==}
 
-  selfsigned@2.4.1:
-    resolution: {integrity: sha512-th5B4L2U+eGLq1TVh7zNRGBapioSORUeymIydxgFpwww9d2qyKvtuPU2jJuHvYAwwqi2Y596QBL3eEqcPEYL8Q==}
+  selfsigned@3.0.1:
+    resolution: {integrity: sha512-6U6w6kSLrM9Zxo0D7mC7QdGS6ZZytMWBnj/vhF9p+dAHx6CwGezuRcO4VclTbrrI7mg7SD6zNiqXUuBHOVopNQ==}
     engines: {node: '>=10'}
 
   semver@5.7.2:
@@ -6747,9 +6741,6 @@ packages:
 
   undici-types@6.21.0:
     resolution: {integrity: sha512-iwDZqg0QAGrg9Rav5H4n0M64c3mkR59cJ6wQp+7C4nI0gsmExaedaYLNO44eT4AtBBwjbTiGPMlt2Md0T9H9JQ==}
-
-  undici-types@7.16.0:
-    resolution: {integrity: sha512-Zz+aZWSj8LE6zoxD+xrjh4VfkIG8Ya6LvYkZqtUQGJPZjYl53ypCaUwWqo7eI0x66KBGeRo+mlBEkMSeSZ38Nw==}
 
   undici@7.14.0:
     resolution: {integrity: sha512-Vqs8HTzjpQXZeXdpsfChQTlafcMQaaIwnGwLam1wudSSjlJeQ3bw1j+TLPePgrCnCpUXx7Ba5Pdpf5OBih62NQ==}
@@ -8701,12 +8692,12 @@ snapshots:
       postcss: 8.5.6
       tailwindcss: 4.1.16
 
-  '@tailwindcss/vite@4.1.16(vite@7.1.9(@types/node@24.9.1)(jiti@2.6.1)(less@4.4.2)(lightningcss@1.30.2)(sass-embedded@1.90.0(source-map-js@1.2.1))(sass@1.93.2)(stylus@0.64.0)(sugarss@5.0.1(postcss@8.5.6))(terser@5.44.0)(tsx@4.20.6)(yaml@2.8.1))':
+  '@tailwindcss/vite@4.1.16(vite@7.1.9(@types/node@22.18.12)(jiti@2.6.1)(less@4.4.2)(lightningcss@1.30.2)(sass-embedded@1.90.0(source-map-js@1.2.1))(sass@1.93.2)(stylus@0.64.0)(sugarss@5.0.1(postcss@8.5.6))(terser@5.44.0)(tsx@4.20.6)(yaml@2.8.1))':
     dependencies:
       '@tailwindcss/node': 4.1.16
       '@tailwindcss/oxide': 4.1.16
       tailwindcss: 4.1.16
-      vite: 7.1.9(@types/node@24.9.1)(jiti@2.6.1)(less@4.4.2)(lightningcss@1.30.2)(sass-embedded@1.90.0(source-map-js@1.2.1))(sass@1.93.2)(stylus@0.64.0)(sugarss@5.0.1(postcss@8.5.6))(terser@5.44.0)(tsx@4.20.6)(yaml@2.8.1)
+      vite: 7.1.9(@types/node@22.18.12)(jiti@2.6.1)(less@4.4.2)(lightningcss@1.30.2)(sass-embedded@1.90.0(source-map-js@1.2.1))(sass@1.93.2)(stylus@0.64.0)(sugarss@5.0.1(postcss@8.5.6))(terser@5.44.0)(tsx@4.20.6)(yaml@2.8.1)
 
   '@tybys/wasm-util@0.10.0':
     dependencies:
@@ -8780,17 +8771,9 @@ snapshots:
 
   '@types/ms@2.1.0': {}
 
-  '@types/node-forge@1.3.14':
-    dependencies:
-      '@types/node': 24.9.1
-
   '@types/node@22.18.12':
     dependencies:
       undici-types: 6.21.0
-
-  '@types/node@24.9.1':
-    dependencies:
-      undici-types: 7.16.0
 
   '@types/normalize-package-data@2.4.4': {}
 
@@ -8968,7 +8951,7 @@ snapshots:
 
   '@vitejs/longfilename-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@file:playground/optimize-deps/longfilename': {}
 
-  '@vitejs/plugin-legacy@https://pkg.pr.new/vitejs/rolldown-vite/@vitejs/plugin-legacy@a2594ec(terser@5.44.0)(vite@7.1.9(@types/node@24.9.1)(jiti@2.6.1)(less@4.4.2)(lightningcss@1.30.2)(sass-embedded@1.90.0(source-map-js@1.2.1))(sass@1.93.2)(stylus@0.64.0)(sugarss@5.0.1(postcss@8.5.6))(terser@5.44.0)(tsx@4.20.6)(yaml@2.8.1))':
+  '@vitejs/plugin-legacy@https://pkg.pr.new/vitejs/rolldown-vite/@vitejs/plugin-legacy@a2594ec(terser@5.44.0)(vite@7.1.9(@types/node@22.18.12)(jiti@2.6.1)(less@4.4.2)(lightningcss@1.30.2)(sass-embedded@1.90.0(source-map-js@1.2.1))(sass@1.93.2)(stylus@0.64.0)(sugarss@5.0.1(postcss@8.5.6))(terser@5.44.0)(tsx@4.20.6)(yaml@2.8.1))':
     dependencies:
       '@babel/core': 7.28.4
       '@babel/plugin-transform-dynamic-import': 7.27.1(@babel/core@7.28.4)
@@ -8983,7 +8966,7 @@ snapshots:
       regenerator-runtime: 0.14.1
       systemjs: 6.15.1
       terser: 5.44.0
-      vite: 7.1.9(@types/node@24.9.1)(jiti@2.6.1)(less@4.4.2)(lightningcss@1.30.2)(sass-embedded@1.90.0(source-map-js@1.2.1))(sass@1.93.2)(stylus@0.64.0)(sugarss@5.0.1(postcss@8.5.6))(terser@5.44.0)(tsx@4.20.6)(yaml@2.8.1)
+      vite: 7.1.9(@types/node@22.18.12)(jiti@2.6.1)(less@4.4.2)(lightningcss@1.30.2)(sass-embedded@1.90.0(source-map-js@1.2.1))(sass@1.93.2)(stylus@0.64.0)(sugarss@5.0.1(postcss@8.5.6))(terser@5.44.0)(tsx@4.20.6)(yaml@2.8.1)
     transitivePeerDependencies:
       - supports-color
 
@@ -11518,9 +11501,8 @@ snapshots:
 
   select@1.1.2: {}
 
-  selfsigned@2.4.1:
+  selfsigned@3.0.1:
     dependencies:
-      '@types/node-forge': 1.3.14
       node-forge: 1.3.1
 
   semver@5.7.2:
@@ -11921,8 +11903,6 @@ snapshots:
 
   undici-types@6.21.0: {}
 
-  undici-types@7.16.0: {}
-
   undici@7.14.0: {}
 
   unicode-canonical-property-names-ecmascript@2.0.1: {}
@@ -12026,22 +12006,6 @@ snapshots:
       sugarss: 5.0.1(postcss@8.5.6)
       terser: 5.44.0
 
-  vite@5.4.20(@types/node@24.9.1)(less@4.4.2)(lightningcss@1.30.2)(sass-embedded@1.90.0(source-map-js@1.2.1))(sass@1.93.2)(stylus@0.64.0)(sugarss@5.0.1(postcss@8.5.6))(terser@5.44.0):
-    dependencies:
-      esbuild: 0.21.5
-      postcss: 8.5.6
-      rollup: 4.52.5
-    optionalDependencies:
-      '@types/node': 24.9.1
-      fsevents: 2.3.3
-      less: 4.4.2
-      lightningcss: 1.30.2
-      sass: 1.93.2
-      sass-embedded: 1.90.0(source-map-js@1.2.1)
-      stylus: 0.64.0
-      sugarss: 5.0.1(postcss@8.5.6)
-      terser: 5.44.0
-
   vite@7.1.9(@types/node@22.18.12)(jiti@2.6.1)(less@4.4.2)(lightningcss@1.30.2)(sass-embedded@1.90.0(source-map-js@1.2.1))(sass@1.93.2)(stylus@0.64.0)(sugarss@5.0.1(postcss@8.5.6))(terser@5.44.0)(tsx@4.20.6)(yaml@2.8.1):
     dependencies:
       esbuild: 0.25.10
@@ -12052,28 +12016,6 @@ snapshots:
       tinyglobby: 0.2.15
     optionalDependencies:
       '@types/node': 22.18.12
-      fsevents: 2.3.3
-      jiti: 2.6.1
-      less: 4.4.2
-      lightningcss: 1.30.2
-      sass: 1.93.2
-      sass-embedded: 1.90.0(source-map-js@1.2.1)
-      stylus: 0.64.0
-      sugarss: 5.0.1(postcss@8.5.6)
-      terser: 5.44.0
-      tsx: 4.20.6
-      yaml: 2.8.1
-
-  vite@7.1.9(@types/node@24.9.1)(jiti@2.6.1)(less@4.4.2)(lightningcss@1.30.2)(sass-embedded@1.90.0(source-map-js@1.2.1))(sass@1.93.2)(stylus@0.64.0)(sugarss@5.0.1(postcss@8.5.6))(terser@5.44.0)(tsx@4.20.6)(yaml@2.8.1):
-    dependencies:
-      esbuild: 0.25.10
-      fdir: 6.5.0(picomatch@4.0.3)
-      picomatch: 4.0.3
-      postcss: 8.5.6
-      rollup: 4.52.5
-      tinyglobby: 0.2.15
-    optionalDependencies:
-      '@types/node': 24.9.1
       fsevents: 2.3.3
       jiti: 2.6.1
       less: 4.4.2
