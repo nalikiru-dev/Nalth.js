@@ -1,5 +1,7 @@
 # 🛡️ create-nalth
 
+![Nalth - Security-First Unified Toolchain](./1.jpg)
+
 **Scaffolding for Nalth - The Security-First Web Framework**
 
 Nalth is a **security-first, high-performance web development framework** forked from Vite, designed with enterprise-grade security features built-in from day one. Create professional, secure web applications with zero configuration.

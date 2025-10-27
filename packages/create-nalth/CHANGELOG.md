@@ -1,8 +1,11 @@
 # Changelog - create-nalth
 
+
+![Nalth - Security-First Unified Toolchain](./1.jpg)
+
 All notable changes to the create-nalth package will be documented in this file.
 
-## [2.2.0] - 2025-10-25
+## [2.2.1] - 2025-10-25
 
 ### 🎉 Major Release - Unified Toolchain Support
 
