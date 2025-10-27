@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
-import nalthLogo from './assets/nalth.svg'
 import { SecurityBadge } from './components/SecurityBadge'
 import './App.css'
 
@@ -13,8 +12,8 @@ function App() {
         {/* Header Section */}
         <header className="nalth-header">
           <div className="nalth-logo-group">
-            <a href="https://nalth.pages.dev" target="_blank" rel="noopener noreferrer">
-              <img src={nalthLogo} className="nalth-logo nalth" alt="Nalth logo" />
+            <a href="https://www.nalthjs.com" target="_blank" rel="noopener noreferrer">
+              <img src="/nalth.svg" className="nalth-logo nalth" alt="Nalth logo" />
             </a>
             <a href="https://react.dev" target="_blank" rel="noopener noreferrer">
               <img src={reactLogo} className="nalth-logo react" alt="React logo" />
@@ -85,7 +84,7 @@ function App() {
         {/* Footer */}
         <footer className="nalth-footer">
           <div className="nalth-footer-links">
-            <a href="https://nalth.pages.dev/docs" className="nalth-footer-link" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.nalthjs.com/docs" className="nalth-footer-link" target="_blank" rel="noopener noreferrer">
               📚 Documentation
             </a>
             <a href="https://github.com/nalikiru-dev/nalth.js" className="nalth-footer-link" target="_blank" rel="noopener noreferrer">

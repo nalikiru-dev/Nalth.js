@@ -5,7 +5,7 @@ import { fileURLToPath } from 'url'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 
-// https://nalth.pages.dev/config/
+// https://www.nalthjs.com/config/
 export default defineConfig({
   // React JSX configuration using esbuild
   esbuild: {

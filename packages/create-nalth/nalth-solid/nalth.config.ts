@@ -1,7 +1,7 @@
 import { defineConfig } from 'nalth'
 import solid from 'vite-plugin-solid'
 
-// https://nalth.pages.dev/config/
+// https://www.nalthjs.com/config/
 export default defineConfig({
   plugins: [solid()],
 

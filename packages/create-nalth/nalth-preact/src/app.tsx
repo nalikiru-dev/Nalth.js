@@ -11,7 +11,7 @@ export function App() {
       <div class="nalth-container">
         <header class="nalth-header">
           <div class="nalth-logo-group">
-            <a href="https://nalth.pages.dev" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.nalthjs.com" target="_blank" rel="noopener noreferrer">
               <img src={nalthLogo} class="nalth-logo nalth" alt="Nalth logo" />
             </a>
             <a href="https://preactjs.com" target="_blank" rel="noopener noreferrer">
@@ -36,7 +36,7 @@ export function App() {
         
         <footer class="nalth-footer">
           <div class="nalth-footer-links">
-            <a href="https://nalth.pages.dev/docs" class="nalth-footer-link" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.nalthjs.com/docs" class="nalth-footer-link" target="_blank" rel="noopener noreferrer">
               📚 Documentation
             </a>
             <a href="https://github.com/nalikiru-dev/nalth.js" class="nalth-footer-link" target="_blank" rel="noopener noreferrer">

@@ -4,7 +4,7 @@
 **Framework:** React 19
 **Description:** React with shadcn/ui components and enterprise security
 
-Created with [Nalth](https://nalth.pages.dev) - Security-First Unified Toolchain
+Created with [Nalth](https://www.nalthjs.com) - Security-First Unified Toolchain
 
 ## 🛡️ Built with Enterprise Security
 
@@ -152,10 +152,10 @@ Before deploying:
 
 ## 📚 Learn More
 
-- [Nalth Documentation](https://nalth.pages.dev/docs)
-- [Security Best Practices](https://nalth.pages.dev/docs/security)
-- [CLI Commands](https://nalth.pages.dev/docs/cli)
-- [Configuration Guide](https://nalth.pages.dev/docs/config)
+- [Nalth Documentation](https://www.nalthjs.com/docs)
+- [Security Best Practices](https://www.nalthjs.com/docs/security)
+- [CLI Commands](https://www.nalthjs.com/docs/cli)
+- [Configuration Guide](https://www.nalthjs.com/docs/config)
 
 ## 🤝 Contributing
 

@@ -315,7 +315,7 @@ pnpm publish --access public
    - Then publish create-nalth@2.2.0
 
 3. **Update Documentation**
-   - Update nalth.pages.dev with new features
+   - Update nalthjs.com with new features
    - Add CLI commands documentation
    - Create video tutorials
 

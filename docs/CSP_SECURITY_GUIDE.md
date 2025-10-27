@@ -460,6 +460,6 @@ This CSP implementation is part of Nalth and follows the same MIT license.
 
 **Need Help?**
 
-- 📖 [Nalth Documentation](https://nalth.pages.dev)
+- 📖 [Nalth Documentation](https://www.nalthjs.com)
 - 💬 [Community Discord](https://discord.gg/nalth)
 - 🐛 [Report Issues](https://github.com/nalikiru-dev/nalth.js/issues)

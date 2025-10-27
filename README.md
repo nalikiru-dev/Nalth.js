@@ -1,5 +1,7 @@
 # 🛡️ NALTH.js
 
+![Nalth - Security-First Unified Toolchain](./nalth.png)
+
 **The Security-First Web Framework**
 
 Welcome to NALTH, the world's first security-first web development framework. Built on TypeScript and powered by a security-enhanced Vite.js foundation, NALTH makes enterprise-grade security effortless while maintaining lightning-fast development speeds.

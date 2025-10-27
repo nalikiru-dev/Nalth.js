@@ -1,9 +1,9 @@
 {
   "name": "create-nalth",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "type": "module",
   "license": "MIT",
-  "author": "Nalth Team <team@nalth.pages.dev>",
+  "author": "Nalth Team <team@nalthjs.com>",
   "description": "🛡️ Create secure, modern web applications with Nalth - Security-first unified toolchain with dev, build, test, lint, fmt, and secure package management all in one",
   "bin": {
     "create-nalth": "index.js",
@@ -38,7 +38,7 @@
   "bugs": {
     "url": "https://github.com/nalikiru-dev/nalth.js/issues"
   },
-  "homepage": "https://nalth.pages.dev",
+  "homepage": "https://www.nalthjs.com",
   "keywords": [
     "nalth",
     "security-first",

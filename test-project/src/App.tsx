@@ -15,7 +15,7 @@ function App() {
             <a href="https://react.dev" target="_blank" rel="noopener noreferrer">
               <img src={reactLogo} className="logo react" alt="React logo" />
             </a>
-            <a href="https://nalth.pages.dev" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.nalthjs.com" target="_blank" rel="noopener noreferrer">
               <img src={nalthLogo} className="logo nalth" alt="Nalth logo" />
             </a>
           </div>
@@ -71,7 +71,7 @@ function App() {
         <div className="footer">
           <p>Edit <code>src/App.tsx</code> and save to test HMR</p>
           <div className="links">
-            <a href="https://nalth.pages.dev" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.nalthjs.com" target="_blank" rel="noopener noreferrer">
               📚 Documentation
             </a>
             <a href="https://github.com/nalikiru-dev/nalth.js" target="_blank" rel="noopener noreferrer">

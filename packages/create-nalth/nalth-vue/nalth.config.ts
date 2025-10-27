@@ -1,7 +1,7 @@
 import { defineConfig } from 'nalth'
 import { vue } from 'nalth/plugins'
 
-// https://nalth.pages.dev/config/
+// https://www.nalthjs.com/config/
 export default defineConfig({
   plugins: [vue()],
 

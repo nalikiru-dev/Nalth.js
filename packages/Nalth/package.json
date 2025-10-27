@@ -1,9 +1,9 @@
 {
   "name": "nalth",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "type": "module",
   "license": "MIT",
-  "author": "Nalth Team",
+  "author": "Nalth Team <team@nalthjs.com>",
   "description": "Security-first unified toolchain for the web - dev, build, test, lint, fmt, and secure package management all in one",
   "bin": {
     "nalth": "bin/nalth.js"
@@ -84,7 +84,7 @@
   "bugs": {
     "url": "https://github.com/nalikiru-dev/nalth.js/issues"
   },
-  "homepage": "https://nalth.pages.dev",
+  "homepage": "https://www.nalthjs.com",
   "funding": "https://github.com/nalikiru-dev/nalth.js?sponsor=1",
   "scripts": {
     "dev": "premove dist && pnpm build-bundle -w",

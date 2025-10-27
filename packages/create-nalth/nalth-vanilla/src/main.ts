@@ -47,7 +47,7 @@ function createApp(): string {
       <!-- Header -->
       <header class="header">
         <div class="logo-container">
-          <a href="https://nalth.pages.dev" target="_blank" rel="noopener noreferrer" class="logo-link">
+          <a href="https://www.nalthjs.com" target="_blank" rel="noopener noreferrer" class="logo-link">
             <img src="${nalthLogo}" class="logo nalth-logo" alt="Nalth logo" />
           </a>
           <div class="plus">+</div>
@@ -180,13 +180,13 @@ function createApp(): string {
             <span>Built with ❤️ using NALTH's security-first approach</span>
           </div>
           <div class="footer-links">
-            <a href="https://nalth.pages.dev/docs" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.nalthjs.com/docs" target="_blank" rel="noopener noreferrer">
               📚 Documentation
             </a>
             <a href="https://github.com/nalth/nalth" target="_blank" rel="noopener noreferrer">
               🔧 GitHub
             </a>
-            <a href="https://nalth.pages.dev/security" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.nalthjs.com/security" target="_blank" rel="noopener noreferrer">
               🛡️ Security Guide
             </a>
           </div>
@@ -233,7 +233,7 @@ function setupEventHandlers() {
 
   docsBtn?.addEventListener('click', (e) => {
     e.preventDefault()
-    window.open('https://nalth.pages.dev/docs', '_blank', 'noopener,noreferrer')
+    window.open('https://www.nalthjs.com/docs', '_blank', 'noopener,noreferrer')
   })
 }
 

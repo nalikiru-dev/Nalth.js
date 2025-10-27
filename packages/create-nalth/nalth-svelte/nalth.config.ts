@@ -1,7 +1,7 @@
 import { defineConfig } from 'nalth'
 import { svelte } from '@sveltejs/vite-plugin-svelte'
 
-// https://nalth.pages.dev/config/
+// https://www.nalthjs.com/config/
 export default defineConfig({
   plugins: [svelte()],
 

@@ -61,8 +61,8 @@ ${yellow('EXAMPLES:')}
   ${green('create-nalth')} ${cyan('my-app')} ${magenta('--template nalth-react')}  # Use React template
 
 ${blue('────────────────────────────────────────────────────────────────')}
-${cyan('🌐 Learn more:')} https://nalth.pages.dev
-${cyan('📚 Documentation:')} https://nalth.pages.dev/docs
+${cyan('🌐 Learn more:')} https://www.nalthjs.com
+${cyan('📚 Documentation:')} https://www.nalthjs.com/docs
 ${cyan('🔧 GitHub:')} https://github.com/nalikiru-dev/nalth.js`
 
 type ColorFunc = (str: string | number) => string
@@ -429,7 +429,7 @@ async function init() {
   doneMessage += `\n\n${blue('═══════════════════════════════════════════════')}\n`
   doneMessage += `🌐 ${cyan('Your app will be available at:')} ${green('https://localhost:3000')}\n`
   doneMessage += `🔒 ${cyan('Security dashboard:')} ${green('https://localhost:3000/__nalth')}\n`
-  doneMessage += `📚 ${cyan('Documentation:')} ${blue('https://nalth.pages.dev/docs')}\n`
+  doneMessage += `📚 ${cyan('Documentation:')} ${blue('https://www.nalthjs.com/docs')}\n`
   doneMessage += `${blue('═══════════════════════════════════════════════')}`
 
   prompts.outro(doneMessage)

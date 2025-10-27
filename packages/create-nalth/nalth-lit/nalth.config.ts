@@ -1,6 +1,6 @@
 import { defineConfig } from 'nalth'
 
-// https://nalth.pages.dev/config/
+// https://www.nalthjs.com/config/
 export default defineConfig({
   // NALTH Security Features - Enhanced CSP Configuration
   security: {
