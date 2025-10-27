@@ -179,7 +179,7 @@ importers:
         version: 1.30.2
       magic-string:
         specifier: ^0.30.17
-        version: 0.30.19
+        version: 0.30.21
       mlly:
         specifier: ^1.7.4
         version: 1.7.4
@@ -467,7 +467,7 @@ importers:
         version: 3.45.0
       magic-string:
         specifier: ^0.30.17
-        version: 0.30.19
+        version: 0.30.21
       regenerator-runtime:
         specifier: ^0.14.1
         version: 0.14.1
@@ -635,7 +635,7 @@ importers:
         version: 1.30.2
       magic-string:
         specifier: ^0.30.17
-        version: 0.30.19
+        version: 0.30.21
       sass:
         specifier: ^1.90.0
         version: 1.93.2
@@ -811,7 +811,7 @@ importers:
         version: file:playground/js-sourcemap/importee-pkg
       magic-string:
         specifier: ^0.30.17
-        version: 0.30.19
+        version: 0.30.21
 
   playground/js-sourcemap/importee-pkg: {}
 
@@ -5557,9 +5557,6 @@ packages:
   magic-string@0.30.17:
     resolution: {integrity: sha512-sNPKHvyjVf7gyjwS4xGTaW/mCnF8wnjtifKBEhxfZ7E/S8tQ0rssrwGNn6q8JH/ohItJfSQp9mBtQYuTlH5QnA==}
 
-  magic-string@0.30.19:
-    resolution: {integrity: sha512-2N21sPY9Ws53PZvsEpVtNuSW+ScYbQdp4b9qUaL+9QkHUrGFKo56Lg9Emg5s9V/qrtNBmiR01sYhUOwu3H+VOw==}
-
   magic-string@0.30.21:
     resolution: {integrity: sha512-vd2F4YUyEXKGcLHoq+TEyCjxueSeHnFxyyjNp80yg0XV4vUhnDer/lvvlqM/arB5bXQN5K2/3oinyCRyx8T2CQ==}
 
@@ -8526,7 +8523,7 @@ snapshots:
       estree-walker: 2.0.2
       fdir: 6.5.0(picomatch@4.0.3)
       is-reference: 1.2.1
-      magic-string: 0.30.19
+      magic-string: 0.30.21
       picomatch: 4.0.3
     optionalDependencies:
       rollup: 4.52.5
@@ -8537,7 +8534,7 @@ snapshots:
       astring: 1.9.0
       estree-walker: 2.0.2
       fast-glob: 3.3.3
-      magic-string: 0.30.19
+      magic-string: 0.30.21
     optionalDependencies:
       rollup: 4.52.5
 
@@ -8979,7 +8976,7 @@ snapshots:
       browserslist: 4.26.3
       browserslist-to-esbuild: 2.1.1(browserslist@4.26.3)
       core-js: 3.45.0
-      magic-string: 0.30.19
+      magic-string: 0.30.21
       regenerator-runtime: 0.14.1
       systemjs: 6.15.1
       terser: 5.44.0
@@ -9291,7 +9288,7 @@ snapshots:
       '@vue/compiler-ssr': 3.4.38
       '@vue/shared': 3.4.38
       estree-walker: 2.0.2
-      magic-string: 0.30.19
+      magic-string: 0.30.21
       postcss: 8.5.6
       source-map-js: 1.2.1
 
@@ -9303,7 +9300,7 @@ snapshots:
       '@vue/compiler-ssr': 3.5.18
       '@vue/shared': 3.5.18
       estree-walker: 2.0.2
-      magic-string: 0.30.19
+      magic-string: 0.30.21
       postcss: 8.5.6
       source-map-js: 1.2.1
 
@@ -10720,10 +10717,6 @@ snapshots:
     dependencies:
       '@jridgewell/sourcemap-codec': 1.5.0
 
-  magic-string@0.30.19:
-    dependencies:
-      '@jridgewell/sourcemap-codec': 1.5.5
-
   magic-string@0.30.21:
     dependencies:
       '@jridgewell/sourcemap-codec': 1.5.5
@@ -11335,7 +11328,7 @@ snapshots:
       commenting: 1.1.0
       fdir: 6.5.0(picomatch@4.0.3)
       lodash: 4.17.21
-      magic-string: 0.30.19
+      magic-string: 0.30.21
       moment: 2.30.1
       package-name-regex: 2.0.6
       rollup: 4.52.5
