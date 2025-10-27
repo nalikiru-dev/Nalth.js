@@ -738,8 +738,8 @@ importers:
         specifier: workspace:*
         version: link:../../packages/Nalth
       slash3:
-        specifier: npm:slash@^3.0.0
-        version: slash@3.0.0
+        specifier: npm:slash@^5.0.0
+        version: slash@5.1.0
       slash5:
         specifier: npm:slash@^5.1.0
         version: slash@5.1.0
@@ -753,8 +753,8 @@ importers:
   playground/external/dep-that-imports:
     dependencies:
       slash3:
-        specifier: npm:slash@^3.0.0
-        version: slash@3.0.0
+        specifier: npm:slash@^5.0.0
+        version: slash@5.1.0
       slash5:
         specifier: npm:slash@^5.1.0
         version: slash@5.1.0
@@ -765,8 +765,8 @@ importers:
   playground/external/dep-that-requires:
     dependencies:
       slash3:
-        specifier: npm:slash@^3.0.0
-        version: slash@3.0.0
+        specifier: npm:slash@^5.0.0
+        version: slash@5.1.0
       slash5:
         specifier: npm:slash@^5.1.0
         version: slash@5.1.0
@@ -6433,10 +6433,6 @@ packages:
   sisteransi@1.0.5:
     resolution: {integrity: sha512-bLGGlR1QxBcynn2d5YmDX4MGjlZvy2MRBDRNHLJ8VI6l6+9FUiyTFNJ0IveOSP0bcXgVDPRcfGqA0pjaqUpfVg==}
 
-  slash@3.0.0:
-    resolution: {integrity: sha512-g9Q1haeby36OSStwb4ntCGGGaKsaVSjQ68fBxoQcutl5fS1vuY18H3wSt3jFyFtrkx+Kz0V1G85A4MyAdDMi2Q==}
-    engines: {node: '>=8'}
-
   slash@5.1.0:
     resolution: {integrity: sha512-ZA6oR3T/pEyuqwMgAKT0/hAv8oAXckzbkmR0UkUosQ+Mc4RxGoJkRmwHgHufaenlyAgE1Mxgpdcrf75y6XcnDg==}
     engines: {node: '>=14.16'}
@@ -9087,7 +9083,7 @@ snapshots:
 
   '@vitejs/test-dep-that-imports@file:playground/external/dep-that-imports(typescript@5.9.3)':
     dependencies:
-      slash3: slash@3.0.0
+      slash3: slash@5.1.0
       slash5: slash@5.1.0
       vue: 3.5.18(typescript@5.9.3)
     transitivePeerDependencies:
@@ -9095,7 +9091,7 @@ snapshots:
 
   '@vitejs/test-dep-that-requires@file:playground/external/dep-that-requires(typescript@5.9.3)':
     dependencies:
-      slash3: slash@3.0.0
+      slash3: slash@5.1.0
       slash5: slash@5.1.0
       vue: 3.5.18(typescript@5.9.3)
     transitivePeerDependencies:
@@ -11640,8 +11636,6 @@ snapshots:
       totalist: 3.0.1
 
   sisteransi@1.0.5: {}
-
-  slash@3.0.0: {}
 
   slash@5.1.0: {}
 
