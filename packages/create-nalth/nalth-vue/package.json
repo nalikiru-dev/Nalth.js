@@ -22,7 +22,7 @@
   },
   "devDependencies": {
     "@vue/tsconfig": "^0.8.0",
-    "typescript": "~5.8.3",
+    "typescript": "~5.9.0",
     "nalth": "^2.2.0",
     "vue-tsc": "^3.0.5"
   }
