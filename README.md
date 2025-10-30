@@ -1,5 +1,5 @@
-# [![Nalth Logo](https://www.nalthjs.com/assets/nalth-logo-DyTZ0K62.png)](https://www.nalthjs.com) 
-Introducing NALTH.JS
+ [![Nalth Logo](https://www.nalthjs.com/assets/nalth-logo-DyTZ0K62.png)](https://www.nalthjs.com) 
+#Introducing NALTH.JS
 
 **The Security-First Web Framework**
 
