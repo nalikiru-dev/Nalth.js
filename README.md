@@ -1,4 +1,4 @@
-# [https://www.nalthjs.com/assets/nalth-logo-DyTZ0K62.png] Introducing NALTH.JS
+#  Introducing NALTH.JS
 
 **The Security-First Web Framework**
 
