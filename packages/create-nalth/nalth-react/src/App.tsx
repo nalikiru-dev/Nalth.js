@@ -1,10 +1,19 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import { SecurityBadge } from './components/SecurityBadge'
+import Dashboard from './pages/Dashboard'
 import './App.css'
 
 function App() {
   const [count, setCount] = useState(0)
+  
+  // Simple client-side routing
+  const path = window.location.pathname
+  
+  // Render dashboard if path matches
+  if (path === '/__nalth/dashboard' || path === '/dashboard') {
+    return <Dashboard />
+  }
 
   return (
     <div className="app">

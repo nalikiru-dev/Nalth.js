@@ -12,14 +12,18 @@ import { createLogger } from './logger'
 import { resolveConfig } from './config'
 import type { InlineConfig } from './config'
 
-// Project detection function
+// Project detection function - now more flexible
 function isNalthProject(cwd: string): boolean {
-  // Check for nalth.config.js/ts
+  // Check for nalth.config.js/ts or vite.config.js/ts (Nalth is Vite-compatible)
   const configFiles = [
     'nalth.config.js',
     'nalth.config.ts', 
     'nalth.config.mjs',
-    'nalth.config.cjs'
+    'nalth.config.cjs',
+    'vite.config.js',
+    'vite.config.ts',
+    'vite.config.mjs',
+    'vite.config.cjs'
   ]
   
   for (const config of configFiles) {
@@ -28,7 +32,7 @@ function isNalthProject(cwd: string): boolean {
     }
   }
   
-  // Check package.json for nalth dependency
+  // Check package.json for nalth or vite dependency
   const pkgPath = path.join(cwd, 'package.json')
   if (fs.existsSync(pkgPath)) {
     try {
@@ -36,9 +40,19 @@ function isNalthProject(cwd: string): boolean {
       return !!(
         pkg.dependencies?.nalth ||
         pkg.devDependencies?.nalth ||
-        pkg.peerDependencies?.nalth
+        pkg.peerDependencies?.nalth ||
+        pkg.dependencies?.vite ||
+        pkg.devDependencies?.vite
       )
     } catch {}
+  }
+  
+  // Check for common web project indicators
+  const webProjectFiles = ['index.html', 'src/main.ts', 'src/main.js', 'src/index.ts', 'src/index.js']
+  for (const file of webProjectFiles) {
+    if (fs.existsSync(path.join(cwd, file))) {
+      return true
+    }
   }
   
   return false
@@ -622,16 +636,49 @@ cli
 
 // install
 cli
-  .command('install [packages...]', 'securely install packages')
+  .command('install [packages...]', 'securely install packages with deep security analysis')
   .alias('i')
-  .option('--secure', `[boolean] enable security checks (default: true)`)
-  .option('--verify', `[boolean] verify package integrity (default: true)`)
-  .option('--audit', `[boolean] audit after installation (default: true)`)
+  .alias('add')
+  // Security options
+  .option('--no-secure', `[boolean] disable security checks (not recommended)`)
+  .option('--no-verify', `[boolean] skip package integrity verification`)
+  .option('--no-audit', `[boolean] skip post-installation audit`)
+  .option('--force', `[boolean] force install even with security warnings`)
+  .option('--skip-analysis', `[boolean] skip deep package analysis`)
+  
+  // Package manager options
+  .option('--pm <manager>', `[string] package manager to use (npm|yarn|pnpm|bun)`)
+  .option('--use-npm', `[boolean] use npm package manager`)
+  .option('--use-yarn', `[boolean] use Yarn package manager`)
+  .option('--use-pnpm', `[boolean] use pnpm package manager`)
   .option('--use-bun', `[boolean] use Bun package manager`)
-  .option('--save-dev', `[boolean] save as dev dependency`)
-  .option('--production', `[boolean] production install`)
-  .option('--frozen', `[boolean] use frozen lockfile`)
+  
+  // Save options
+  .option('-D, --save-dev', `[boolean] save as dev dependency`)
+  .option('-P, --save-prod', `[boolean] save as production dependency`)
+  .option('-E, --save-exact', `[boolean] save exact version`)
+  .option('--no-save', `[boolean] don't save to package.json`)
+  
+  // Install modes
+  .option('--production', `[boolean] production install (skip devDependencies)`)
+  .option('--frozen-lockfile', `[boolean] use frozen lockfile (CI mode)`)
+  .option('--prefer-offline', `[boolean] prefer offline packages`)
+  .option('--offline', `[boolean] offline mode only`)
+  
+  // Registry and network
   .option('--registry <url>', `[string] custom registry URL`)
+  .option('--scope <scope>', `[string] scope for scoped packages`)
+  
+  // Security levels
+  .option('--security-level <level>', `[string] security level (strict|normal|permissive)`)
+  .option('--allow-scripts', `[boolean] allow install scripts to run`)
+  .option('--ignore-scripts', `[boolean] ignore all install scripts`)
+  
+  // Output options
+  .option('--verbose', `[boolean] verbose output`)
+  .option('--quiet', `[boolean] minimal output`)
+  .option('--json', `[boolean] output as JSON`)
+  
   .action(async (packages: string[], options: any) => {
     const { installCommand } = await import('./cli/install-command.js')
     await installCommand(packages, options)

@@ -18,12 +18,10 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "react": "^19.1.1",
-    "react-dom": "^19.1.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "@radix-ui/react-alert-dialog": "^1.0.5",
-    "@radix-ui/react-badge": "^1.0.4",
-    "@radix-ui/react-button": "^1.0.4",
-    "@radix-ui/react-card": "^1.0.4",
+    "@radix-ui/react-slot": "^1.0.2",
     "lucide-react": "^0.294.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
@@ -31,19 +29,25 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.33.0",
-    "@types/react": "^19.1.10",
-    "@types/react-dom": "^19.1.7",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
     "@types/node": "^22.0.0",
+    "@tailwindcss/postcss": "^4.0.0",
+    "@testing-library/react": "^16.0.0",
+    "@testing-library/jest-dom": "^6.4.0",
+    "@testing-library/user-event": "^14.5.0",
+    "@vitest/ui": "^2.0.0",
     "autoprefixer": "^10.4.20",
     "eslint": "^9.33.0",
-    "eslint-plugin-react-hooks": "^7.0.0",
+    "eslint-plugin-react-hooks": "^5.0.0",
     "eslint-plugin-react-refresh": "^0.4.20",
     "globals": "^16.3.0",
+    "jsdom": "^25.0.0",
     "postcss": "^8.4.47",
     "tailwindcss": "^4.0.0",
-    "tailwindcss-animate": "^1.0.7",
     "typescript": "~5.8.3",
     "typescript-eslint": "^8.39.1",
-    "nalth": "^2.2.0"
+    "vitest": "^2.0.0",
+    "nalth": "^2.2.2"
   }
 }

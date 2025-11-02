@@ -1,4 +1,6 @@
-# 🛡️ NALTH Documentation
+[banner](./banner.png)
+
+# Nalth.JS
 
 **The Security-First Unified Toolchain for the Web**
 

@@ -1,5 +1,5 @@
 import { defineConfig } from 'nalth'
-import vue from '@nalthjs/plugin-vue'
+import vue from '@vitejs/plugin-vue'
 
 // https://www.nalthjs.com/config/
 export default defineConfig({

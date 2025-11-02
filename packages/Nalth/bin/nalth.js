@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 import { performance } from 'node:perf_hooks'
+import { fileURLToPath } from 'node:url'
+import { dirname, resolve } from 'node:path'
 import module from 'node:module'
 
 if (!import.meta.url.includes('node_modules')) {
@@ -59,7 +61,11 @@ function start() {
       } catch {}
     }, 10 * 1000).unref()
   } catch {}
-  return import('../dist/node/cli.js')
+  // Use absolute path resolution to support global installation
+  const __filename = fileURLToPath(import.meta.url)
+  const __dirname = dirname(__filename)
+  const cliPath = resolve(__dirname, '../dist/node/cli.js')
+  return import(cliPath)
 }
 
 if (profileIndex > 0) {

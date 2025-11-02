@@ -1,6 +1,6 @@
 {
   "name": "nalth",
-  "version": "2.2.1",
+  "version": "2.2.12",
   "type": "module",
   "license": "MIT",
   "author": "Nalth Team <team@nalthjs.com>",
@@ -39,11 +39,18 @@
   "main": "./dist/node/index.js",
   "types": "./dist/node/index.d.ts",
   "exports": {
-    ".": "./dist/node/index.js",
+    ".": {
+      "types": "./dist/node/index.d.ts",
+      "import": "./dist/node/index.js",
+      "require": "./index.cjs"
+    },
     "./client": {
       "types": "./client.d.ts"
     },
-    "./module-runner": "./dist/node/module-runner.js",
+    "./module-runner": {
+      "types": "./dist/node/module-runner.d.ts",
+      "import": "./dist/node/module-runner.js"
+    },
     "./dist/client/*": "./dist/client/*",
     "./types/*": {
       "types": "./types/*"
@@ -87,10 +94,10 @@
   "homepage": "https://www.nalthjs.com",
   "funding": "https://github.com/nalikiru-dev/nalth.js?sponsor=1",
   "scripts": {
-    "dev": "premove dist && pnpm build-bundle -w",
-    "build": "premove dist && pnpm build-bundle && pnpm build-types",
+    "dev": "premove dist && npm run build-bundle -w",
+    "build": "premove dist && npm run build-bundle && npm run build-types",
     "build-bundle": "rolldown --config rolldown.config.ts",
-    "build-types": "pnpm build-types-roll && pnpm build-types-check",
+    "build-types": "npm run build-types-roll && npm run build-types-check",
     "build-types-roll": "rolldown --config rolldown.dts.config.ts",
     "build-types-check": "tsc --project tsconfig.check.json",
     "typecheck": "tsc && tsc -p src/node",
@@ -171,7 +178,6 @@
     "cors": "^2.8.5",
     "cross-spawn": "^7.0.6",
     "debug": "^4.4.1",
-    "dep-types": "file:./src/types",
     "dotenv": "^17.2.1",
     "dotenv-expand": "^12.0.2",
     "es-module-lexer": "^1.7.0",
@@ -205,7 +211,6 @@
     "strip-literal": "^3.0.0",
     "terser": "^5.43.1",
     "tsconfck": "^3.1.6",
-    "types": "file:./types",
     "ufo": "^1.6.1",
     "ws": "^8.18.3"
   },
