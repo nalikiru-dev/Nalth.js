@@ -1,6 +1,6 @@
 # 🛡️ NALTH.js
 
-![Nalth - Security-First Unified Toolchain](./1.png)
+![Nalth - Security-First Unified Toolchain](./1.jpg)
 
 **The Security-First Web Framework**
 
