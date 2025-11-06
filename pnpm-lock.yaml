@@ -458,7 +458,7 @@ importers:
         version: 2.1.1(browserslist@4.26.3)
       core-js:
         specifier: ^3.45.0
-        version: 3.45.0
+        version: 3.46.0
       magic-string:
         specifier: ^0.30.17
         version: 0.30.19
@@ -4630,8 +4630,8 @@ packages:
   core-js-compat@3.46.0:
     resolution: {integrity: sha512-p9hObIIEENxSV8xIu+V68JjSeARg6UVMG5mR+JEUguG3sI6MsiS1njz2jHmyJDvA+8jX/sytkBHup6kxhM9law==}
 
-  core-js@3.45.0:
-    resolution: {integrity: sha512-c2KZL9lP4DjkN3hk/an4pWn5b5ZefhRJnAc42n6LJ19kSnbeRbdQZE5dSeE2LBol1OwJD3X1BQvFTAsa8ReeDA==}
+  core-js@3.46.0:
+    resolution: {integrity: sha512-vDMm9B0xnqqZ8uSBpZ8sNtRtOdmfShrvT6h2TuQGLs0Is+cR0DYbj/KWP6ALVNbWPpqA/qPLoOuppJN07humpA==}
 
   cors@2.8.5:
     resolution: {integrity: sha512-KIHbLJqu73RGr/hnbrO9uBeixNGuvSQjul/jdFvS/KFSIH1hWVd1ng7zOHx+YrEfInLG7q4n6GHQ9cDtxv/P6g==}
@@ -9070,7 +9070,7 @@ snapshots:
       babel-plugin-polyfill-regenerator: 0.6.5(@babel/core@7.28.5)
       browserslist: 4.26.3
       browserslist-to-esbuild: 2.1.1(browserslist@4.26.3)
-      core-js: 3.45.0
+      core-js: 3.46.0
       magic-string: 0.30.19
       regenerator-runtime: 0.14.1
       systemjs: 6.15.1
@@ -9827,7 +9827,7 @@ snapshots:
     dependencies:
       browserslist: 4.26.3
 
-  core-js@3.45.0: {}
+  core-js@3.46.0: {}
 
   cors@2.8.5:
     dependencies:
