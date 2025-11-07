@@ -8565,7 +8565,7 @@ snapshots:
   '@rolldown/binding-win32-x64-msvc@1.0.0-beta.32':
     optional: true
 
-  '@rolldown/binding-win32-x64-msvc@1.0.0-beta.47':
+  '@rolldown/binding-win32-x64-msvc@1.0renovate/artifacts — Artifact file update failure.0-beta.47':
     optional: true
 
   '@rolldown/pluginutils@1.0.0-beta.32': {}
