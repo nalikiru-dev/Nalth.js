@@ -11,24 +11,24 @@ Welcome to NALTH, the world’s first security‑first web development framework
 
 <div class="grid grid‑cols‑1 md:grid‑cols‑2 lg:grid‑cols‑3 gap‑6 my‑8">
 
-### [🏁 Getting Started](https://nalthjs.com/docs/guide/getting-started)  
+### [🏁 Getting Started](https://www.nalthjs.com/docs#quick‑start)  
 **New to NALTH?** Start here! Learn how to create your first secure application in under 2 minutes.
 
-- [Installation](https://nalthjs.com/docs/guide/installation)  
-- [Your First Project](https://nalthjs.com/docs/guide/first-project)  
-- [CLI Reference](https://nalthjs.com/docs/reference/cli)
+- [Installation](https://www.nalthjs.com/docs#installation)  
+- [Your First Project](https://www.nalthjs.com/docs#first‑project)  
+- [CLI Reference](https://www.nalthjs.com/docs#cli)
 
-### [🔧 Configuration](https://nalthjs.com/docs/guide/configuration)  
+### [🔧 Configuration](https://www.nalthjs.com/docs#configuration)  
 Learn how to configure NALTH for your project — security options, environment setup, plugins, etc.
 
-### [🧩 Advanced Topics](https://nalthjs.com/docs/guide/advanced-topics)  
-Dive deeper: custom middlewares, security‑hardening patterns, enterprise deployment.
+### [🔄 Migration Guide](https://www.nalthjs.com/docs#migration‑guide)  
+Upgrade from earlier versions seamlessly: what changed, how to migrate, breaking changes.
 
-### [📚 API Reference](https://nalthjs.com/docs/reference/api)  
-Explore the full API surface of NALTH: classes, methods, configuration options.
+### [📚 API Reference](https://www.nalthjs.com/docs#api‑reference)  
+Explore the full API surface of NALTH: classes, methods, config options.
 
-### [🧠 Best Practices](https://nalthjs.com/docs/best-practices)  
-Guidelines on secure architecture, threat modelling, performance tuning and production readiness.
+### [🧠 Best Practices](https://www.nalthjs.com/docs#best‑practices)  
+Secure architecture, threat modelling, performance tuning and production readiness.
 
 </div>
 **NALTH**: Where Security Meets Speed. Built for the modern web. 🛡️⚡
