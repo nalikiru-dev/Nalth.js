@@ -140,7 +140,7 @@ importers:
         version: 7.0.6
       debug:
         specifier: ^4.4.1
-        version: 4.4.1
+        version: 4.4.3
       dotenv:
         specifier: ^17.2.1
         version: 17.2.1
@@ -9500,7 +9500,7 @@ snapshots:
 
   axios@1.11.0:
     dependencies:
-      follow-redirects: 1.15.9(debug@4.4.1)
+      follow-redirects: 1.15.9(debug@4.4.3)
       form-data: 4.0.4
       proxy-from-env: 1.1.0
     transitivePeerDependencies:
@@ -10226,7 +10226,7 @@ snapshots:
       content-type: 1.0.5
       cookie: 0.7.1
       cookie-signature: 1.2.2
-      debug: 4.4.1
+      debug: 4.4.3
       encodeurl: 2.0.0
       escape-html: 1.0.3
       etag: 1.8.1
@@ -10327,9 +10327,9 @@ snapshots:
 
   flatted@3.3.3: {}
 
-  follow-redirects@1.15.9(debug@4.4.1):
+  follow-redirects@1.15.9(debug@4.4.3):
     optionalDependencies:
-      debug: 4.4.1
+      debug: 4.4.3
 
   foreground-child@3.3.0:
     dependencies:
@@ -10474,8 +10474,8 @@ snapshots:
 
   http-proxy-3@1.20.10:
     dependencies:
-      debug: 4.4.1
-      follow-redirects: 1.15.9(debug@4.4.1)
+      debug: 4.4.3
+      follow-redirects: 1.15.9(debug@4.4.3)
     transitivePeerDependencies:
       - supports-color
 
@@ -11843,7 +11843,7 @@ snapshots:
   stylus@0.64.0:
     dependencies:
       '@adobe/css-tools': 4.3.3
-      debug: 4.4.1
+      debug: 4.4.3
       glob: 10.4.5
       sax: 1.4.1
       source-map: 0.7.4
@@ -11941,7 +11941,7 @@ snapshots:
       ansis: 4.1.0
       cac: 6.7.14
       chokidar: 4.0.3
-      debug: 4.4.1
+      debug: 4.4.3
       diff: 8.0.2
       empathic: 2.0.0
       hookable: 5.5.3
