@@ -25,7 +25,7 @@
     "@tsconfig/svelte": "^5.0.4",
     "svelte": "^5.38.1",
     "svelte-check": "^4.3.1",
-    "typescript": "~5.8.3",
+    "typescript": "~5.9.0",
     "nalth": "^2.2.0"
   }
 }
