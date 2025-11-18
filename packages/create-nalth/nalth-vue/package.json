@@ -1,0 +1,30 @@
+{
+  "name": "nalth-vue-app",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "nalth",
+    "build": "vue-tsc -b && nalth build",
+    "preview": "nalth preview",
+    "test": "nalth test",
+    "test:ui": "nalth test --ui",
+    "test:coverage": "nalth test --coverage",
+    "lint": "nalth lint",
+    "lint:fix": "nalth lint --fix",
+    "format": "nalth fmt",
+    "format:check": "nalth fmt --check",
+    "audit": "nalth audit",
+    "typecheck": "vue-tsc --noEmit"
+  },
+  "dependencies": {
+    "vue": "^3.5.18"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.0.0",
+    "@vue/tsconfig": "^0.8.0",
+    "typescript": "~5.8.3",
+    "nalth": "^2.2.0",
+    "vue-tsc": "^3.0.5"
+  }
+}

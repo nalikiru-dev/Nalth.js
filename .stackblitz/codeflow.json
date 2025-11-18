@@ -1,0 +1,8 @@
+{
+  "pnpm": {
+    "overrides": {
+      "nalth": "./packages/nalth",
+      "@vitejs/plugin-legacy": "./packages/plugin-legacy"
+    }
+  }
+}

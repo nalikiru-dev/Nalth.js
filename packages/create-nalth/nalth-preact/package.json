@@ -1,0 +1,28 @@
+{
+  "name": "nalth-preact-ts-starter",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "nalth",
+    "build": "tsc -b && nalth build",
+    "preview": "nalth preview",
+    "test": "nalth test",
+    "test:ui": "nalth test --ui",
+    "test:coverage": "nalth test --coverage",
+    "lint": "nalth lint",
+    "lint:fix": "nalth lint --fix",
+    "format": "nalth fmt",
+    "format:check": "nalth fmt --check",
+    "audit": "nalth audit",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "preact": "^10.27.0"
+  },
+  "devDependencies": {
+    "@preact/preset-vite": "^2.10.2",
+    "typescript": "~5.8.3",
+    "nalth": "^2.2.0"
+  }
+}

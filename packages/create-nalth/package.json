@@ -1,0 +1,77 @@
+{
+  "name": "create-nalth",
+  "version": "2.2.12",
+  "type": "module",
+  "license": "MIT",
+  "author": "Nalth Team <team@nalthjs.com>",
+  "description": "🛡️ Create secure, modern web applications with Nalth - Security-first unified toolchain with dev, build, test, lint, fmt, and secure package management all in one",
+  "bin": {
+    "create-nalth": "index.js",
+    "cva": "index.js"
+  },
+  "files": [
+    "index.js",
+    "dist",
+    "nalth-lit",
+    "nalth-preact",
+    "nalth-qwik",
+    "nalth-react",
+    "nalth-solid",
+    "nalth-svelte",
+    "nalth-vanilla",
+    "nalth-vue"
+  ],
+  "scripts": {
+    "dev": "tsdown --watch",
+    "build": "tsdown",
+    "typecheck": "tsc",
+    "prepublishOnly": "npm run build"
+  },
+  "engines": {
+    "node": "^20.19.0 || >=22.12.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nalikiru-dev/nalth.js.git",
+    "directory": "packages/create-nalth"
+  },
+  "bugs": {
+    "url": "https://github.com/nalikiru-dev/nalth.js/issues"
+  },
+  "homepage": "https://www.nalthjs.com",
+  "keywords": [
+    "nalth",
+    "security-first",
+    "unified-toolchain",
+    "https",
+    "csp",
+    "web-framework",
+    "vite",
+    "vitest",
+    "eslint",
+    "prettier",
+    "typescript",
+    "react",
+    "vue",
+    "svelte",
+    "enterprise-security",
+    "zero-config",
+    "scaffolding",
+    "template",
+    "cli",
+    "secure-development",
+    "secure-install",
+    "testing",
+    "linting",
+    "formatting"
+  ],
+  "dependencies": {
+    "@clack/prompts": "^0.11.0",
+    "cross-spawn": "^7.0.6",
+    "mri": "^1.2.0",
+    "picocolors": "^1.1.1"
+  },
+  "devDependencies": {
+    "tsdown": "^0.16.0"
+  }
+}

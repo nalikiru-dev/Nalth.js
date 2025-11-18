@@ -1,0 +1,39 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background circle with gradient -->
+  <circle cx="32" cy="32" r="32" fill="url(#gradient)"/>
+  
+  <!-- Shield shape -->
+  <path d="M32 8L48 16V28C48 40 40 50 32 56C24 50 16 40 16 28V16L32 8Z" fill="#ffffff" fill-opacity="0.95"/>
+  
+  <!-- Inner shield with security pattern -->
+  <path d="M32 12L44 18V28C44 38 38 46 32 50C26 46 20 38 20 28V18L32 12Z" fill="url(#innerGradient)"/>
+  
+  <!-- Lock icon in center -->
+  <rect x="28" y="26" width="8" height="10" rx="1" fill="#ffffff"/>
+  <path d="M30 26V24C30 22.9 30.9 22 32 22S34 22.9 34 24V26" stroke="#ffffff" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  <circle cx="32" cy="30" r="1.5" fill="#2563eb"/>
+  
+  <!-- N letter stylized -->
+  <path d="M24 40L26 40L30 44L30 40L32 40L32 48L30 48L26 44L26 48L24 48Z" fill="#ffffff" fill-opacity="0.9"/>
+  
+  <!-- Decorative security elements -->
+  <circle cx="20" cy="22" r="1" fill="#10b981" fill-opacity="0.7"/>
+  <circle cx="44" cy="22" r="1" fill="#10b981" fill-opacity="0.7"/>
+  <circle cx="20" cy="34" r="1" fill="#10b981" fill-opacity="0.7"/>
+  <circle cx="44" cy="34" r="1" fill="#10b981" fill-opacity="0.7"/>
+  
+  <defs>
+    <!-- Main gradient -->
+    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#1d4ed8;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1e40af;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Inner shield gradient -->
+    <linearGradient id="innerGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2563eb;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#1d4ed8;stop-opacity:0.9" />
+    </linearGradient>
+  </defs>
+</svg>

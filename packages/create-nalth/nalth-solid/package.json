@@ -1,0 +1,28 @@
+{
+  "name": "nalth-solid-typescript-starter",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "nalth dev",
+    "build": "tsc -b && nalth build",
+    "preview": "nalth preview",
+    "test": "nalth test",
+    "test:ui": "nalth test --ui",
+    "test:coverage": "nalth test --coverage",
+    "lint": "nalth lint",
+    "lint:fix": "nalth lint --fix",
+    "format": "nalth fmt",
+    "format:check": "nalth fmt --check",
+    "audit": "nalth audit",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "solid-js": "^1.8.5"
+  },
+  "devDependencies": {
+    "nalth": "^2.2.0",
+    "typescript": "^5.2.2",
+    "vite-plugin-solid": "^2.8.0"
+  }
+}
