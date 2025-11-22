@@ -263,8 +263,8 @@ importers:
         specifier: ^0.3.29
         version: 0.3.29
       '@oxc-project/types':
-        specifier: 0.97.0
-        version: 0.97.0
+        specifier: 0.98.0
+        version: 0.98.0
       '@polka/compression':
         specifier: ^1.0.0-next.25
         version: 1.0.0-next.25
