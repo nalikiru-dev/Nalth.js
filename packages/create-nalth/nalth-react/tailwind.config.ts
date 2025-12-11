@@ -19,44 +19,44 @@ const config: Config = {
     },
     extend: {
       colors: {
-        border: "hsl(var(--border))",
-        input: "hsl(var(--input))",
-        ring: "hsl(var(--ring))",
-        background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
+        border: "var(--nalth-glass-border)",
+        input: "var(--nalth-glass-border)",
+        ring: "var(--nalth-primary)",
+        background: "var(--nalth-bg-primary)",
+        foreground: "var(--nalth-text-primary)",
         primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
+          DEFAULT: "var(--nalth-primary)",
+          foreground: "#000000",
         },
         secondary: {
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
+          DEFAULT: "var(--nalth-secondary)",
+          foreground: "var(--nalth-text-primary)",
         },
         destructive: {
-          DEFAULT: "hsl(var(--destructive))",
-          foreground: "hsl(var(--destructive-foreground))",
+          DEFAULT: "var(--nalth-danger)",
+          foreground: "#ffffff",
         },
         muted: {
-          DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
+          DEFAULT: "var(--nalth-text-muted)",
+          foreground: "var(--nalth-text-secondary)",
         },
         accent: {
-          DEFAULT: "hsl(var(--accent))",
-          foreground: "hsl(var(--accent-foreground))",
+          DEFAULT: "var(--nalth-accent)",
+          foreground: "#000000",
         },
         popover: {
-          DEFAULT: "hsl(var(--popover))",
-          foreground: "hsl(var(--popover-foreground))",
+          DEFAULT: "var(--nalth-bg-card)",
+          foreground: "var(--nalth-text-primary)",
         },
         card: {
-          DEFAULT: "hsl(var(--card))",
-          foreground: "hsl(var(--card-foreground))",
+          DEFAULT: "var(--nalth-bg-card)",
+          foreground: "var(--nalth-text-primary)",
         },
       },
       borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
+        lg: "var(--nalth-radius-lg)",
+        md: "var(--nalth-radius-md)",
+        sm: "var(--nalth-radius-sm)",
       },
       keyframes: {
         "accordion-down": {
