@@ -1,1 +1,0 @@
-import './star-imports.ts'

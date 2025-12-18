@@ -28,18 +28,18 @@ export function SecurityBadge({ score = 95, className }: SecurityBadgeProps) {
   return (
     <div className={cn(
       'inline-flex items-center gap-3 px-4 py-2 rounded-lg border',
-      'bg-slate-900/50 border-slate-700 backdrop-blur-sm',
+      'bg-card/50 border-border backdrop-blur-sm shadow-lg',
       className
     )}>
-      <Shield className="w-5 h-5 text-blue-400" />
+      <Shield className="w-5 h-5 text-primary" />
       <div className="flex items-center gap-2">
-        <span className="text-sm font-medium text-slate-300">Security Score:</span>
+        <span className="text-sm font-medium text-muted-foreground">Security Score:</span>
         <span className={cn('text-lg font-bold', getScoreColor(score))}>
           {score}%
         </span>
         {getScoreIcon(score)}
       </div>
-      <span className="text-xs text-slate-400 bg-slate-800 px-2 py-1 rounded">
+      <span className="text-xs text-foreground bg-secondary/50 px-2 py-1 rounded border border-border">
         {getScoreLabel(score)}
       </span>
     </div>

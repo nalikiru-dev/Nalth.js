@@ -4,7 +4,7 @@
 @import './styles/nalth-design-system.css';
 
 :root {
-  font-family: var(--nalth-font-family);
+  font-family: var(--nalth-font-sans);
   line-height: 1.6;
   font-weight: 400;
   color-scheme: dark;
@@ -13,37 +13,22 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  /* Light theme variables */
-  --bg-primary: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-  --bg-secondary: #ffffff;
-  --text-primary: #1a202c;
-  --text-secondary: #4a5568;
-  --text-muted: #718096;
-  --border: #e2e8f0;
-  --accent: #3182ce;
-  --accent-hover: #2c5282;
-  --success: #38a169;
-  --warning: #d69e2e;
-  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  /* Map to Nalth Design System */
+  --bg-primary: var(--nalth-bg-primary);
+  --bg-secondary: var(--nalth-bg-secondary);
+  --text-primary: var(--nalth-text-primary);
+  --text-secondary: var(--nalth-text-secondary);
+  --text-muted: var(--nalth-text-muted);
+  --border: var(--nalth-glass-border);
+  --accent: var(--nalth-primary);
+  --accent-hover: var(--nalth-primary-dark);
+  --success: var(--nalth-primary);
+  --warning: var(--nalth-accent);
+  --shadow: var(--nalth-shadow-sm);
+  --shadow-lg: var(--nalth-shadow-lg);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg-primary: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
-    --bg-secondary: #2d3748;
-    --text-primary: #f7fafc;
-    --text-secondary: #e2e8f0;
-    --text-muted: #a0aec0;
-    --border: #4a5568;
-    --accent: #63b3ed;
-    --accent-hover: #90cdf4;
-    --success: #68d391;
-    --warning: #f6e05e;
-    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
-    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.3);
-  }
-}
+/* Remove dark mode media query as we are dark by default now */
 
 * {
   box-sizing: border-box;
@@ -472,19 +457,39 @@ body {
 
 /* Animations */
 @keyframes spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes pulse {
-  0%, 100% { opacity: 0.7; }
-  50% { opacity: 1; }
+
+  0%,
+  100% {
+    opacity: 0.7;
+  }
+
+  50% {
+    opacity: 1;
+  }
 }
 
 @keyframes gradient-shift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 /* Responsive Design */
@@ -492,38 +497,38 @@ body {
   .app {
     padding: 1rem;
   }
-  
+
   .title {
     font-size: 2rem;
   }
-  
+
   .subtitle {
     font-size: 1rem;
   }
-  
+
   .logo {
     height: 4rem;
     width: 4rem;
   }
-  
+
   .plus {
     font-size: 2rem;
   }
-  
+
   .features-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .action-buttons {
     flex-direction: column;
     align-items: center;
   }
-  
+
   .btn {
     width: 100%;
     max-width: 280px;
   }
-  
+
   .footer-links {
     flex-direction: column;
     gap: 1rem;

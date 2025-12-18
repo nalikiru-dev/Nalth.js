@@ -199,22 +199,20 @@ Now that you have NALTH running, here's what to explore next:
 - Open the **Security Dashboard** at `https://localhost:3000/__nalth`
 - View real-time security metrics and monitoring
 - Test CSP violation detection
-- Run security audits with `npm run security:audit`
+- Run security audits with `nalth audit`
 
 ### 📖 Learn Core Concepts
-- [Core Concepts](./core-concepts.md) - Understand NALTH's architecture
+- [Core Concepts](../NALTH_SECURITY.md) - Understand NALTH's architecture
 - [Security Features](../security/overview.md) - Deep dive into security capabilities
-- [Configuration Guide](./configuration.md) - Customize NALTH for your needs
+- [Configuration Guide](#configuration) - Customize NALTH for your needs
 
 ### 🎯 Build Something Real
 - [React Security App Example](../examples/react-security.md)
-- [Vue.js Enterprise Example](../examples/vue-enterprise.md)
-- [Full-Stack Security Tutorial](../examples/full-stack.md)
+- [Enterprise Security Tutorial](../NALTH_SECURITY.md)
 
 ### 🏢 Enterprise Features
-- [OWASP Compliance](../security/owasp.md)
-- [Production Deployment](./deployment.md)
-- [Monitoring & Alerting](./monitoring.md)
+- [OWASP Compliance](../NALTH_SECURITY.md)
+- [Security Status](../CSP_IMPLEMENTATION_STATUS.md)
 
 ## 📊 Security Dashboard Overview
 
@@ -314,13 +312,13 @@ npm run dev -- --port 3001
 Congratulations! You now have a secure, production-ready web application running with NALTH. The security features are working behind the scenes to protect your application while you focus on building great features.
 
 **What's Next?**
-- [Learn about Core Concepts](./core-concepts.md)
+- [Learn about Core Concepts](../NALTH_SECURITY.md)
 - [Explore Security Features](../security/overview.md)  
-- [Build a Real Application](../examples/overview.md)
-- [Deploy to Production](./deployment.md)
+- [Build a Real Application](../examples/react-security.md)
+- [CLI Reference](../reference/cli.md)
 
 ---
 
-**Need help?** Check out our [FAQ](./faq.md) or join the [NALTH community](https://discord.gg/nalth) for support and discussions.
+**Need help?** Check out our [CLI reference](../reference/cli.md) or join the [NALTH community](https://discord.gg/nalth) for support and discussions.
 
 **NALTH**: Where Security Meets Speed. 🛡️⚡

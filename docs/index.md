@@ -13,48 +13,48 @@ Welcome to NALTH, the world's first security-first web development framework. Bu
 ### [🏁 Getting Started](./guide/getting-started.md)
 **New to NALTH?** Start here! Learn how to create your first secure application in under 2 minutes.
 
-- [Installation](./guide/installation.md)
-- [Your First Project](./guide/first-project.md)
+- [Installation](./guide/getting-started.md#⚡-quick-start)
+- [Your First Project](./guide/getting-started.md#1-create-your-project)
 - [CLI Reference](./reference/cli.md)
 
 ### [🔧 Configuration](./guide/configuration.md)
 **Customize your security.** Learn how to configure NALTH for your specific security requirements.
 
-- [Security Configuration](./guide/security-config.md)
-- [HTTPS Setup](./guide/https-setup.md)
-- [Environment Variables](./reference/env-variables.md)
+- [Security Configuration](./guide/getting-started.md#configuration)
+- [HTTPS Setup](./guide/getting-started.md#security-features)
+- [Environment Variables](./reference/cli.md)
 
 ### [🛡️ Security Features](./security/overview.md)
 **Enterprise-grade protection.** Explore NALTH's comprehensive security features and best practices.
 
-- [HTTPS by Default](./security/https.md)
-- [Content Security Policy](./security/csp.md)
-- [Security Headers](./security/headers.md)
-- [Vulnerability Scanning](./security/auditing.md)
+- [HTTPS by Default](./guide/getting-started.md#security-features)
+- [Content Security Policy](./CSP_SECURITY_GUIDE.md)
+- [Security Headers](./security/overview.md)
+- [Vulnerability Scanning](./security/overview.md)
 
 ### [📚 API Reference](./api/overview.md)
 **Complete API documentation.** Detailed reference for all NALTH APIs, plugins, and configuration options.
 
-- [Configuration API](./api/config.md)
-- [Security API](./api/security.md)
-- [Plugin API](./api/plugins.md)
-- [Build API](./api/build.md)
+- [Configuration API](./guide/getting-started.md#configuration)
+- [Security API](./security/overview.md)
+- [Plugin API](./api/overview.md)
+- [Build API](./api/overview.md)
 
 ### [🎯 Examples](./examples/overview.md)
 **Learn by doing.** Real-world examples and templates for common use cases.
 
 - [React Security App](./examples/react-security.md)
-- [Vue.js Enterprise](./examples/vue-enterprise.md)
-- [Node.js API Security](./examples/node-api.md)
-- [Full-Stack Security](./examples/full-stack.md)
+- [Vue.js Enterprise](./guide/getting-started.md#🟢-vuejs-template-nalth-vue)
+- [Node.js API Security](./NALTH_SECURITY.md)
+- [Full-Stack Security](./NALTH_SECURITY.md)
 
 ### [🏢 Enterprise](./guide/enterprise.md)
 **Production-ready security.** Advanced features for enterprise environments and compliance.
 
-- [OWASP Compliance](./security/owasp.md)
-- [SOC2 Guidelines](./security/soc2.md)
-- [GDPR Compliance](./security/gdpr.md)
-- [Monitoring & Alerts](./guide/monitoring.md)
+- [OWASP Compliance](./NALTH_SECURITY.md)
+- [SOC2 Guidelines](./NALTH_SECURITY.md)
+- [GDPR Compliance](./NALTH_SECURITY.md)
+- [Monitoring & Alerts](./guide/getting-started.md#📊-security-dashboard-overview)
 
 </div>
 

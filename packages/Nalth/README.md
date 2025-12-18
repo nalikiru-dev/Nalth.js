@@ -96,9 +96,29 @@ nalth lib          # Build libraries
 nalth audit        # Security audit
 ```
 
+### 🛡️ **Built-in Security Primitives**
+
+**Prevents SQL Injection:**
+```typescript
+import { sql } from 'nalth'
+
+// ✅ Safe: Automatically parameterized
+const user = await db.query(sql`SELECT * FROM users WHERE id = ${req.params.id}`)
+```
+
+**Prevents SSRF:**
+```typescript
+import { safeFetch } from 'nalth'
+
+// ✅ Safe: Blocks requests to private/internal IPs
+const data = await safeFetch(userProvidedUrl)
+```
+
 ### 🔒 **Enterprise-Grade Protection**
 
 - **OWASP Top 10 Protection** - Built-in defenses against the most critical security risks
+- **SQL Injection Prevention** - Safe-by-default SQL query builder with tagged templates
+- **SSRF Protection** - Smart fetch wrapper that validates destination IPs against internal networks
 - **Real-time Security Dashboard** - Monitor threats and security posture in real-time
 - **Automated Vulnerability Scanning** - Continuous dependency and code security auditing
 - **Compliance Ready** - SOC2, GDPR, and enterprise security standards support

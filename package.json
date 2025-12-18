@@ -6,9 +6,8 @@
     "node": "^20.19.0 || >=22.12.0"
   },
   "workspaces": [
-  "packages/*"
-],
-
+    "packages/*"
+  ],
   "homepage": "https://www.nalthjs.com",
   "repository": {
     "type": "git",
@@ -90,13 +89,10 @@
     ],
     "packages/**/*.d.ts": [
       "eslint --cache --fix"
-    ],
-    "playground/**/__tests__/**/*.ts": [
-      "eslint --cache --fix"
     ]
   },
   "packageManager": "pnpm@10.22.0",
   "stackblitz": {
-    "startCommand": "pnpm --filter='./packages/vite' run dev"
+    "startCommand": "pnpm --filter='nalth' run dev"
   }
 }

@@ -1,34 +1,354 @@
-![Nalth - Security-First Unified Toolchain](./1.jpg)
+![banner](./banner.png)
 
-# 🛡️ NALTH.JS  
-**The Security‑First Web Framework**
+# Nalth.JS
 
-Welcome to NALTH, the world’s first security‑first web development framework. Built on TypeScript and powered by a security‑enhanced Vite.js foundation, NALTH makes enterprise‑grade security effortless while maintaining lightning‑fast development speeds.
+**The Security-First Unified Toolchain for the Web**
+
+Welcome to NALTH, the world's first security-first web development framework. Built on TypeScript and powered by a security-enhanced Vite.js foundation, NALTH makes enterprise-grade security effortless while maintaining lightning-fast development speeds.
+
+**Now with Vite+ Inspired Features:** Everything you need in one unified toolchain - dev, build, test, lint, fmt, run, ui, and lib commands - all with security-first enhancements.
 
 ---
 
 ## 🚀 Quick Navigation
 
-<div class="grid grid‑cols‑1 md:grid‑cols‑2 lg:grid‑cols‑3 gap‑6 my‑8">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 my-8">
 
-### [🏁 Getting Started](https://www.nalthjs.com/docs#quick‑start)  
-**New to NALTH?** Start here! Learn how to create your first secure application in under 2 minutes.
+### [🏁 Getting Started](./docs/guide/getting-started.md)
 
-- [Installation](https://www.nalthjs.com/docs#installation)  
-- [Your First Project](https://www.nalthjs.com/docs#first‑project)  
-- [CLI Reference](https://www.nalthjs.com/docs#cli)
+**New to NALTH?** Start here! Learn how to create your first secure application in under 2 minutes.
 
-### [🔧 Configuration](https://www.nalthjs.com/docs#configuration)  
-Learn how to configure NALTH for your project — security options, environment setup, plugins, etc.
+- [Installation](./docs/guide/getting-started.md#⚡-quick-start)
+- [Your First Project](./docs/guide/getting-started.md#1-create-your-project)
+- [CLI Reference](./docs/reference/cli.md)
 
-### [🔄 Migration Guide](https://www.nalthjs.com/docs#migration‑guide)  
-Upgrade from earlier versions seamlessly: what changed, how to migrate, breaking changes.
+### [🔧 Configuration](./docs/guide/getting-started.md#configuration)
 
-### [📚 API Reference](https://www.nalthjs.com/docs#api‑reference)  
-Explore the full API surface of NALTH: classes, methods, config options.
+**Customize your security.** Learn how to configure NALTH for your specific security requirements.
 
-### [🧠 Best Practices](https://www.nalthjs.com/docs#best‑practices)  
-Secure architecture, threat modelling, performance tuning and production readiness.
+- [Security Configuration](./docs/guide/getting-started.md#configuration)
+- [HTTPS Setup](./docs/guide/getting-started.md#security-features)
+- [Environment Variables](./docs/reference/cli.md)
+
+### [🛡️ Security Features](./docs/security/overview.md)
+
+**Enterprise-grade protection.** Explore NALTH's comprehensive security features and best practices.
+
+- [HTTPS by Default](./docs/guide/getting-started.md#security-features)
+- [Content Security Policy](./docs/CSP_SECURITY_GUIDE.md)
+- [Security Headers](./docs/security/overview.md)
+- [Vulnerability Scanning](./docs/security/overview.md)
+
+### [📚 API Reference](./docs/api/overview.md)
+
+**Complete API documentation.** Detailed reference for all NALTH APIs, plugins, and configuration options.
+
+- [Configuration API](./docs/guide/getting-started.md#configuration)
+- [Security API](./docs/security/overview.md)
+- [Plugin API](./docs/api/overview.md)
+- [Build API](./docs/api/overview.md)
+
+### [🎯 Examples](./docs/examples/react-security.md)
+
+**Learn by doing.** Real-world examples and templates for common use cases.
+
+- [React Security App](./docs/examples/react-security.md)
+- [Vue.js Enterprise](./docs/guide/getting-started.md#🟢-vuejs-template-nalth-vue)
+- [Node.js API Security](./docs/NALTH_SECURITY.md)
+- [Full-Stack Security](./docs/NALTH_SECURITY.md)
+
+### [🏢 Enterprise](./docs/NALTH_SECURITY.md)
+
+**Production-ready security.** Advanced features for enterprise environments and compliance.
+
+- [OWASP Compliance](./docs/NALTH_SECURITY.md)
+- [SOC2 Guidelines](./docs/NALTH_SECURITY.md)
+- [GDPR Compliance](./docs/NALTH_SECURITY.md)
+- [Monitoring & Alerts](./docs/guide/getting-started.md#📊-security-dashboard-overview)
 
 </div>
+
+---
+
+## 🌟 What Makes NALTH Special?
+
+### ⚡ **Unified Toolchain with Security-First Approach**
+
+```bash
+# Create a secure app with one command
+npx create-nalth my-secure-app --template nalth-react
+
+# Security features work out of the box:
+# ✅ HTTPS with auto-generated certificates
+# ✅ Content Security Policy auto-generation
+# ✅ Security headers configuration
+# ✅ Real-time vulnerability scanning
+
+# Complete development workflow in one tool:
+nalth dev          # Start dev server
+nalth build        # Production build
+nalth test         # Run tests with Vitest
+nalth lint         # Lint with ESLint + security checks
+nalth fmt          # Format with Prettier
+nalth run build    # Run tasks with smart caching
+nalth ui           # Open advanced devtools
+nalth lib          # Build libraries
+nalth audit        # Security audit
+```
+
+### 🛡️ **Built-in Security Primitives**
+
+**Prevents SQL Injection:**
+```typescript
+import { sql } from 'nalth'
+
+// ✅ Safe: Automatically parameterized
+const user = await db.query(sql`SELECT * FROM users WHERE id = ${req.params.id}`)
+```
+
+**Prevents SSRF:**
+```typescript
+import { safeFetch } from 'nalth'
+
+// ✅ Safe: Blocks requests to private/internal IPs
+const data = await safeFetch(userProvidedUrl)
+```
+
+### 🔒 **Enterprise-Grade Protection**
+
+- **OWASP Top 10 Protection** - Built-in defenses against the most critical security risks
+- **SQL Injection Prevention** - Safe-by-default SQL query builder with tagged templates
+- **SSRF Protection** - Smart fetch wrapper that validates destination IPs against internal networks
+- **Real-time Security Dashboard** - Monitor threats and security posture in real-time
+- **Automated Vulnerability Scanning** - Continuous dependency and code security auditing
+- **Compliance Ready** - SOC2, GDPR, and enterprise security standards support
+
+### 🚀 **Developer Experience First**
+
+- **100% Vite.js Compatibility** - All existing Vite plugins and configurations work unchanged
+- **TypeScript Native** - Full type safety with comprehensive TypeScript support
+- **Hot Reload with Security** - Lightning-fast development with security monitoring
+- **Beautiful Security UI** - Professional security dashboards and monitoring interfaces
+
+### 🛠️ **Complete Unified Toolchain**
+
+All the tools you need in one command-line interface:
+
+#### Development & Build
+- `nalth dev` - Start dev server with HTTPS
+- `nalth build` - Production build with security optimizations
+- `nalth preview` - Preview production build
+
+#### Testing & Quality
+- `nalth test` - Run tests with Vitest (Jest-compatible API)
+- `nalth test --ui` - Open interactive test UI
+- `nalth test --coverage` - Generate coverage reports
+- `nalth test --security` - Security-enhanced testing
+
+#### Code Quality
+- `nalth lint` - ESLint with security plugins (100x faster potential with Oxlint)
+- `nalth lint --fix` - Auto-fix issues
+- `nalth lint --security` - Security-focused linting
+- `nalth fmt` - Format with Prettier
+- `nalth fmt --check` - Check formatting in CI
+
+#### Task Runner
+- `nalth run <task>` - Smart task runner with caching (Turborepo/Nx alternative)
+- `nalth run build --cache` - Cached task execution
+- `nalth run test --parallel` - Parallel task execution
+
+#### Library Development
+- `nalth lib` - Build libraries with best practices
+- `nalth lib --watch` - Watch mode for libraries
+- DTS generation & bundling included
+
+#### Security-First Package Management
+- `nalth install <package>` - **Secure package installation**
+  - ✅ Typosquatting detection
+  - ✅ Malicious package scanning
+  - ✅ Pre-installation vulnerability checks
+  - ✅ License compliance verification
+  - ✅ Post-installation audits
+  - ✅ Package integrity verification
+- `nalth audit` - Comprehensive security audit
+- `nalth security:report` - Generate security reports
+- `nalth security:scan <package>` - Scan specific packages
+
+#### Developer Tools
+- `nalth ui` - Advanced GUI devtools
+- Transform pipeline inspector
+- Module dependency graph visualization
+- Bundle analyzer
+
+### 📊 **Real-Time Security Monitoring**
+
+- **Interactive Security Dashboard** - Live metrics and threat visualization
+- **CSP Violation Tracking** - Real-time Content Security Policy monitoring
+- **Dependency Audit Alerts** - Instant notifications for vulnerable dependencies
+- **Security Event Logging** - Comprehensive audit trails and security events
+
+---
+
+## 🚀 Quick Start
+
+```bash
+# Install Nalth
+npm install -g nalth
+
+# Create a new secure project
+npx create-nalth my-secure-app
+cd my-secure-app
+
+# Initialize all tooling
+nalth test:init
+nalth lint:init
+nalth fmt:init
+nalth security:init
+
+# Start development
+nalth dev
+
+# In another terminal - run tests
+nalth test
+
+# Install packages securely
+nalth install axios react-query
+
+# Run security audit
+nalth audit
+
+# Format code
+nalth fmt
+
+# Lint with security checks
+nalth lint --security
+
+# Build for production
+nalth build
+
+# Preview production build
+nalth preview
+```
+
+## 📖 Documentation Sections
+
+### 🎓 **Learning Path**
+
+**Beginner → Intermediate → Advanced**
+
+1. **[Getting Started](./docs/guide/getting-started.md)** - Install NALTH and create your first secure app
+2. **[Core Concepts](./docs/NALTH_SECURITY.md)** - Understand NALTH's security-first architecture
+3. **[Security Features](./docs/security/overview.md)** - Learn about built-in security protections
+4. **[Configuration Guide](./docs/guide/getting-started.md#configuration)** - Customize NALTH for your needs
+5. **[Plugin Development](./docs/api/overview.md)** - Build security-focused plugins
+6. **[Production Deployment](./docs/NALTH_SECURITY.md)** - Deploy secure applications to production
+
+### 🎯 **By Use Case**
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
+
+#### **Frontend Applications**
+
+- [React + Security](./docs/examples/react-security.md)
+- [Vue.js Enterprise](./docs/guide/getting-started.md#🟢-vuejs-template-nalth-vue)
+- [Svelte Security](./docs/guide/getting-started.md#🎯-available-templates)
+- [Vanilla TypeScript](./docs/guide/getting-started.md#🟡-vanilla-typescript-template-nalth-vanilla)
+
+#### **Full-Stack Applications**
+
+- [Node.js API Security](./docs/NALTH_SECURITY.md)
+- [Express.js + NALTH](./docs/NALTH_SECURITY.md)
+- [Authentication & Authorization](./docs/NALTH_SECURITY.md)
+- [Database Security](./docs/NALTH_SECURITY.md)
+
+#### **Enterprise Features**
+
+- [Multi-tenant Security](./docs/NALTH_SECURITY.md)
+- [Microservices Security](./docs/NALTH_SECURITY.md)
+- [CI/CD Security Pipeline](./docs/NALTH_SECURITY.md)
+- [Monitoring & Alerting](./docs/guide/getting-started.md#📊-security-dashboard-overview)
+
+</div>
+
+### 🛡️ **Security-First Architecture**
+
+```mermaid
+graph TB
+    A[NALTH Core] --> B[Security Middleware]
+    A --> C[Build Pipeline]
+    A --> D[Dev Server]
+
+    B --> E[HTTPS Handler]
+    B --> F[CSP Generator]
+    B --> G[Security Headers]
+    B --> H[Vulnerability Scanner]
+
+    C --> I[Asset Security]
+    C --> J[Bundle Analysis]
+    C --> K[SRI Generation]
+
+    D --> L[Real-time Monitoring]
+    D --> M[Security Dashboard]
+    D --> N[Hot Reload + Security]
+```
+
+---
+
+## 🆘 Need Help?
+
+### 📞 **Support Channels**
+
+- **[GitHub Issues](https://github.com/nalikiru-dev/nalth.js/issues)** - Bug reports and feature requests
+- **[Discussions](https://github.com/nalikiru-dev/nalth.js/discussions)** - Community support and questions
+- **[Discord Server](https://discord.gg/nalth)** - Real-time community chat
+- **[Stack Overflow](https://stackoverflow.com/questions/tagged/nalth)** - Technical Q&A with `nalth` tag
+
+### 📚 **Additional Resources**
+
+- **[Migration Guide](./docs/guide/getting-started.md#⚡-quick-start)** - Moving from Vite.js or other build tools
+- **[Troubleshooting](./docs/guide/getting-started.md#🆘-troubleshooting)** - Common issues and solutions
+- **[FAQ](./docs/guide/getting-started.md#🎉-youre-ready)** - Frequently asked questions
+- **[Changelog](./packages/Nalth/CHANGELOG.md)** - Version history and updates
+
+### 🔐 **Security Resources**
+
+- **[Security Policy](https://github.com/nalikiru-dev/nalth.js/security/policy)** - Vulnerability reporting
+- **[Security Advisories](./docs/security/overview.md)** - Security updates and alerts
+- **[Best Practices](./docs/guide/getting-started.md#🛡️-security-best-practices)** - Security implementation guidelines
+- **[Compliance Guides](./docs/NALTH_SECURITY.md)** - Industry standards and regulations
+
+---
+
+## 🤝 Contributing
+
+NALTH is open source and we welcome contributions! Check out our:
+
+- **[Contributing Guide](./CONTRIBUTING.md)** - How to contribute to NALTH
+- **[Code of Conduct](./CODE_OF_CONDUCT.md)** - Community guidelines
+- **[Development Setup](./docs/guide/getting-started.md)** - Setting up the development environment
+- **[Architecture Guide](./docs/NALTH_SECURITY.md)** - Understanding NALTH's internals
+
+---
+
+## 📄 License
+
+NALTH is [MIT licensed](../LICENSE) - the same as Vite.js to maintain ecosystem compatibility.
+
+---
+
+<div class="text-center my-12">
+  <h2>🚀 Ready to Build Secure Applications?</h2>
+  <p class="text-lg text-gray-600 mb-6">
+    Join thousands of developers who trust NALTH for enterprise-grade security
+  </p>
+  
+  <div class="flex justify-center gap-4">
+    <a href="./docs/guide/getting-started.md" class="btn-primary">Get Started</a>
+    <a href="./docs/examples/react-security.md" class="btn-secondary">View Examples</a>
+    <a href="https://github.com/nalikiru-dev/nalth.js" class="btn-outline">GitHub</a>
+  </div>
+</div>
+
+---
+
 **NALTH**: Where Security Meets Speed. Built for the modern web. 🛡️⚡
