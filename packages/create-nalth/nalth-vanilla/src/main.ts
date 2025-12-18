@@ -13,7 +13,7 @@ class SecurityMetrics {
     https: 100,
     csp: 98,
     headers: 96,
-    monitoring: 94
+    monitoring: 94,
   }
 
   getOverallScore(): number {
@@ -27,9 +27,12 @@ class SecurityMetrics {
 
   updateMetrics() {
     // Simulate real-time updates
-    Object.keys(this.metrics).forEach(key => {
+    Object.keys(this.metrics).forEach((key) => {
       const current = this.metrics[key as keyof typeof this.metrics]
-      this.metrics[key as keyof typeof this.metrics] = Math.max(85, Math.min(100, current + (Math.random() - 0.5) * 2))
+      this.metrics[key as keyof typeof this.metrics] = Math.max(
+        85,
+        Math.min(100, current + (Math.random() - 0.5) * 2),
+      )
     })
   }
 }
@@ -41,7 +44,7 @@ const dashboard = new SecurityDashboard(securityMetrics)
 function createApp(): string {
   const overallScore = securityMetrics.getOverallScore()
   const metrics = securityMetrics.getMetrics()
-  
+
   return `
     <div class="app">
       <!-- Header -->
@@ -183,7 +186,7 @@ function createApp(): string {
             <a href="https://www.nalthjs.com/docs" target="_blank" rel="noopener noreferrer">
               📚 Documentation
             </a>
-            <a href="https://github.com/nalth/nalth" target="_blank" rel="noopener noreferrer">
+            <a href="https://github.com/nalikiru-dev/nalth.js" target="_blank" rel="noopener noreferrer">
               🔧 GitHub
             </a>
             <a href="https://www.nalthjs.com/security" target="_blank" rel="noopener noreferrer">
@@ -240,21 +243,21 @@ function setupEventHandlers() {
 function updateUI() {
   const metrics = securityMetrics.getMetrics()
   const overallScore = securityMetrics.getOverallScore()
-  
+
   // Update score display
   const scoreNumber = document.querySelector('.score-number')
   const scoreFill = document.querySelector('.score-fill')
-  
+
   if (scoreNumber) scoreNumber.textContent = `${overallScore}/100`
   if (scoreFill) (scoreFill as HTMLElement).style.width = `${overallScore}%`
-  
+
   // Update individual metrics
   const progressBars = document.querySelectorAll('.progress-bar')
   const statusElements = document.querySelectorAll('.feature-status')
-  
+
   Object.values(metrics).forEach((value, index) => {
     if (progressBars[index]) {
-      (progressBars[index] as HTMLElement).style.width = `${value}%`
+      ;(progressBars[index] as HTMLElement).style.width = `${value}%`
     }
     if (statusElements[index]) {
       statusElements[index].textContent = `${Math.round(value)}%`
@@ -267,7 +270,9 @@ function runSecurityAudit() {
   // Simulate audit
   setTimeout(() => {
     console.log('✅ Security Audit Complete - No vulnerabilities found')
-    alert('🛡️ Security Audit Complete!\n\n✅ HTTPS: Enabled\n✅ CSP: Enforced\n✅ Headers: Configured\n✅ Dependencies: Secure')
+    alert(
+      '🛡️ Security Audit Complete!\n\n✅ HTTPS: Enabled\n✅ CSP: Enforced\n✅ Headers: Configured\n✅ Dependencies: Secure',
+    )
   }, 2000)
 }
 
