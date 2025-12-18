@@ -212,7 +212,7 @@ function getImportBindings(
 }
 
 function getAllImportBindings(ast: Program): ImportBindings[] {
-  return ast.body.flatMap((node) => getImportBindings(node) ?? [])
+  return (ast as any).body.flatMap((node: any) => getImportBindings(node) ?? [])
 }
 
 /**

@@ -46,154 +46,83 @@ function createApp(): string {
   const metrics = securityMetrics.getMetrics()
 
   return `
-    <div class="app">
-      <!-- Header -->
-      <header class="header">
-        <div class="logo-container">
-          <a href="https://www.nalthjs.com" target="_blank" rel="noopener noreferrer" class="logo-link">
-            <img src="${nalthLogo}" class="logo nalth-logo" alt="Nalth logo" />
+    <div id="app">
+      <!-- Navbar -->
+      <nav class="app-header">
+        <div class="logo-group">
+          <a href="https://nalthjs.com" target="_blank" rel="noopener">
+            <img src="${nalthLogo}" class="logo" alt="Nalth Logo" />
           </a>
-          <div class="plus">+</div>
-          <a href="https://www.typescriptlang.org/" target="_blank" rel="noopener noreferrer" class="logo-link">
-            <img src="${typescriptLogo}" class="logo ts-logo" alt="TypeScript logo" />
+          <span style="font-size: 1.5rem; color: var(--glass-border)">/</span>
+          <a href="https://www.typescriptlang.org/" target="_blank" rel="noopener">
+            <img src="${typescriptLogo}" class="logo" alt="TypeScript Logo" style="height: 2rem" />
           </a>
         </div>
+        <div style="display: flex; gap: 1rem; align-items: center">
+          <span class="badge security">● System Secure</span>
+          <a href="https://github.com/nalikiru-dev/nalth.js" target="_blank" class="nalth-btn secondary" style="padding: 0.5rem 1rem">
+            GitHub
+          </a>
+        </div>
+      </nav>
+
+      <!-- Hero Section -->
+      <main class="hero-section">
+        <div class="badge security" style="margin-bottom: 1.5rem">Enterprise Security Framework</div>
+        <h1 class="hero-title">
+          Build <span class="title-gradient">Unbreakable</span><br />
+          Web Applications
+        </h1>
+        <p class="hero-subtitle">
+          Nalth combines rust-based tooling with enterprise-grade security defaults.
+          Zero-config policies, automated audits, and instant deployments.
+        </p>
         
-        <div class="header-content">
-          <div class="badges">
-            <span class="badge security">✨ v2.1.0</span>
-            <span class="badge success">Enterprise Ready</span>
-          </div>
-          <h1 class="title">
-            🛡️ NALTH + TypeScript
-          </h1>
-          <p class="subtitle">
-            Security-first web development with zero-config HTTPS,<br>
-            enterprise-grade protection, and TypeScript power
-          </p>
-        </div>
-      </header>
-
-      <!-- Security Score -->
-      <section class="security-score">
-        <div class="score-card">
-          <div class="score-header">
-            <span class="score-icon">✅</span>
-            <h2>Overall Security Score</h2>
-          </div>
-          <div class="score-display">
-            <span class="score-number">${overallScore}/100</span>
-            <div class="score-bar">
-              <div class="score-fill" style="width: ${overallScore}%"></div>
-            </div>
-          </div>
-          <div class="score-status">
-            <span class="status-badge excellent">🛡️ Excellent Security Posture</span>
-          </div>
-        </div>
-      </section>
-
-      <!-- Security Features -->
-      <section class="features">
-        <h2 class="features-title">🔒 Security Features</h2>
-        <div class="features-grid">
-          <div class="feature-card">
-            <div class="feature-header">
-              <span class="feature-icon">🔒</span>
-              <h3>HTTPS/TLS</h3>
-              <span class="feature-status active">${Math.round(metrics.https)}%</span>
-            </div>
-            <p>All connections encrypted with TLS 1.3</p>
-            <div class="feature-progress">
-              <div class="progress-bar" style="width: ${metrics.https}%"></div>
-            </div>
-          </div>
-          
-          <div class="feature-card">
-            <div class="feature-header">
-              <span class="feature-icon">🛡️</span>
-              <h3>Content Security Policy</h3>
-              <span class="feature-status active">${Math.round(metrics.csp)}%</span>
-            </div>
-            <p>Strict CSP with nonce-based script loading</p>
-            <div class="feature-progress">
-              <div class="progress-bar" style="width: ${metrics.csp}%"></div>
-            </div>
-          </div>
-          
-          <div class="feature-card">
-            <div class="feature-header">
-              <span class="feature-icon">🔧</span>
-              <h3>Security Headers</h3>
-              <span class="feature-status active">${Math.round(metrics.headers)}%</span>
-            </div>
-            <p>All recommended security headers active</p>
-            <div class="feature-progress">
-              <div class="progress-bar" style="width: ${metrics.headers}%"></div>
-            </div>
-          </div>
-          
-          <div class="feature-card">
-            <div class="feature-header">
-              <span class="feature-icon">👁️</span>
-              <h3>Real-time Monitoring</h3>
-              <span class="feature-status active">${Math.round(metrics.monitoring)}%</span>
-            </div>
-            <p>Active threat detection and logging</p>
-            <div class="feature-progress">
-              <div class="progress-bar" style="width: ${metrics.monitoring}%"></div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Action Buttons -->
-      <section class="actions">
-        <div class="action-buttons">
-          <button id="audit-btn" class="btn primary">
-            <span class="btn-icon">🔍</span>
-            Run Security Audit
+        <div style="display: flex; gap: 1rem; justify-content: center; margin-bottom: 4rem">
+          <button id="dashboard-btn" class="nalth-btn primary">
+            Explore Dashboard
           </button>
-          <button id="dashboard-btn" class="btn secondary">
-            <span class="btn-icon">📊</span>
-            Open Dashboard
-          </button>
-          <button id="docs-btn" class="btn outline">
-            <span class="btn-icon">📚</span>
-            Documentation
+          <button id="docs-btn" class="nalth-btn secondary">
+            Read Documentation
           </button>
         </div>
-        
-        <div class="dev-info">
-          <p class="dev-text">
-            🔥 <strong>Hot Module Replacement:</strong> Edit any file and see changes instantly
-          </p>
-          <code class="dev-path">src/main.ts</code>
-          <p class="security-note">
-            All changes are monitored for security violations in real-time
-          </p>
+
+        <!-- Security Dashboard Grid -->
+        <div class="dashboard-grid">
+          <!-- Overall Score -->
+          <div class="glass-panel feature-card">
+            <span class="feature-icon">🛡️</span>
+            <h3>Security Score</h3>
+            <div class="metric-value">${overallScore}/100</div>
+            <p style="color: var(--text-secondary)">Real-time heuristic analysis</p>
+          </div>
+
+          <!-- HTTPS Status -->
+          <div class="glass-panel feature-card">
+            <span class="feature-icon">🔒</span>
+            <h3>Encryption</h3>
+            <div class="metric-value" style="color: var(--accent-success)">TLS 1.3</div>
+            <p style="color: var(--text-secondary)">Zero-config auto-cert generation</p>
+          </div>
+
+          <!-- Active Policies -->
+          <div class="glass-panel feature-card">
+            <span class="feature-icon">⚡</span>
+            <h3>Active Policies</h3>
+            <div class="metric-value" style="color: var(--secondary-neon)">12</div>
+            <p style="color: var(--text-secondary)">CSP, HSTS, and Frame-Options active</p>
+          </div>
         </div>
-      </section>
+      </main>
 
       <!-- Footer -->
-      <footer class="footer">
-        <div class="footer-content">
-          <div class="footer-brand">
-            <img src="${nalthLogo}" class="footer-logo" alt="Nalth" />
-            <span>Built with ❤️ using NALTH's security-first approach</span>
-          </div>
-          <div class="footer-links">
-            <a href="https://www.nalthjs.com/docs" target="_blank" rel="noopener noreferrer">
-              📚 Documentation
-            </a>
-            <a href="https://github.com/nalikiru-dev/nalth.js" target="_blank" rel="noopener noreferrer">
-              🔧 GitHub
-            </a>
-            <a href="https://www.nalthjs.com/security" target="_blank" rel="noopener noreferrer">
-              🛡️ Security Guide
-            </a>
-          </div>
+      <footer class="app-footer">
+        <div class="footer-links">
+          <a href="#" class="footer-link">Documentation</a>
+          <a href="#" class="footer-link">Security Guide</a>
+          <a href="#" class="footer-link">API Reference</a>
         </div>
+        <p>&copy; ${new Date().getFullYear()} NMS (Nalth Management System). Open Source Software.</p>
       </footer>
     </div>
   `
@@ -257,7 +186,7 @@ function updateUI() {
 
   Object.values(metrics).forEach((value, index) => {
     if (progressBars[index]) {
-      ;(progressBars[index] as HTMLElement).style.width = `${value}%`
+      ; (progressBars[index] as HTMLElement).style.width = `${value}%`
     }
     if (statusElements[index]) {
       statusElements[index].textContent = `${Math.round(value)}%`

@@ -15,6 +15,7 @@
     "format": "nalth fmt",
     "format:check": "nalth fmt --check",
     "audit": "nalth audit",
+    "report": "nalth report",
     "typecheck": "vue-tsc --noEmit"
   },
   "dependencies": {

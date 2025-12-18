@@ -23,7 +23,7 @@ export async function testCommand(
   options: TestCommandOptions = {}
 ) {
   const projectPath = process.cwd()
-  
+
   console.log(colors.cyan('🧪 Running Nalth Test Suite...\n'))
 
   // Check if vitest is installed
@@ -34,8 +34,8 @@ export async function testCommand(
   }
 
   const packageJson = require(packageJsonPath)
-  const hasVitest = 
-    packageJson.dependencies?.vitest || 
+  const hasVitest =
+    packageJson.dependencies?.vitest ||
     packageJson.devDependencies?.vitest
 
   if (!hasVitest) {
@@ -125,18 +125,20 @@ export async function testCommand(
   // Security-enhanced testing
   if (options.security) {
     console.log(colors.cyan('🔒 Running security-enhanced tests...\n'))
-    
+
     // Add security test environment
     args.push('--environment', 'node')
-    
+
     // Run security tests first
     await runSecurityTests(projectPath)
   }
 
   try {
-    console.log(colors.dim(`$ npx ${args.join(' ')}\n`))
-    
-    execSync(`npx ${args.join(' ')}`, {
+    const vitestBin = getVitestBinary(projectPath)
+
+    console.log(colors.dim(`$ ${vitestBin} ${args.slice(1).join(' ')}\n`))
+
+    execSync(`${vitestBin} ${args.slice(1).join(' ')}`, {
       cwd: projectPath,
       stdio: 'inherit',
       env: {
@@ -146,18 +148,39 @@ export async function testCommand(
     })
 
     console.log(colors.green('\n✅ Tests completed successfully'))
-    
+
   } catch (error: any) {
     if (error.status !== 0) {
-      console.error(colors.red('\n❌ Tests failed'))
+      // Don't print "Tests failed" if it's just a test failure (vitest handles output)
+      // Only if it's a crash or other error
+      if (options.bail) {
+        process.exit(error.status || 1)
+      }
       process.exit(error.status || 1)
     }
   }
 }
 
+function getVitestBinary(projectPath: string): string {
+  const possiblePaths = [
+    resolve(projectPath, 'node_modules/.bin/vitest'),
+    resolve(projectPath, '../node_modules/.bin/vitest'), // Monorepo support
+    resolve(projectPath, '../../node_modules/.bin/vitest')
+  ]
+
+  for (const path of possiblePaths) {
+    if (existsSync(path)) {
+      return path
+    }
+  }
+
+  // Fallback to npx if binary not found (though check above should catch it)
+  return 'npx vitest'
+}
+
 async function runSecurityTests(projectPath: string) {
   console.log(colors.cyan('🔐 Running security validations...\n'))
-  
+
   // Check for common security anti-patterns in tests
   const securityChecks = [
     {
@@ -183,7 +206,7 @@ async function runSecurityTests(projectPath: string) {
   for (const file of testFiles) {
     const fs = require('fs')
     const content = fs.readFileSync(file, 'utf-8')
-    
+
     for (const check of securityChecks) {
       const matches = content.match(check.pattern)
       if (matches) {
@@ -306,7 +329,7 @@ describe('Example Test Suite', () => {
   // Update package.json scripts
   const packageJsonPath = resolve(projectPath, 'package.json')
   const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf-8'))
-  
+
   if (!packageJson.scripts) packageJson.scripts = {}
   packageJson.scripts['test'] = 'vitest'
   packageJson.scripts['test:run'] = 'vitest run'

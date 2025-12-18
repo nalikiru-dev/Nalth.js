@@ -158,8 +158,8 @@ graph TB
 ## 🆘 Need Help?
 
 ### 📞 **Support Channels**
-- **[GitHub Issues](https://github.com/nalth/nalth/issues)** - Bug reports and feature requests
-- **[Discussions](https://github.com/nalth/nalth/discussions)** - Community support and questions
+- **[GitHub Issues](https://github.com/nalikiru-dev/nalth.js/issues)** - Bug reports and feature requests
+- **[Discussions](https://github.com/nalikiru-dev/nalth.js/discussions)** - Community support and questions
 - **[Discord Server](https://discord.gg/nalth)** - Real-time community chat
 - **[Stack Overflow](https://stackoverflow.com/questions/tagged/nalth)** - Technical Q&A with `nalth` tag
 
@@ -170,7 +170,7 @@ graph TB
 - **[Changelog](./reference/changelog.md)** - Version history and updates
 
 ### 🔐 **Security Resources**
-- **[Security Policy](https://github.com/nalth/nalth/security/policy)** - Vulnerability reporting
+- **[Security Policy](https://github.com/nalikiru-dev/nalth.js/security/policy)** - Vulnerability reporting
 - **[Security Advisories](./security/advisories.md)** - Security updates and alerts
 - **[Best Practices](./security/best-practices.md)** - Security implementation guidelines
 - **[Compliance Guides](./security/compliance.md)** - Industry standards and regulations
@@ -203,7 +203,7 @@ NALTH is [MIT licensed](../LICENSE) - the same as Vite.js to maintain ecosystem 
   <div class="flex justify-center gap-4">
     <a href="./guide/getting-started.md" class="btn-primary">Get Started</a>
     <a href="./examples/overview.md" class="btn-secondary">View Examples</a>
-    <a href="https://github.com/nalth/nalth" class="btn-outline">GitHub</a>
+    <a href="https://github.com/nalikiru-dev/nalth.js" class="btn-outline">GitHub</a>
   </div>
 </div>
 

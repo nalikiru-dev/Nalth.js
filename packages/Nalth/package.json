@@ -230,7 +230,8 @@
     "yaml": "^2.4.2",
     "vitest": "^3.0.0 || ^4.0.0",
     "eslint": "^9.0.0",
-    "prettier": "^3.0.0"
+    "prettier": "^3.0.0",
+    "dompurify": "^3.0.0"
   },
   "peerDependenciesMeta": {
     "@types/node": {
@@ -273,6 +274,9 @@
       "optional": true
     },
     "prettier": {
+      "optional": true
+    },
+    "dompurify": {
       "optional": true
     }
   }

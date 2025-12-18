@@ -13,11 +13,25 @@ export interface SqlQuery {
  * Creates a safe SQL query object from a template literal
  * Usage: sql`SELECT * FROM users WHERE id = ${userId}`
  */
+// Basic validation for SQL values
+function validateValue(value: any): void {
+    if (value === undefined) {
+        throw new Error('SQL injection error: Undefined value passed to query')
+    }
+    if (typeof value === 'number' && (!Number.isFinite(value) || Number.isNaN(value))) {
+        throw new Error('SQL injection error: Invalid number (NaN or Infinity) passed to query')
+    }
+    if (typeof value === 'object' && value !== null && !(value instanceof Date) && !Buffer.isBuffer(value)) {
+        throw new Error('SQL injection error: Invalid object passed to query (only primitives, Date, and Buffer allowed)')
+    }
+}
+
 export function sql(strings: TemplateStringsArray, ...values: any[]): SqlQuery {
     let text = strings[0]
     const collectedValues: any[] = []
 
     for (let i = 0; i < values.length; i++) {
+        validateValue(values[i])
         text += `$${i + 1}` + strings[i + 1]
         collectedValues.push(values[i])
     }

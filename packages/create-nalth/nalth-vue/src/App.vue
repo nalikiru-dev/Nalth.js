@@ -1,103 +1,91 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import SecurityBadge from './components/SecurityBadge.vue'
 
-const count = ref(0)
-
-const increment = () => {
-  count.value++
-}
-
-const openDashboard = () => {
-  window.open('/__nalth/dashboard', '_blank')
-}
+const activeTab = ref('dashboard')
 </script>
 
 <template>
-  <div class="nalth-container">
-    <!-- Header Section -->
-    <header class="nalth-header">
-      <div class="nalth-logo-group">
-        <a href="https://www.nalthjs.com" target="_blank" rel="noopener noreferrer">
-          <img src="/nalth.svg" class="nalth-logo nalth" alt="Nalth logo" />
+  <div id="app">
+    <!-- Navbar -->
+    <nav class="app-header">
+      <div class="logo-group">
+        <a href="https://nalthjs.com" target="_blank" rel="noopener">
+          <img src="/nalth.svg" class="logo" alt="Nalth Logo" />
         </a>
-        <a href="https://vuejs.org/" target="_blank" rel="noopener noreferrer">
-          <img src="./assets/vue.svg" class="nalth-logo vue" alt="Vue logo" />
+        <span style="font-size: 1.5rem; color: var(--glass-border)">/</span>
+        <a href="https://vuejs.org/" target="_blank" rel="noopener">
+          <img src="./assets/vue.svg" class="logo" alt="Vue Logo" style="height: 2rem" />
         </a>
       </div>
-      
-      <h1 class="nalth-title">🛡️ Nalth + Vue</h1>
-      <p class="nalth-subtitle">
-        Security-first web development framework with Vue.js reactivity and native ESM support
+      <div style="display: flex; gap: 1rem; align-items: center">
+        <span class="badge security">● System Secure</span>
+        <a href="https://github.com/nalikiru-dev/nalth.js" target="_blank" class="nalth-btn secondary" style="padding: 0.5rem 1rem">
+          GitHub
+        </a>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <main class="hero-section">
+      <div class="badge security" style="margin-bottom: 1.5rem">Enterprise Security Framework</div>
+      <h1 class="hero-title">
+        Build <span class="title-gradient">Unbreakable</span><br />
+        Web Applications
+      </h1>
+      <p class="hero-subtitle">
+        Nalth combines rust-based tooling with enterprise-grade security defaults.
+        Zero-config policies, automated audits, and instant deployments.
       </p>
       
-      <SecurityBadge :score="95" />
-    </header>
-
-    <!-- Features Grid -->
-    <div class="nalth-features">
-      <div class="nalth-feature-card">
-        <span class="nalth-feature-icon">🛡️</span>
-        <h3 class="nalth-feature-title">Security First</h3>
-        <p class="nalth-feature-description">
-          Built with CSP, HTTPS, and enterprise-grade security headers by default
-        </p>
+      <div style="display: flex; gap: 1rem; justify-content: center; margin-bottom: 4rem">
+        <button class="nalth-btn primary">
+          Explore Dashboard
+        </button>
+        <button class="nalth-btn secondary">
+          Read Documentation
+        </button>
       </div>
 
-      <div class="nalth-feature-card">
-        <span class="nalth-feature-icon">⚡</span>
-        <h3 class="nalth-feature-title">Lightning Fast</h3>
-        <p class="nalth-feature-description">
-          Native ESM support with esbuild transformation and Vue 3 Composition API
-        </p>
-      </div>
+      <!-- Security Dashboard Grid -->
+      <div class="dashboard-grid">
+        <!-- Overall Score -->
+        <div class="glass-panel feature-card">
+          <span class="feature-icon">🛡️</span>
+          <h3>Security Score</h3>
+          <div class="metric-value">98/100</div>
+          <p style="color: var(--text-secondary)">Real-time heuristic analysis</p>
+        </div>
 
-      <div class="nalth-feature-card">
-        <span class="nalth-feature-icon">🔷</span>
-        <h3 class="nalth-feature-title">TypeScript Ready</h3>
-        <p class="nalth-feature-description">
-          Full TypeScript support with Vue SFC and script setup syntax
-        </p>
-      </div>
+        <!-- HTTPS Status -->
+        <div class="glass-panel feature-card">
+          <span class="feature-icon">🔒</span>
+          <h3>Encryption</h3>
+          <div class="metric-value" style="color: var(--accent-success)">TLS 1.3</div>
+          <p style="color: var(--text-secondary)">Zero-config auto-cert generation</p>
+        </div>
 
-      <div class="nalth-feature-card">
-        <span class="nalth-feature-icon">🔒</span>
-        <h3 class="nalth-feature-title">Zero Trust</h3>
-        <p class="nalth-feature-description">
-          Real-time security monitoring with CSP violation tracking
-        </p>
+        <!-- Active Policies -->
+        <div class="glass-panel feature-card">
+          <span class="feature-icon">⚡</span>
+          <h3>Active Policies</h3>
+          <div class="metric-value" style="color: var(--secondary-neon)">12</div>
+          <p style="color: var(--text-secondary)">CSP, HSTS, and Frame-Options active</p>
+        </div>
       </div>
-    </div>
-
-    <!-- Interactive Counter -->
-    <div class="nalth-counter">
-      <div class="nalth-counter-display">{{ count }}</div>
-      <button class="nalth-button" @click="increment">
-        🚀 Increment Securely
-      </button>
-      <button class="nalth-button secondary nalth-mt-md" @click="openDashboard">
-        🛡️ Security Dashboard
-      </button>
-    </div>
+    </main>
 
     <!-- Footer -->
-    <footer class="nalth-footer">
-      <div class="nalth-footer-links">
-        <a href="https://www.nalthjs.com/docs" class="nalth-footer-link" target="_blank" rel="noopener noreferrer">
-          📚 Documentation
-        </a>
-        <a href="https://github.com/nalikiru-dev/nalth.js" class="nalth-footer-link" target="_blank" rel="noopener noreferrer">
-          💻 GitHub
-        </a>
-        <a href="/__nalth/dashboard" class="nalth-footer-link">
-          🛡️ Security Dashboard
-        </a>
+    <footer class="app-footer">
+      <div class="footer-links">
+        <a href="#" class="footer-link">Documentation</a>
+        <a href="#" class="footer-link">Security Guide</a>
+        <a href="#" class="footer-link">API Reference</a>
       </div>
-      <p>&copy; 2024 Nalth Framework. Security-first development.</p>
+      <p>&copy; {{ new Date().getFullYear() }} NMS (Nalth Management System). Open Source Software.</p>
     </footer>
   </div>
 </template>
 
 <style>
-@import './styles/nalth-design-system.css';
+/* Styles are handled by global style.css */
 </style>

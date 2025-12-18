@@ -1,139 +1,103 @@
-import { LitElement, css, html } from 'lit'
+import { LitElement, html } from 'lit'
 import { customElement, property } from 'lit/decorators.js'
 import litLogo from './assets/lit.svg'
-import nalthLogo from '/nalth.svg'
 
 /**
  * An example element.
- *
- * @slot - This element has a slot
- * @csspart button - The button
  */
 @customElement('my-element')
 export class MyElement extends LitElement {
-  /**
-   * Copy for the read the docs hint.
-   */
   @property()
-  docsHint = 'Security-first web development with Lit components'
+  activeTab = 'dashboard'
 
-  /**
-   * The number of times the button has been clicked.
-   */
-  @property({ type: Number })
-  count = 0
+  // Use Light DOM to inherit global styles
+  createRenderRoot() {
+    return this
+  }
 
   render() {
     return html`
-      <div class="nalth-container">
-        <header class="nalth-header">
-          <div class="nalth-logo-group">
-            <a href="https://www.nalthjs.com" target="_blank" rel="noopener noreferrer">
-              <img src=${nalthLogo} class="nalth-logo nalth" alt="Nalth logo" />
+      <div id="app">
+        <!-- Navbar -->
+        <nav class="app-header">
+          <div class="logo-group">
+            <a href="https://nalthjs.com" target="_blank" rel="noopener">
+              <img src="/nalth.svg" class="logo" alt="Nalth Logo" />
             </a>
-            <a href="https://lit.dev" target="_blank" rel="noopener noreferrer">
-              <img src=${litLogo} class="nalth-logo lit" alt="Lit logo" />
+            <span style="font-size: 1.5rem; color: var(--glass-border)">/</span>
+            <a href="https://lit.dev" target="_blank" rel="noopener">
+              <img src=${litLogo} class="logo" alt="Lit Logo" style="height: 2rem" />
             </a>
           </div>
+          <div style="display: flex; gap: 1rem; align-items: center">
+            <span class="badge security">● System Secure</span>
+            <a href="https://github.com/nalikiru-dev/nalth.js" target="_blank" class="nalth-btn secondary" style="padding: 0.5rem 1rem">
+              GitHub
+            </a>
+          </div>
+        </nav>
 
-          <h1 class="nalth-title">🛡️ Nalth + Lit</h1>
-          <p class="nalth-subtitle">
-            Security-first web development framework with Lit's reactive components
+        <!-- Hero Section -->
+        <main class="hero-section">
+          <div class="badge security" style="margin-bottom: 1.5rem">Enterprise Security Framework</div>
+          <h1 class="hero-title">
+            Build <span class="title-gradient">Unbreakable</span><br />
+            Web Applications
+          </h1>
+          <p class="hero-subtitle">
+            Nalth combines rust-based tooling with enterprise-grade security defaults.
+            Zero-config policies, automated audits, and instant deployments.
           </p>
-        </header>
-
-        <!-- Features Grid -->
-        <div class="nalth-features">
-          <div class="nalth-feature-card">
-            <span class="nalth-feature-icon">🛡️</span>
-            <h3 class="nalth-feature-title">Security First</h3>
-            <p class="nalth-feature-description">
-              Built with CSP, HTTPS, and enterprise-grade security headers by default
-            </p>
+          
+          <div style="display: flex; gap: 1rem; justify-content: center; margin-bottom: 4rem">
+            <button class="nalth-btn primary">
+              Explore Dashboard
+            </button>
+            <button class="nalth-btn secondary">
+              Read Documentation
+            </button>
           </div>
 
-          <div class="nalth-feature-card">
-            <span class="nalth-feature-icon">⚡</span>
-            <h3 class="nalth-feature-title">Lightning Fast</h3>
-            <p class="nalth-feature-description">
-              Web Components with Lit's efficient reactive rendering
-            </p>
-          </div>
+          <!-- Security Dashboard Grid -->
+          <div class="dashboard-grid">
+            <!-- Overall Score -->
+            <div class="glass-panel feature-card">
+              <span class="feature-icon">🛡️</span>
+              <h3>Security Score</h3>
+              <div class="metric-value">98/100</div>
+              <p style="color: var(--text-secondary)">Real-time heuristic analysis</p>
+            </div>
 
-          <div class="nalth-feature-card">
-            <span class="nalth-feature-icon">🔷</span>
-            <h3 class="nalth-feature-title">TypeScript Ready</h3>
-            <p class="nalth-feature-description">
-              Full TypeScript support with Lit's decorator-based API
-            </p>
-          </div>
+            <!-- HTTPS Status -->
+            <div class="glass-panel feature-card">
+              <span class="feature-icon">🔒</span>
+              <h3>Encryption</h3>
+              <div class="metric-value" style="color: var(--accent-success)">TLS 1.3</div>
+              <p style="color: var(--text-secondary)">Zero-config auto-cert generation</p>
+            </div>
 
-          <div class="nalth-feature-card">
-            <span class="nalth-feature-icon">🔒</span>
-            <h3 class="nalth-feature-title">Zero Trust</h3>
-            <p class="nalth-feature-description">
-              Real-time security monitoring with CSP violation tracking
-            </p>
+            <!-- Active Policies -->
+            <div class="glass-panel feature-card">
+              <span class="feature-icon">⚡</span>
+              <h3>Active Policies</h3>
+              <div class="metric-value" style="color: var(--secondary-neon)">12</div>
+              <p style="color: var(--text-secondary)">CSP, HSTS, and Frame-Options active</p>
+            </div>
           </div>
-        </div>
+        </main>
 
-        <div class="nalth-counter">
-          <div class="nalth-counter-display">${this.count}</div>
-          <button class="nalth-button" @click=${this._onClick} part="button">
-            🚀 Increment Securely
-          </button>
-          <button class="nalth-button secondary nalth-mt-md" @click=${this._openDashboard}>
-            🛡️ Security Dashboard
-          </button>
-        </div>
-
-        <footer class="nalth-footer">
-          <div class="nalth-footer-links">
-            <a
-              href="https://www.nalthjs.com/docs"
-              class="nalth-footer-link"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              📚 Documentation
-            </a>
-            <a
-              href="https://github.com/nalikiru-dev/nalth.js"
-              class="nalth-footer-link"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              💻 GitHub
-            </a>
-            <a href="/__nalth/dashboard" class="nalth-footer-link"> 🛡️ Security Dashboard </a>
+        <!-- Footer -->
+        <footer class="app-footer">
+          <div class="footer-links">
+            <a href="#" class="footer-link">Documentation</a>
+            <a href="#" class="footer-link">Security Guide</a>
+            <a href="#" class="footer-link">API Reference</a>
           </div>
-          <p>&copy; 2024 Nalth Framework. Security-first development.</p>
+          <p>&copy; ${new Date().getFullYear()} NMS (Nalth Management System). Open Source Software.</p>
         </footer>
       </div>
     `
   }
-
-  private _onClick() {
-    this.count++
-  }
-
-  private _openDashboard() {
-    window.open('/__nalth/dashboard', '_blank')
-  }
-
-  static styles = css`
-    @import url('./styles/nalth-design-system.css');
-
-    :host {
-      display: block;
-      min-height: 100vh;
-    }
-
-    /* Lit-specific logo animation */
-    .nalth-logo.lit:hover {
-      filter: drop-shadow(0 0 20px #325cffaa);
-    }
-  `
 }
 
 declare global {

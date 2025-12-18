@@ -1,17 +1,18 @@
 {
-  "name": "@vitejs/plugin-legacy",
+  "name": "@nalth/plugin-legacy",
   "version": "7.2.1",
   "type": "module",
   "license": "MIT",
-  "author": "Evan You",
+  "author": "Nalth Team <team@nalthjs.com>",
   "files": [
     "dist"
   ],
   "keywords": [
     "frontend",
+    "nalth",
     "vite",
     "vite-plugin",
-    "@vitejs/plugin-legacy"
+    "legacy"
   ],
   "exports": "./dist/index.js",
   "scripts": {
@@ -24,14 +25,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vitejs/vite.git",
+    "url": "git+https://github.com/nalikiru-dev/nalth.js.git",
     "directory": "packages/plugin-legacy"
   },
   "bugs": {
-    "url": "https://github.com/vitejs/vite/issues"
+    "url": "https://github.com/nalikiru-dev/nalth.js/issues"
   },
-  "homepage": "https://github.com/vitejs/vite/tree/main/packages/plugin-legacy#readme",
-  "funding": "https://github.com/vitejs/vite?sponsor=1",
+  "homepage": "https://github.com/nalikiru-dev/nalth.js/tree/main/packages/plugin-legacy#readme",
+  "funding": "https://github.com/nalikiru-dev/nalth.js?sponsor=1",
   "imports": {
     "#legacy-for-rolldown-vite": {
       "types": "./types/legacy-for-rolldown-vite.d.ts",

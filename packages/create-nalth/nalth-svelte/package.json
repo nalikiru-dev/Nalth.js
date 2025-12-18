@@ -15,6 +15,7 @@
     "format": "nalth fmt",
     "format:check": "nalth fmt --check",
     "audit": "nalth audit",
+    "report": "nalth report",
     "typecheck": "tsc --noEmit",
     "check": "svelte-check --tsconfig ./tsconfig.app.json && tsc -p tsconfig.node.json",
     "security:audit": "nalth audit",

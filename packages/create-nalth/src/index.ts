@@ -23,22 +23,28 @@ const cwd = process.cwd()
 
 // prettier-ignore
 const helpMessage = `\
+  ${colors.cyan('   _   __      ____  __    ')}
+${colors.cyan('  / | / /___ _/ / /_/ /_   ')}
+${colors.cyan(' /  |/ / __ `/ / __/ __ \\  ')}
+${colors.magenta('/ /|  / /_/ / / /_/ / / /  ')}
+${colors.magenta('/_/ |_/\\__,_/_/\\__/_/ /_/   ')}
+${colors.magenta('      SECURITY FIRST        ')}
+
 ${blue('┌─────────────────────────────────────────────────────────────┐')}
-${blue('│')}                      ${blue('🛡️  NALTH')}                          ${blue('│')}
-${blue('│')}         ${cyan('Security-First Unified Toolchain')}               ${blue('│')}
+${blue('│')}        ${colors.cyan('Security-First Unified Toolchain')} v${process.env.npm_package_version || '2.2.0'}         ${blue('│')}
 ${blue('└─────────────────────────────────────────────────────────────┘')}
 
 ${yellow('USAGE:')}
   ${green('create-nalth')} ${magenta('[OPTIONS]')} ${cyan('[DIRECTORY]')}
 
 ${yellow('DESCRIPTION:')}
-  Bootstrap secure, enterprise-ready web applications with:
+  Bootstrap secure, enterprise - ready web applications with:
   ${green('✓')} HTTPS & TLS encryption by default
-  ${green('✓')} Content Security Policy (CSP) auto-generation
-  ${green('✓')} Built-in testing, linting, and formatting
+  ${green('✓')} Content Security Policy(CSP) auto - generation
+  ${green('✓')} Built -in testing, linting, and formatting
   ${green('✓')} Secure package management with typosquatting detection
-  ${green('✓')} Real-time security monitoring & auditing
-  ${green('✓')} Zero-config security headers & rate limiting
+  ${green('✓')} Real - time security monitoring & auditing
+  ${green('✓')} Zero - config security headers & rate limiting
 
 ${yellow('OPTIONS:')}
   ${green('-t, --template')} ${cyan('NAME')}     Use a specific framework template
@@ -46,14 +52,14 @@ ${yellow('OPTIONS:')}
   ${green('--overwrite')}               Overwrite existing directory
 
 ${yellow('AVAILABLE TEMPLATES:')}
-  ${yellow    ('🟡 nalth-vanilla')}   Pure TypeScript with enterprise security
-  ${green     ('🟢 nalth-vue')}       Vue.js with security middleware
-  ${cyan      ('🔵 nalth-react')}     React with CSP & security headers
-  ${magenta   ('🟣 nalth-preact')}    Preact with HTTPS & monitoring
-  ${redBright ('🔴 nalth-lit')}       Lit components with security features
-  ${red       ('⭐ nalth-svelte')}    Svelte with built-in protection
-  ${blue      ('💙 nalth-solid')}     SolidJS with enterprise security
-  ${cyan      ('⚡ nalth-qwik')}      Qwik with zero-config security
+  ${yellow('🟡 nalth-vanilla')}   Pure TypeScript with enterprise security
+  ${green('🟢 nalth-vue')} Vue.js with security middleware
+  ${cyan('🔵 nalth-react')}     React with CSP & security headers
+  ${magenta('🟣 nalth-preact')}    Preact with HTTPS & monitoring
+  ${redBright('🔴 nalth-lit')}       Lit components with security features
+  ${red('⭐ nalth-svelte')}    Svelte with built -in protection
+  ${blue('💙 nalth-solid')}     SolidJS with enterprise security
+  ${cyan('⚡ nalth-qwik')}      Qwik with zero - config security
 
 ${yellow('EXAMPLES:')}
   ${green('create-nalth')}                    # Interactive mode
@@ -227,26 +233,26 @@ async function init() {
     const overwrite = argOverwrite
       ? 'yes'
       : await prompts.select({
-          message:
-            (targetDir === '.'
-              ? 'Current directory'
-              : `Target directory "${targetDir}"`) +
-            ` is not empty. Please choose how to proceed:`,
-          options: [
-            {
-              label: 'Cancel operation',
-              value: 'no',
-            },
-            {
-              label: 'Remove existing files and continue',
-              value: 'yes',
-            },
-            {
-              label: 'Ignore files and continue',
-              value: 'ignore',
-            },
-          ],
-        })
+        message:
+          (targetDir === '.'
+            ? 'Current directory'
+            : `Target directory "${targetDir}"`) +
+          ` is not empty. Please choose how to proceed:`,
+        options: [
+          {
+            label: 'Cancel operation',
+            value: 'no',
+          },
+          {
+            label: 'Remove existing files and continue',
+            value: 'yes',
+          },
+          {
+            label: 'Ignore files and continue',
+            value: 'ignore',
+          },
+        ],
+      })
     if (prompts.isCancel(overwrite)) return cancel()
     switch (overwrite) {
       case 'yes':
@@ -303,9 +309,9 @@ async function init() {
         const variantColor = variant.color
         const command = variant.customCommand
           ? getFullCustomCommand(variant.customCommand, pkgInfo).replace(
-              / TARGET_DIR$/,
-              '',
-            )
+            / TARGET_DIR$/,
+            '',
+          )
           : undefined
         return {
           label: variantColor(variant.display || variant.name),
@@ -410,9 +416,8 @@ async function init() {
   // Next steps
   doneMessage += `${yellow('🚀 NEXT STEPS:')}\n`
   if (root !== cwd) {
-    doneMessage += `\n  1. ${cyan('cd')} ${
-      cdProjectName.includes(' ') ? `"${cdProjectName}"` : cdProjectName
-    }`
+    doneMessage += `\n  1. ${cyan('cd')} ${cdProjectName.includes(' ') ? `"${cdProjectName}"` : cdProjectName
+      }`
   }
   switch (pkgManager) {
     case 'yarn':

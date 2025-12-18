@@ -1,111 +1,89 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
-import { SecurityBadge } from './components/SecurityBadge'
-import Dashboard from './pages/Dashboard'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
-
-  // Simple client-side routing
-  const path = window.location.pathname
-
-  // Render dashboard if path matches
-  if (path === '/__nalth/dashboard' || path === '/dashboard') {
-    return <Dashboard />
-  }
+  const [activeTab] = useState('dashboard')
 
   return (
-    <div className="app">
-      <div className="nalth-container">
-        {/* Hero Section */}
-        <header className="nalth-header">
-          <div className="nalth-logo-group">
-            <a href="https://www.nalthjs.com" target="_blank" rel="noopener noreferrer">
-              <img src="/nalth.svg" className="nalth-logo nalth" alt="Nalth logo" />
-            </a>
-            <a href="https://react.dev" target="_blank" rel="noopener noreferrer">
-              <img src={reactLogo} className="nalth-logo react" alt="React logo" />
-            </a>
-          </div>
+    <div id="app">
+      {/* Navbar */}
+      <nav className="app-header">
+        <div className="logo-group">
+          <a href="https://nalthjs.com" target="_blank" rel="noopener noreferrer">
+            <img src="/nalth.svg" className="logo" alt="Nalth Logo" />
+          </a>
+          <span style={{ fontSize: '1.5rem', color: 'var(--glass-border)' }}>/</span>
+          <a href="https://react.dev" target="_blank" rel="noopener noreferrer">
+            <img src={reactLogo} className="logo" alt="React Logo" style={{ height: '2rem' }} />
+          </a>
+        </div>
+        <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+          <span className="badge security">● System Secure</span>
+          <a href="https://github.com/nalikiru-dev/nalth.js" target="_blank" className="nalth-btn secondary" style={{ padding: '0.5rem 1rem' }}>
+            GitHub
+          </a>
+        </div>
+      </nav>
 
-          <h1 className="nalth-title">Nalth + React</h1>
-          <p className="nalth-subtitle">
-            The enterprise-grade security framework for modern web applications.
-            Built for speed, security, and scalability.
-          </p>
+      {/* Hero Section */}
+      <main className="hero-section">
+        <div className="badge security" style={{ marginBottom: '1.5rem' }}>Enterprise Security Framework</div>
+        <h1 className="hero-title">
+          Build <span className="title-gradient">Unbreakable</span><br />
+          Web Applications
+        </h1>
+        <p className="hero-subtitle">
+          Nalth combines rust-based tooling with enterprise-grade security defaults.
+          Zero-config policies, automated audits, and instant deployments.
+        </p>
 
-          <div className="nalth-mt-lg">
-            <SecurityBadge score={98} />
-          </div>
-        </header>
-
-        {/* Features Grid */}
-        <div className="nalth-features">
-          <div className="nalth-feature-card">
-            <span className="nalth-feature-icon">🛡️</span>
-            <h3 className="nalth-feature-title">Enterprise Security</h3>
-            <p className="nalth-feature-description">
-              Automated CSP generation, SRI, and security headers out of the box.
-              Zero-config protection against XSS and injection attacks.
-            </p>
-          </div>
-
-          <div className="nalth-feature-card">
-            <span className="nalth-feature-icon">⚡</span>
-            <h3 className="nalth-feature-title">Blazing Performance</h3>
-            <p className="nalth-feature-description">
-              Powered by Rust-based tooling for millisecond HMR and instant builds.
-              Optimized for React 19 concurrent features.
-            </p>
-          </div>
-
-          <div className="nalth-feature-card">
-            <span className="nalth-feature-icon">💎</span>
-            <h3 className="nalth-feature-title">Premium DX</h3>
-            <p className="nalth-feature-description">
-              Type-safe by default. Integrated linting, formatting, and testing.
-              Everything you need to ship production-grade apps.
-            </p>
-          </div>
+        <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', marginBottom: '4rem' }}>
+          <button className="nalth-btn primary">
+            Explore Dashboard
+          </button>
+          <button className="nalth-btn secondary">
+            Read Documentation
+          </button>
         </div>
 
-        {/* Interactive Demo */}
-        <div className="demo-card">
-          <h2>Interactive State Demo</h2>
-          <p>Experience the reactive performance of Nalth + React.</p>
-          <div className="nalth-counter">
-            <div className="nalth-counter-display">{count}</div>
-            <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center' }}>
-              <button className="nalth-button" onClick={() => setCount((count) => count + 1)}>
-                🚀 Increment
-              </button>
-              <button
-                className="nalth-button secondary"
-                onClick={() => window.open('/__nalth/dashboard', '_blank')}
-              >
-                🛡️ View Security Dashboard
-              </button>
-            </div>
+        {/* Security Dashboard Grid */}
+        <div className="dashboard-grid">
+          {/* Overall Score */}
+          <div className="glass-panel feature-card">
+            <span className="feature-icon">🛡️</span>
+            <h3>Security Score</h3>
+            <div className="metric-value">98/100</div>
+            <p style={{ color: 'var(--text-secondary)' }}>Real-time heuristic analysis</p>
+          </div>
+
+          {/* HTTPS Status */}
+          <div className="glass-panel feature-card">
+            <span className="feature-icon">🔒</span>
+            <h3>Encryption</h3>
+            <div className="metric-value" style={{ color: 'var(--accent-success)' }}>TLS 1.3</div>
+            <p style={{ color: 'var(--text-secondary)' }}>Zero-config auto-cert generation</p>
+          </div>
+
+          {/* Active Policies */}
+          <div className="glass-panel feature-card">
+            <span className="feature-icon">⚡</span>
+            <h3>Active Policies</h3>
+            <div className="metric-value" style={{ color: 'var(--secondary-neon)' }}>12</div>
+            <p style={{ color: 'var(--text-secondary)' }}>CSP, HSTS, and Frame-Options active</p>
           </div>
         </div>
+      </main>
 
-        {/* Footer */}
-        <footer className="nalth-footer">
-          <div className="nalth-footer-links">
-            <a href="https://www.nalthjs.com/docs" className="nalth-footer-link" target="_blank" rel="noopener noreferrer">
-              Documentation
-            </a>
-            <a href="https://github.com/nalikiru-dev/nalth.js" className="nalth-footer-link" target="_blank" rel="noopener noreferrer">
-              GitHub
-            </a>
-            <a href="/__nalth/dashboard" className="nalth-footer-link">
-              Security Status
-            </a>
-          </div>
-          <p>&copy; {new Date().getFullYear()} Nalth Framework. Engineered for Security.</p>
-        </footer>
-      </div>
+      {/* Footer */}
+      <footer className="app-footer">
+        <div className="footer-links">
+          <a href="#" className="footer-link">Documentation</a>
+          <a href="#" className="footer-link">Security Guide</a>
+          <a href="#" className="footer-link">API Reference</a>
+        </div>
+        <p>&copy; {new Date().getFullYear()} NMS (Nalth Management System). Open Source Software.</p>
+      </footer>
     </div>
   )
 }

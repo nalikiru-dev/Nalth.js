@@ -1,4 +1,5 @@
 import path from 'node:path'
+import spawn from 'cross-spawn'
 import fs from 'node:fs'
 import { performance } from 'node:perf_hooks'
 import { cac } from 'cac'
@@ -17,7 +18,7 @@ function isNalthProject(cwd: string): boolean {
   // Check for nalth.config.js/ts or vite.config.js/ts (Nalth is Vite-compatible)
   const configFiles = [
     'nalth.config.js',
-    'nalth.config.ts', 
+    'nalth.config.ts',
     'nalth.config.mjs',
     'nalth.config.cjs',
     'vite.config.js',
@@ -25,13 +26,13 @@ function isNalthProject(cwd: string): boolean {
     'vite.config.mjs',
     'vite.config.cjs'
   ]
-  
+
   for (const config of configFiles) {
     if (fs.existsSync(path.join(cwd, config))) {
       return true
     }
   }
-  
+
   // Check package.json for nalth or vite dependency
   const pkgPath = path.join(cwd, 'package.json')
   if (fs.existsSync(pkgPath)) {
@@ -44,9 +45,9 @@ function isNalthProject(cwd: string): boolean {
         pkg.dependencies?.vite ||
         pkg.devDependencies?.vite
       )
-    } catch {}
+    } catch { }
   }
-  
+
   // Check for common web project indicators
   const webProjectFiles = ['index.html', 'src/main.ts', 'src/main.js', 'src/index.ts', 'src/index.js']
   for (const file of webProjectFiles) {
@@ -54,7 +55,7 @@ function isNalthProject(cwd: string): boolean {
       return true
     }
   }
-  
+
   return false
 }
 
@@ -225,7 +226,7 @@ cli
   .action(async (root: string, options: ServerOptions & GlobalCLIOptions) => {
     // Check if this is a Nalth project
     const cwd = root ? path.resolve(root) : process.cwd()
-    
+
     if (!isNalthProject(cwd) && !options.force) {
       // eslint-disable-next-line no-console
       console.error(`
@@ -276,18 +277,16 @@ ${colors.gray('Current directory:')} ${cwd}
       const viteStartTime = global.__vite_start_time ?? false
       const startupDurationString = viteStartTime
         ? colors.dim(
-            `ready in ${colors.reset(
-              colors.bold(Math.ceil(performance.now() - viteStartTime)),
-            )} ms`,
-          )
+          `ready in ${colors.reset(
+            colors.bold(Math.ceil(performance.now() - viteStartTime)),
+          )} ms`,
+        )
         : ''
       const hasExistingLogs =
         process.stdout.bytesWritten > 0 || process.stderr.bytesWritten > 0
 
       info(
-        `\n  ${colors.green(
-          `${colors.bold('NALTH')} v${VERSION}`,
-        )}${modeString}  ${startupDurationString}\n`,
+        `\n  ${colors.cyan(colors.bold('🛡️  NALTH'))}  ${colors.magenta(`v${VERSION}`)}${modeString}  ${startupDurationString}\n`,
         {
           clear: !hasExistingLogs,
         },
@@ -358,7 +357,7 @@ cli
   .option(
     '--minify [minifier]',
     `[boolean | "terser" | "esbuild"] enable/disable minification, ` +
-      `or specify minifier to use (default: esbuild)`,
+    `or specify minifier to use (default: esbuild)`,
   )
   .option('--manifest [name]', `[boolean | string] emit build manifest json`)
   .option('--ssrManifest [name]', `[boolean | string] emit ssr manifest json`)
@@ -375,7 +374,7 @@ cli
     ) => {
       // Check if this is a Nalth project
       const cwd = root ? path.resolve(root) : process.cwd()
-      
+
       if (!isNalthProject(cwd) && !options.force) {
         // eslint-disable-next-line no-console
         console.error(`
@@ -535,6 +534,24 @@ cli
     await testCommand(pattern, options)
   })
 
+// create (new command)
+cli
+  .command('create [targetDir]', 'scaffold a new Nalth project')
+  .option('-t, --template <name>', `[string] template name`)
+  .action((targetDir: string | undefined, options: any) => {
+    const args = ['create', 'nalth']
+    if (targetDir) args.push(targetDir)
+    if (options.template) args.push('--template', options.template)
+
+    // Pass specific known flags if needed, or rely on interactive prompts
+    // Spawning 'npm create nalth' (which runs create-nalth)
+
+    console.log(colors.cyan(`\n🚀 Launching Nalth Scaffolder...\n`))
+
+    const { status } = spawn.sync('npm', args, { stdio: 'inherit' })
+    process.exit(status ?? 0)
+  })
+
 // test:init
 cli
   .command('test:init', 'initialize test configuration')
@@ -645,40 +662,40 @@ cli
   .option('--no-audit', `[boolean] skip post-installation audit`)
   .option('--force', `[boolean] force install even with security warnings`)
   .option('--skip-analysis', `[boolean] skip deep package analysis`)
-  
+
   // Package manager options
   .option('--pm <manager>', `[string] package manager to use (npm|yarn|pnpm|bun)`)
   .option('--use-npm', `[boolean] use npm package manager`)
   .option('--use-yarn', `[boolean] use Yarn package manager`)
   .option('--use-pnpm', `[boolean] use pnpm package manager`)
   .option('--use-bun', `[boolean] use Bun package manager`)
-  
+
   // Save options
   .option('-D, --save-dev', `[boolean] save as dev dependency`)
   .option('-P, --save-prod', `[boolean] save as production dependency`)
   .option('-E, --save-exact', `[boolean] save exact version`)
   .option('--no-save', `[boolean] don't save to package.json`)
-  
+
   // Install modes
   .option('--production', `[boolean] production install (skip devDependencies)`)
   .option('--frozen-lockfile', `[boolean] use frozen lockfile (CI mode)`)
   .option('--prefer-offline', `[boolean] prefer offline packages`)
   .option('--offline', `[boolean] offline mode only`)
-  
+
   // Registry and network
   .option('--registry <url>', `[string] custom registry URL`)
   .option('--scope <scope>', `[string] scope for scoped packages`)
-  
+
   // Security levels
   .option('--security-level <level>', `[string] security level (strict|normal|permissive)`)
   .option('--allow-scripts', `[boolean] allow install scripts to run`)
   .option('--ignore-scripts', `[boolean] ignore all install scripts`)
-  
+
   // Output options
   .option('--verbose', `[boolean] verbose output`)
   .option('--quiet', `[boolean] minimal output`)
   .option('--json', `[boolean] output as JSON`)
-  
+
   .action(async (packages: string[], options: any) => {
     const { installCommand } = await import('./cli/install-command.js')
     await installCommand(packages, options)
@@ -713,6 +730,19 @@ cli
   .option('--output <file>', `[string] output file`)
   .option('--detailed', `[boolean] detailed report`)
   .action(async (options: any) => {
+    const { securityReportCommand } = await import('./cli/security-commands.js')
+    await securityReportCommand(options)
+  })
+
+// report (alias for security:report for now, can be expanded)
+cli
+  .command('report', 'generate project report')
+  .option('--path <path>', `[string] project path`)
+  .option('--output <file>', `[string] output file`)
+  .option('--detailed', `[boolean] detailed report`)
+  .action(async (options: any) => {
+    // For now, report triggers security report. 
+    // In the future this can aggregate multiple reports.
     const { securityReportCommand } = await import('./cli/security-commands.js')
     await securityReportCommand(options)
   })

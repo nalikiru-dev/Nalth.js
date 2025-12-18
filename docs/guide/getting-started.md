@@ -302,8 +302,8 @@ npm run dev -- --port 3001
 ### Getting Help
 
 - 📖 [Full Troubleshooting Guide](./troubleshooting.md)
-- 💬 [GitHub Discussions](https://github.com/nalth/nalth/discussions)
-- 🐛 [Report Issues](https://github.com/nalth/nalth/issues)
+- 💬 [GitHub Discussions](https://github.com/nalikiru-dev/nalth.js/discussions)
+- 🐛 [Report Issues](https://github.com/nalikiru-dev/nalth.js/issues)
 
 ---
 
