@@ -1,7 +1,0 @@
-{
-  "name": "@vitejs/esm-external",
-  "private": true,
-  "type": "module",
-  "version": "0.0.0",
-  "main": "index.mjs"
-}

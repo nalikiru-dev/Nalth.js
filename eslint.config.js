@@ -8,7 +8,7 @@ import tseslint from 'typescript-eslint'
 import globals from 'globals'
 
 const require = createRequire(import.meta.url)
-const pkgNalth = require('./packages/Nalth/package.json')
+const pkgNalth = require('./packages/nalth/package.json')
 
 // Some rules work better with typechecking enabled, but as enabling it is slow,
 // we only do so when linting in IDEs for now. If you want to lint with typechecking
@@ -41,7 +41,7 @@ export default tseslint.config(
         project: shouldTypeCheck
           ? [
               './packages/*/tsconfig.json',
-              './packages/Nalth/src/*/tsconfig.json',
+              './packages/nalth/src/*/tsconfig.json',
             ]
           : undefined,
       },
@@ -199,7 +199,7 @@ export default tseslint.config(
   },
   {
     name: 'nalth/node',
-    files: ['packages/Nalth/src/node/**/*.?([cm])[jt]s?(x)'],
+    files: ['packages/nalth/src/node/**/*.?([cm])[jt]s?(x)'],
     rules: {
       'no-console': ['error'],
       'n/no-restricted-require': [
@@ -246,7 +246,7 @@ export default tseslint.config(
 
   {
     name: 'disables/nalth/client',
-    files: ['packages/Nalth/src/client/**/*.?([cm])[jt]s?(x)'],
+    files: ['packages/nalth/src/client/**/*.?([cm])[jt]s?(x)'],
     ignores: ['**/__tests__/**'],
     rules: {
       'n/no-unsupported-features/node-builtins': 'off',
@@ -255,8 +255,8 @@ export default tseslint.config(
   {
     name: 'disables/nalth/types',
     files: [
-      'packages/Nalth/src/types/**/*.?([cm])[jt]s?(x)',
-      'packages/Nalth/scripts/**/*.?([cm])[jt]s?(x)',
+      'packages/nalth/src/types/**/*.?([cm])[jt]s?(x)',
+      'packages/nalth/scripts/**/*.?([cm])[jt]s?(x)',
       '**/*.spec.ts',
     ],
     rules: {
@@ -265,7 +265,7 @@ export default tseslint.config(
   },
   {
     name: 'disables/nalth/cjs',
-    files: ['packages/Nalth/index.cjs'],
+    files: ['packages/nalth/index.cjs'],
     rules: {
       'no-restricted-globals': 'off',
       'n/no-missing-require': 'off',

@@ -14,7 +14,7 @@ release({
     console.log(colors.cyan('\nGenerating changelog...'))
 
     await generateChangelog({
-      getPkgDir: () => (pkgName === 'nalth' ? `packages/Nalth` : `packages/${pkgName}`),
+      getPkgDir: () => `packages/${pkgName}`,
       tagPrefix: pkgName === 'nalth' ? undefined : `${pkgName}@`,
     })
   },

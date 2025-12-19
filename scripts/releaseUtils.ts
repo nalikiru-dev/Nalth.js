@@ -15,7 +15,7 @@ function run<EO extends ExecaOptions>(
 }
 
 export async function getLatestTag(pkgName: string): Promise<string> {
-  const dir = pkgName === 'nalth' ? 'Nalth' : pkgName
+  const dir = pkgName === 'nalth' ? 'nalth' : pkgName
   const pkgJson = JSON.parse(
     await fs.readFile(`packages/${dir}/package.json`, 'utf-8'),
   )

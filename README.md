@@ -99,14 +99,18 @@ nalth audit        # Security audit
 ### 🛡️ **Built-in Security Primitives**
 
 **Prevents SQL Injection:**
+
 ```typescript
 import { sql } from 'nalth'
 
 // ✅ Safe: Automatically parameterized
-const user = await db.query(sql`SELECT * FROM users WHERE id = ${req.params.id}`)
+const user = await db.query(
+  sql`SELECT * FROM users WHERE id = ${req.params.id}`,
+)
 ```
 
 **Prevents SSRF:**
+
 ```typescript
 import { safeFetch } from 'nalth'
 
@@ -135,17 +139,20 @@ const data = await safeFetch(userProvidedUrl)
 All the tools you need in one command-line interface:
 
 #### Development & Build
+
 - `nalth dev` - Start dev server with HTTPS
 - `nalth build` - Production build with security optimizations
 - `nalth preview` - Preview production build
 
 #### Testing & Quality
+
 - `nalth test` - Run tests with Vitest (Jest-compatible API)
 - `nalth test --ui` - Open interactive test UI
 - `nalth test --coverage` - Generate coverage reports
 - `nalth test --security` - Security-enhanced testing
 
 #### Code Quality
+
 - `nalth lint` - ESLint with security plugins (100x faster potential with Oxlint)
 - `nalth lint --fix` - Auto-fix issues
 - `nalth lint --security` - Security-focused linting
@@ -153,16 +160,19 @@ All the tools you need in one command-line interface:
 - `nalth fmt --check` - Check formatting in CI
 
 #### Task Runner
+
 - `nalth run <task>` - Smart task runner with caching (Turborepo/Nx alternative)
 - `nalth run build --cache` - Cached task execution
 - `nalth run test --parallel` - Parallel task execution
 
 #### Library Development
+
 - `nalth lib` - Build libraries with best practices
 - `nalth lib --watch` - Watch mode for libraries
 - DTS generation & bundling included
 
 #### Security-First Package Management
+
 - `nalth install <package>` - **Secure package installation**
   - ✅ Typosquatting detection
   - ✅ Malicious package scanning
@@ -175,6 +185,7 @@ All the tools you need in one command-line interface:
 - `nalth security:scan <package>` - Scan specific packages
 
 #### Developer Tools
+
 - `nalth ui` - Advanced GUI devtools
 - Transform pipeline inspector
 - Module dependency graph visualization
@@ -308,7 +319,7 @@ graph TB
 - **[Migration Guide](./docs/guide/getting-started.md#⚡-quick-start)** - Moving from Vite.js or other build tools
 - **[Troubleshooting](./docs/guide/getting-started.md#🆘-troubleshooting)** - Common issues and solutions
 - **[FAQ](./docs/guide/getting-started.md#🎉-youre-ready)** - Frequently asked questions
-- **[Changelog](./packages/Nalth/CHANGELOG.md)** - Version history and updates
+- **[Changelog](./packages/nalth/CHANGELOG.md)** - Version history and updates
 
 ### 🔐 **Security Resources**
 
