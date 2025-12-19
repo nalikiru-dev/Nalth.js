@@ -62,7 +62,7 @@
     "acorn": "^8.15.0",
     "fdir": "^6.4.6",
     "picocolors": "^1.1.1",
-    "tsdown": "^0.16.0",
+    "tsdown": "^0.18.0",
     "nalth": "workspace:*"
   }
 }
