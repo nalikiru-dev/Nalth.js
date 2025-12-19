@@ -1,0 +1,31 @@
+
+> @nalth/nalth@0.9.0 build-types-roll
+> rolldown --config rolldown.dts.config.ts
+
+
+ ERROR  Error happened while loading config.
+
+    at loadConfig (/run/media/robbin/New%20Volume/Documents/code/Nalth.js-main/node_modules/.pnpm/rolldown@1.0.0-beta.32/node_modules/rolldown/dist/shared/load-config-BF8LOHEy.mjs:114:9)
+    at async bundleWithConfig (/run/media/robbin/New%20Volume/Documents/code/Nalth.js-main/node_modules/.pnpm/rolldown@1.0.0-beta.32/node_modules/rolldown/dist/cli.mjs:1504:17)
+    at async main (/run/media/robbin/New%20Volume/Documents/code/Nalth.js-main/node_modules/.pnpm/rolldown@1.0.0-beta.32/node_modules/rolldown/dist/cli.mjs:1748:3)
+
+  [cause]: The requested module 'rolldown/experimental' does not provide an export named 'isolatedDeclarationSync'
+
+      import { ResolverFactory, isolatedDeclarationSync } from "rolldown/experimental";
+      ^^^^^^^^^^^^^^^^^^^^^^^
+      SyntaxError: The requested module 'rolldown/experimental' does not provide an export named 'isolatedDeclarationSync'
+      at ModuleJob._instantiate (node:internal/modules/esm/module_job:228:21)
+      at async ModuleJob.run (node:internal/modules/esm/module_job:337:5)
+      at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:665:26)
+      at async loadTsConfig (/run/media/robbin/New%20Volume/Documents/code/Nalth.js-main/node_modules/.pnpm/rolldown@1.0.0-beta.32/node_modules/rolldown/dist/shared/load-config-BF8LOHEy.mjs:74:11)
+      at async loadConfig (/run/media/robbin/New%20Volume/Documents/code/Nalth.js-main/node_modules/.pnpm/rolldown@1.0.0-beta.32/node_modules/rolldown/dist/shared/load-config-BF8LOHEy.mjs:111:11)
+      at async bundleWithConfig (/run/media/robbin/New%20Volume/Documents/code/Nalth.js-main/node_modules/.pnpm/rolldown@1.0.0-beta.32/node_modules/rolldown/dist/cli.mjs:1504:17)
+      at async main (/run/media/robbin/New%20Volume/Documents/code/Nalth.js-main/node_modules/.pnpm/rolldown@1.0.0-beta.32/node_modules/rolldown/dist/cli.mjs:1748:3)
+
+npm error Lifecycle script `build-types-roll` failed with error:
+npm error code 1
+npm error path /run/media/robbin/New Volume/Documents/code/Nalth.js-main/packages/Nalth
+npm error workspace @nalth/nalth@0.9.0
+npm error location /run/media/robbin/New Volume/Documents/code/Nalth.js-main/packages/Nalth
+npm error command failed
+npm error command sh -c rolldown --config rolldown.dts.config.ts
