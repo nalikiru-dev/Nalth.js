@@ -3,10 +3,10 @@ import colors from 'picocolors'
 import { logRecentCommits, updateTemplateVersions } from './releaseUtils'
 
 release({
-  repo: 'vite',
-  packages: ['vite', 'create-nalth', 'plugin-legacy'],
+  repo: 'nalth',
+  packages: ['nalth', 'create-nalth', 'plugin-legacy'],
   toTag: (pkg, version) =>
-    pkg === 'vite' ? `v${version}` : `${pkg}@${version}`,
+    pkg === 'nalth' ? `v${version}` : `${pkg}@${version}`,
   logChangelog: (pkg) => logRecentCommits(pkg),
   generateChangelog: async (pkgName) => {
     if (pkgName === 'create-nalth') await updateTemplateVersions()
@@ -14,8 +14,8 @@ release({
     console.log(colors.cyan('\nGenerating changelog...'))
 
     await generateChangelog({
-      getPkgDir: () => `packages/${pkgName}`,
-      tagPrefix: pkgName === 'vite' ? undefined : `${pkgName}@`,
+      getPkgDir: () => (pkgName === 'nalth' ? `packages/Nalth` : `packages/${pkgName}`),
+      tagPrefix: pkgName === 'nalth' ? undefined : `${pkgName}@`,
     })
   },
 })

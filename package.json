@@ -1,5 +1,5 @@
 {
-  "name": "@nalth/nalth-monorepo",
+  "name": "@nalth/monorepo",
   "private": true,
   "type": "module",
   "engines": {

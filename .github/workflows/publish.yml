@@ -2,6 +2,8 @@ name: Publish Package
 
 on:
   push:
+    branches:
+      - main
     tags:
       - "v*" # Push events to matching v*, i.e. v1.0, v20.15.10
       - "plugin-*" # Push events to matching plugin-*, i.e. plugin-(vue|vue-jsx|react|legacy)@1.0.0
@@ -37,3 +39,5 @@ jobs:
 
       - name: Publish package
         run: npm i -g npm@^11.5.2 && pnpm run ci-publish ${{ github.ref_name }}
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

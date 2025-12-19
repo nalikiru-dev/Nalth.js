@@ -15,11 +15,12 @@ function run<EO extends ExecaOptions>(
 }
 
 export async function getLatestTag(pkgName: string): Promise<string> {
+  const dir = pkgName === 'nalth' ? 'Nalth' : pkgName
   const pkgJson = JSON.parse(
-    await fs.readFile(`packages/${pkgName}/package.json`, 'utf-8'),
+    await fs.readFile(`packages/${dir}/package.json`, 'utf-8'),
   )
   const version = pkgJson.version
-  return pkgName === 'vite' ? `v${version}` : `${pkgName}@${version}`
+  return pkgName === 'nalth' ? `v${version}` : `${pkgName}@${version}`
 }
 
 export async function logRecentCommits(pkgName: string): Promise<void> {
@@ -43,7 +44,7 @@ export async function logRecentCommits(pkgName: string): Promise<void> {
       `${sha}..HEAD`,
       '--oneline',
       '--',
-      `packages/${pkgName}`,
+      `packages/${pkgName === 'nalth' ? 'Nalth' : pkgName}`,
     ],
     { stdio: 'inherit' },
   )
@@ -51,20 +52,22 @@ export async function logRecentCommits(pkgName: string): Promise<void> {
 }
 
 export async function updateTemplateVersions(): Promise<void> {
-  const vitePkgJson = JSON.parse(
-    await fs.readFile('packages/vite/package.json', 'utf-8'),
+  const nalthPkgJson = JSON.parse(
+    await fs.readFile('packages/Nalth/package.json', 'utf-8'),
   )
-  const viteVersion = vitePkgJson.version
-  if (/beta|alpha|rc/.test(viteVersion)) return
+  const nalthVersion = nalthPkgJson.version
+  if (/beta|alpha|rc/.test(nalthVersion)) return
 
   const dir = 'packages/create-nalth'
   const templates = (await fs.readdir(dir)).filter((dir) =>
-    dir.startsWith('template-'),
+    dir.startsWith('nalth-'),
   )
   for (const template of templates) {
     const pkgPath = path.join(dir, template, `package.json`)
     const pkg = JSON.parse(await fs.readFile(pkgPath, 'utf-8'))
-    pkg.devDependencies.vite = `^` + viteVersion
+    if (pkg.devDependencies && pkg.devDependencies['nalth']) {
+      pkg.devDependencies['nalth'] = `^` + nalthVersion
+    }
     await fs.writeFile(pkgPath, JSON.stringify(pkg, null, 2) + '\n')
   }
 }
