@@ -49,6 +49,6 @@
     "typescript": "~5.9.0",
     "typescript-eslint": "^8.39.1",
     "vitest": "^4.0.0",
-    "nalth": "^2.2.2"
+    "nalth": "^0.9.0"
   }
 }

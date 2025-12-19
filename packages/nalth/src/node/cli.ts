@@ -13,7 +13,15 @@ import { createLogger } from './logger'
 import { resolveConfig } from './config'
 import type { InlineConfig } from './config'
 
-// Project detection function - now more flexible
+const BANNER = `
+  ${colors.cyan(colors.bold('🛡️  NALTH'))} ${colors.dim('v' + VERSION)}
+  ${colors.dim('The Security-First Unified Toolchain')}
+`
+
+function showBanner() {
+  process.stdout.write(BANNER)
+}
+
 function isNalthProject(cwd: string): boolean {
   // Check for nalth.config.js/ts or vite.config.js/ts (Nalth is Vite-compatible)
   const configFiles = [
@@ -375,6 +383,7 @@ cli
       // Check if this is a Nalth project
       const cwd = root ? path.resolve(root) : process.cwd()
 
+      showBanner()
       if (!isNalthProject(cwd) && !options.force) {
         // eslint-disable-next-line no-console
         console.error(`
@@ -546,6 +555,7 @@ cli
     // Pass specific known flags if needed, or rely on interactive prompts
     // Spawning 'npm create nalth' (which runs create-nalth)
 
+    // eslint-disable-next-line no-console
     console.log(colors.cyan(`\n🚀 Launching Nalth Scaffolder...\n`))
 
     const { status } = spawn.sync('npm', args, { stdio: 'inherit' })

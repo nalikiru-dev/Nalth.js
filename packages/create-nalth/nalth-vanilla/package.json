@@ -25,6 +25,6 @@
     "postcss": "^8.4.47",
     "autoprefixer": "^10.4.20",
     "tailwindcss": "^4.0.0",
-    "nalth": "^2.2.0"
+    "nalth": "^0.9.0"
   }
 }

@@ -48,7 +48,7 @@
     "babel-plugin-polyfill-regenerator": "^0.6.5",
     "browserslist": "^4.25.2",
     "browserslist-to-esbuild": "^2.1.1",
-    "core-js": "^3.45.0",
+    "core-js": "^3.47.0",
     "magic-string": "^0.30.17",
     "regenerator-runtime": "^0.14.1",
     "systemjs": "^6.15.1"
@@ -62,7 +62,7 @@
     "acorn": "^8.15.0",
     "fdir": "^6.4.6",
     "picocolors": "^1.1.1",
-    "tsdown": "^0.16.0",
+    "tsdown": "^0.18.0",
     "nalth": "workspace:*"
   }
 }
