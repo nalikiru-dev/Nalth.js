@@ -73,48 +73,50 @@ export default function Dashboard() {
   return (
     <div className="min-h-screen bg-[#030308] text-white selection:bg-cyan-500/30">
       {/* Premium Header */}
-      <header className="glass-panel sticky top-4 mx-4 mb-8 z-50 py-3 px-6 flex items-center justify-between border-cyan-500/10">
-        <div className="flex items-center gap-3">
-          <div className="relative">
-            <Shield className="w-8 h-8 text-cyan-400" />
-            <div
-              className={`absolute -inset-1 bg-cyan-400/20 blur-sm rounded-full ${pulse ? 'opacity-100' : 'opacity-0'} transition-opacity duration-1000`}
-            />
+      <header className="sticky top-4 mx-auto max-w-[1400px] px-6 z-50">
+        <div className="glass-panel py-3 px-6 flex items-center justify-between border-cyan-500/10 backdrop-blur-md">
+          <div className="flex items-center gap-3">
+            <div className="relative">
+              <Shield className="w-8 h-8 text-cyan-400" />
+              <div
+                className={`absolute -inset-1 bg-cyan-400/20 blur-sm rounded-full ${pulse ? 'opacity-100' : 'opacity-0'} transition-opacity duration-1000`}
+              />
+            </div>
+            <div>
+              <h1 className="text-xl font-bold tracking-tight title-gradient">NALTH COMMAND</h1>
+              <p className="text-[10px] text-cyan-400/60 font-mono uppercase tracking-[0.2em]">
+                Deployment: v0.9.0-BETA
+              </p>
+            </div>
           </div>
-          <div>
-            <h1 className="text-xl font-bold tracking-tight title-gradient">NALTH COMMAND</h1>
-            <p className="text-[10px] text-cyan-400/60 font-mono uppercase tracking-[0.2em]">
-              Deployment: v0.9.0-BETA
-            </p>
-          </div>
-        </div>
 
-        <nav className="hidden md:flex items-center gap-6">
-          {['OVERVIEW', 'SECURITY', 'NETWORK', 'NODES'].map((item) => (
-            <button
-              key={item}
-              className="text-[11px] font-bold tracking-widest text-slate-400 hover:text-cyan-400 transition-colors"
-            >
-              {item}
+          <nav className="hidden md:flex items-center gap-6">
+            {['OVERVIEW', 'SECURITY', 'NETWORK', 'NODES'].map((item) => (
+              <button
+                key={item}
+                className="text-[11px] font-bold tracking-widest text-slate-400 hover:text-cyan-400 transition-colors"
+              >
+                {item}
+              </button>
+            ))}
+          </nav>
+
+          <div className="flex items-center gap-4">
+            <div className="flex items-center gap-2 px-3 py-1.5 rounded-md bg-cyan-500/5 border border-cyan-500/20">
+              <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse" />
+              <span className="text-[10px] font-bold text-cyan-400">ENCRYPTED</span>
+            </div>
+            <button className="nalth-btn primary !py-2 !px-4 text-xs">
+              <Zap className="w-4 h-4" /> RE-DEPLOY
             </button>
-          ))}
-        </nav>
-
-        <div className="flex items-center gap-4">
-          <div className="flex items-center gap-2 px-3 py-1.5 rounded-md bg-cyan-500/5 border border-cyan-500/20">
-            <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse" />
-            <span className="text-[10px] font-bold text-cyan-400">ENCRYPTED</span>
           </div>
-          <button className="nalth-btn primary !py-2 !px-4 text-xs">
-            <Zap className="w-4 h-4" /> RE-DEPLOY
-          </button>
         </div>
       </header>
 
       {/* Main Command Center */}
-      <main className="max-w-[1400px] mx-auto px-6 pb-20">
+      <main className="max-w-[1400px] mx-auto px-6 pb-20 mt-8">
         {/* Top Grid: Critical Intelligence */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
           {metrics.map((metric) => (
             <div
               key={metric.id}
