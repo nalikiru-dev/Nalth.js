@@ -73,7 +73,7 @@ export default function Dashboard() {
   return (
     <div className="min-h-screen bg-[#030308] text-white selection:bg-cyan-500/30">
       {/* Premium Header */}
-      <header className="sticky top-4 mx-auto max-w-[1400px] px-6 z-50">
+      <header className="sticky top-4 mx-auto max-w-[1600px] px-6 z-50">
         <div className="glass-panel py-3 px-6 flex items-center justify-between border-cyan-500/10 backdrop-blur-md">
           <div className="flex items-center gap-3">
             <div className="relative">
@@ -114,7 +114,7 @@ export default function Dashboard() {
       </header>
 
       {/* Main Command Center */}
-      <main className="max-w-[1400px] mx-auto px-6 pb-20 mt-8">
+      <main className="max-w-[1600px] mx-auto px-6 pb-20 mt-8">
         {/* Top Grid: Critical Intelligence */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
           {metrics.map((metric) => (

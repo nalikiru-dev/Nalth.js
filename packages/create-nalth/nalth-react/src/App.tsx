@@ -17,7 +17,7 @@ function App() {
   return (
     <div className="min-h-screen bg-[#030308] text-white selection:bg-cyan-500/30">
       {/* Elite Technical Header */}
-      <header className="sticky top-4 mx-auto max-w-[1400px] px-6 z-50">
+      <header className="sticky top-4 mx-auto max-w-[1600px] px-6 z-50">
         <div className="glass-panel py-3 px-6 flex items-center justify-between border-cyan-500/10 backdrop-blur-md">
           <div className="flex items-center gap-3">
             <div className="relative">
@@ -56,7 +56,7 @@ function App() {
       </header>
 
       {/* Hero: Build Unbreakable */}
-      <main className="max-w-[1400px] mx-auto px-6 pt-20 pb-32">
+      <main className="max-w-[1600px] mx-auto px-6 pt-20 pb-32">
         <div className="text-center mb-20 relative">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 mb-8">
             <Terminal className="w-3 h-3 text-cyan-400" />
@@ -136,7 +136,7 @@ function App() {
 
       {/* Functional Footer */}
       <footer className="border-t border-white/5 bg-black/20 backdrop-blur-sm">
-        <div className="max-w-[1400px] mx-auto px-6 py-12 flex flex-col md:flex-row items-center justify-between gap-8">
+        <div className="max-w-[1600px] mx-auto px-6 py-12 flex flex-col md:flex-row items-center justify-between gap-8">
           <div className="flex items-center gap-6">
             <a
               href="#"
