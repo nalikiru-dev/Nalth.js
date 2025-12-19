@@ -91,7 +91,7 @@
       "eslint --cache --fix"
     ]
   },
-  "packageManager": "pnpm@10.22.0",
+  "packageManager": "pnpm@10.26.1",
   "stackblitz": {
     "startCommand": "pnpm --filter='nalth' run dev"
   }
