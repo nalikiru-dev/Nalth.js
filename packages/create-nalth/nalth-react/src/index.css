@@ -1,203 +1,221 @@
 @import 'tailwindcss';
 
-/* --- Elite Technical Palette --- */
 :root {
-  --bg-depth: #030308;
-  --bg-surface: #0a0a14;
-  --bg-surface-glass: rgba(10, 10, 20, 0.7);
+  --background: #000000;
+  --foreground: #ffffff;
 
-  --primary-neon: #00f2ff;
-  --primary-glow: rgba(0, 242, 255, 0.5);
-  --secondary-neon: #7000ff;
+  --primary: #3b82f6;
+  /* Blue-500 */
+  --primary-glow: rgba(59, 130, 246, 0.5);
 
-  --accent-success: #00ff9d;
-  --accent-warning: #ffbf00;
-  --accent-danger: #ff0055;
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-surface: rgba(10, 10, 10, 0.7);
 
-  --text-primary: #ffffff;
-  --text-secondary: #8b8b9e;
-  --text-dim: #454552;
-
-  --glass-border: rgba(0, 242, 255, 0.1);
-  --glass-border-hover: rgba(0, 242, 255, 0.3);
-
-  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
-  --font-sans: 'Outfit', 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-sans: 'Inter', system-ui, sans-serif;
 }
 
-/* --- Global Reset & Base --- */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
+/* --- Base --- */
 body {
+  background-color: var(--background);
+  color: var(--foreground);
   font-family: var(--font-sans);
-  background-color: var(--bg-depth);
-  color: var(--text-primary);
-  line-height: 1.5;
   overflow-x: hidden;
-  min-height: 100vh;
-  /* Deep Technical Scanning Grid Overlay */
-  background-image:
-    linear-gradient(rgba(0, 242, 255, 0.02) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 242, 255, 0.02) 1px, transparent 1px),
-    radial-gradient(circle at 50% 0%, rgba(112, 0, 255, 0.05) 0%, transparent 50%);
-  background-size:
-    50px 50px,
-    50px 50px,
-    100% 100%;
+  cursor: auto;
 }
 
-/* --- Elite Components --- */
+/* --- Utilities --- */
 
-.glass-panel {
-  background: var(--bg-surface-glass);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+/* Noise Texture */
+.noise {
+  position: fixed;
+  inset: -50%;
+  width: 200%;
+  height: 200%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.04;
+  pointer-events: none;
+  z-index: 0;
+  animation: grain 8s steps(10) infinite;
+}
+
+@keyframes grain {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+
+  10% {
+    transform: translate(-5%, -10%);
+  }
+
+  20% {
+    transform: translate(-15%, 5%);
+  }
+
+  30% {
+    transform: translate(7%, -25%);
+  }
+
+  40% {
+    transform: translate(-5%, 25%);
+  }
+
+  50% {
+    transform: translate(-15%, 10%);
+  }
+
+  60% {
+    transform: translate(15%, 0%);
+  }
+
+  70% {
+    transform: translate(0%, 15%);
+  }
+
+  80% {
+    transform: translate(3%, 35%);
+  }
+
+  90% {
+    transform: translate(-10%, 10%);
+  }
+}
+
+/* Glass Card */
+.glass-card {
+  background: var(--glass-surface);
+  backdrop-filter: blur(12px);
   border: 1px solid var(--glass-border);
-  border-radius: 12px;
-  position: relative;
-  overflow: hidden;
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.glass-panel::before {
+/* Glow Primary */
+.glow-primary {
+  box-shadow: 0 0 30px rgba(59, 130, 246, 0.15);
+}
+
+/* Text Glow */
+.text-glow {
+  text-shadow: 0 0 30px var(--primary-glow);
+}
+
+/* Float Animation */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* Gradient Border Animation */
+@keyframes gradient-shift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.gradient-border {
+  position: relative;
+}
+
+.gradient-border::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: -100%;
-  width: 50%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.03), transparent);
-  transition: 0.5s;
+  inset: -1px;
+  background: linear-gradient(90deg, #3b82f6, #8b5cf6, #3b82f6);
+  background-size: 200% 100%;
+  animation: gradient-shift 3s ease infinite;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: inherit;
 }
 
-.glass-panel:hover::before {
-  left: 200%;
+.gradient-border:hover::before {
+  opacity: 1;
 }
 
-.glass-panel:hover {
-  border-color: var(--glass-border-hover);
-  box-shadow: 0 0 30px rgba(0, 242, 255, 0.05);
-  transform: translateY(-2px);
-}
-
-.title-gradient {
-  background: linear-gradient(to right, #fff, var(--primary-neon));
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-shadow: 0 0 20px rgba(0, 242, 255, 0.2);
-}
-
-/* --- Buttons & Action Elements --- */
-
+/* Nalth Button - Premium (Standard CSS to avoid @apply issues) */
 .nalth-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.75rem;
-  padding: 0.8rem 1.8rem;
-  border-radius: 6px;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
   font-weight: 700;
-  font-size: 0.85rem;
-  letter-spacing: 0.05em;
   text-transform: uppercase;
+  letter-spacing: 0.05em;
   cursor: pointer;
-  transition: all 0.3s ease;
-  border: 1px solid transparent;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s;
 }
 
 .nalth-btn.primary {
-  background: var(--primary-neon);
-  color: var(--bg-depth);
-  box-shadow: 0 0 20px var(--primary-glow);
+  background-color: #2563eb;
+  color: white;
 }
 
 .nalth-btn.primary:hover {
-  filter: brightness(1.2);
-  box-shadow: 0 0 30px var(--primary-neon);
-  transform: scale(1.02);
+  background-color: #3b82f6;
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
 }
 
 .nalth-btn.secondary {
-  background: rgba(255, 255, 255, 0.03);
-  border-color: rgba(255, 255, 255, 0.1);
-  color: var(--text-primary);
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: white;
 }
 
 .nalth-btn.secondary:hover {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: var(--primary-neon);
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(59, 130, 246, 0.5);
 }
 
-/* --- Utility Technical Classes --- */
-
-.font-mono {
-  font-family: var(--font-mono);
-}
-
-.text-neon-cyan {
-  color: var(--primary-neon);
-  text-shadow: 0 0 10px var(--primary-glow);
-}
-
-.scanline {
+/* Layout Utilities */
+.content-container {
   width: 100%;
-  height: 2px;
-  background: linear-gradient(to right, transparent, var(--primary-neon), transparent);
-  opacity: 0.5;
-  position: absolute;
-  top: 0;
-  left: 0;
-  animation: scan 3s linear infinite;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
 }
 
-@keyframes scan {
-  from {
-    top: 0%;
-  }
-
-  to {
-    top: 100%;
-  }
+.section-padding {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
 }
 
-@keyframes pulse-soft {
-  0% {
-    opacity: 0.4;
-  }
-
-  50% {
-    opacity: 1;
-  }
-
-  100% {
-    opacity: 0.4;
-  }
-}
-
-.animate-pulse-soft {
-  animation: pulse-soft 2s infinite ease-in-out;
-}
-
-/* --- Scrollbar Redesign --- */
+/* Scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 5px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--bg-depth);
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--bg-surface);
-  border-radius: 10px;
-  border: 1px solid var(--glass-border);
+  background: #333;
+  border-radius: 99px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--primary-neon);
+  background: #555;
 }

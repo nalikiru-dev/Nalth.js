@@ -1,289 +1,369 @@
 import { useState, useEffect } from 'react'
 import {
   Shield,
-  Zap,
   Lock,
-  Activity,
-  AlertTriangle,
-  Cpu,
   Globe,
-  Terminal,
+  Menu,
+  X,
+  Eye,
+  EyeOff,
+  CheckCircle,
+  Server,
+  Activity,
+  Ban,
   ShieldAlert,
 } from 'lucide-react'
 
-interface Metric {
-  label: string
-  value: string
-  change: string
-  trend: 'up' | 'down'
-  id: string
-}
-
-export default function Dashboard() {
-  const [metrics] = useState<Metric[]>([
-    {
-      id: 'score',
-      label: 'Security Posture',
-      value: '98.5',
-      change: '+2.3%',
-      trend: 'up',
-    },
-    {
-      id: 'latency',
-      label: 'Avg Latency',
-      value: '99.2ms',
-      change: '-12%',
-      trend: 'up',
-    },
-    {
-      id: 'users',
-      label: 'Secure Sessions',
-      value: '2,847',
-      change: '+18%',
-      trend: 'up',
-    },
-    {
-      id: 'uptime',
-      label: 'System Uptime',
-      value: '99.99%',
-      change: '+0.01%',
-      trend: 'up',
-    },
-  ])
-
-  const [securityEvents] = useState([
-    { type: 'success', id: 'EV-882', message: 'RSA-4096 Key Rotation Completed', time: '2m' },
-    { type: 'info', id: 'EV-881', message: 'Global CSP Audit: 100% Compliance', time: '15m' },
-    {
-      type: 'warning',
-      id: 'EV-880',
-      message: 'Potential Brute-force blocked (IP: 192.168.1.1)',
-      time: '1h',
-    },
-    { type: 'success', id: 'EV-879', message: 'Zero-JS SRI Hash Verification passed', time: '5h' },
-  ])
-
-  const [pulse, setPulse] = useState(false)
+// --- Input Encryption Demo (Mechanism) ---
+const InputEncryptionDemo = () => {
+  const [input, setInput] = useState('')
+  const [encrypted, setEncrypted] = useState('')
+  const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
-    const interval = setInterval(() => setPulse((p) => !p), 2000)
-    return () => clearInterval(interval)
-  }, [])
+    if (!input) {
+      setEncrypted('')
+      return
+    }
+    // Simulation of AES-GCM Encryption
+    const chars = '0123456789ABCDEF'
+    const mockHash = input
+      .split('')
+      .map(() =>
+        Array(2)
+          .fill(0)
+          .map(() => chars[Math.floor(Math.random() * chars.length)])
+          .join(''),
+      )
+      .join(' ')
+    setEncrypted(mockHash)
+  }, [input])
 
   return (
-    <div className="min-h-screen bg-[#030308] text-white selection:bg-cyan-500/30">
-      {/* Premium Header */}
-      <header className="sticky top-4 mx-auto max-w-[1800px] px-6 z-50">
-        <div className="glass-panel py-3 px-6 flex items-center justify-between border-cyan-500/10 backdrop-blur-md">
-          <div className="flex items-center gap-3">
+    <div className="glass-card p-6 rounded-xl relative overflow-hidden group border-l-4 border-l-blue-500">
+      <div className="relative z-10">
+        <div className="flex items-center justify-between mb-4">
+          <h3 className="text-[11px] font-black text-blue-400 uppercase tracking-widest flex items-center gap-2">
+            <Lock className="w-3 h-3" /> Field-Level Encryption
+          </h3>
+          <span className="text-[9px] px-2 py-0.5 rounded bg-blue-500/20 text-blue-400 font-bold uppercase">
+            Active
+          </span>
+        </div>
+
+        <div className="space-y-4">
+          <div>
+            <label className="text-[10px] font-bold text-zinc-600 uppercase mb-1.5 block">
+              Data Stream Input
+            </label>
             <div className="relative">
-              <Shield className="w-8 h-8 text-cyan-400" />
-              <div
-                className={`absolute -inset-1 bg-cyan-400/20 blur-sm rounded-full ${pulse ? 'opacity-100' : 'opacity-0'} transition-opacity duration-1000`}
+              <input
+                type={isVisible ? 'text' : 'password'}
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                placeholder="Simulate sensitive payload..."
+                className="w-full bg-black/40 border border-white/10 rounded px-3 py-2 text-xs text-white focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500/50 transition-all font-mono"
               />
-            </div>
-            <div>
-              <h1 className="text-xl font-bold tracking-tight title-gradient">NALTH COMMAND</h1>
-              <p className="text-[10px] text-cyan-400/60 font-mono uppercase tracking-[0.2em]">
-                Deployment: v0.9.0-BETA
-              </p>
+              <button
+                onClick={() => setIsVisible(!isVisible)}
+                className="absolute right-3 top-2 text-zinc-500 hover:text-white"
+              >
+                {isVisible ? <EyeOff className="w-3.5 h-3.5" /> : <Eye className="w-3.5 h-3.5" />}
+              </button>
             </div>
           </div>
 
-          <nav className="hidden md:flex items-center gap-6">
-            {['OVERVIEW', 'SECURITY', 'NETWORK', 'NODES'].map((item) => (
-              <button
-                key={item}
-                className="text-[11px] font-bold tracking-widest text-slate-400 hover:text-cyan-400 transition-colors"
-              >
-                {item}
-              </button>
-            ))}
-          </nav>
+          <div>
+            <label className="text-[10px] font-bold text-zinc-600 uppercase mb-1.5 block">
+              Encrypted Output (AES-256-GCM)
+            </label>
+            <div className="w-full h-[40px] bg-blue-900/5 border border-blue-500/20 rounded px-3 py-2 text-[10px] text-blue-400 font-mono break-all overflow-hidden flex items-center">
+              {encrypted || <span className="opacity-30">Waiting for data...</span>}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+// --- CSP Visualizer (Prevention) ---
+const CSPDemo = () => {
+  const [status, setStatus] = useState<'secure' | 'blocked'>('secure')
+  const [intrushionCount, setIntrusionCount] = useState(0)
+
+  const triggerAttack = () => {
+    setStatus('blocked')
+    setIntrusionCount((p) => p + 1)
+    setTimeout(() => setStatus('secure'), 2000)
+  }
+
+  return (
+    <div className="glass-card p-6 rounded-xl relative overflow-hidden group border-l-4 border-l-red-500">
+      <div className="relative z-10">
+        <div className="flex items-center justify-between mb-4">
+          <h3 className="text-[11px] font-black text-red-400 uppercase tracking-widest flex items-center gap-2">
+            <ShieldAlert className="w-3 h-3" /> XSS Prevention Engine
+          </h3>
+          <span className="text-[9px] px-2 py-0.5 rounded bg-red-500/20 text-red-400 font-bold uppercase">
+            Enforcing
+          </span>
+        </div>
+
+        <div className="flex items-center gap-4 mb-6">
+          <div
+            className={`flex-1 h-24 rounded border flex flex-col items-center justify-center gap-2 transition-all duration-200 ${
+              status === 'secure'
+                ? 'bg-zinc-900/50 border-white/5'
+                : 'bg-red-500/10 border-red-500/40'
+            }`}
+          >
+            {status === 'secure' ? (
+              <>
+                <Shield className="w-6 h-6 text-zinc-600" />
+                <span className="text-[10px] font-bold text-zinc-500 uppercase">
+                  Monitoring Traffic
+                </span>
+              </>
+            ) : (
+              <>
+                <Ban className="w-8 h-8 text-red-500 animate-bounce" />
+                <span className="text-[10px] font-bold text-red-500 uppercase">
+                  Malicious Script Blocked
+                </span>
+              </>
+            )}
+          </div>
+        </div>
+
+        <div className="flex items-center gap-3">
+          <button
+            onClick={triggerAttack}
+            disabled={status === 'blocked'}
+            className="flex-1 py-2 rounded bg-white/5 hover:bg-white/10 text-white text-[10px] font-bold uppercase tracking-wider border border-white/10 disabled:opacity-50 transition-all"
+          >
+            Test Script Injection
+          </button>
+          <div className="px-3 py-2 rounded bg-black/40 border border-white/10 flex flex-col items-center min-w-[60px]">
+            <span className="text-[8px] text-zinc-500 uppercase font-black">Blocked</span>
+            <span className="text-xs font-mono font-bold text-red-500">{intrushionCount}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+export default function Dashboard() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+
+  // Active Running Mechanisms List
+  const mechanisms = [
+    {
+      name: 'Strict-Transport-Security',
+      status: 'Enabled',
+      val: 'max-age=31536000',
+      color: 'text-green-500',
+    },
+    { name: 'X-Content-Type-Options', status: 'Enabled', val: 'nosniff', color: 'text-green-500' },
+    { name: 'X-Frame-Options', status: 'Enabled', val: 'DENY', color: 'text-green-500' },
+    { name: 'Referrer-Policy', status: 'Active', val: 'strict-origin', color: 'text-blue-500' },
+    {
+      name: 'Content-Security-Policy',
+      status: 'Strict',
+      val: "default-src 'self'",
+      color: 'text-violet-500',
+    },
+    {
+      name: 'Permissions-Policy',
+      status: 'Active',
+      val: 'camera=(), mic=()',
+      color: 'text-blue-500',
+    },
+  ]
+
+  return (
+    <div className="min-h-screen relative bg-black selection:bg-blue-500/30 overflow-hidden">
+      <div className="noise" />
+
+      {/* Background Gradients */}
+      <div className="fixed top-[-10%] right-[-10%] w-[600px] h-[600px] bg-blue-900/10 rounded-full blur-[120px] pointer-events-none" />
+      <div className="fixed bottom-[-10%] left-[-10%] w-[500px] h-[500px] bg-violet-900/10 rounded-full blur-[120px] pointer-events-none" />
+
+      {/* Header */}
+      <header className="fixed top-0 z-[100] w-full h-16 border-b border-white/[0.05] bg-black/80 backdrop-blur-md flex items-center justify-center">
+        <div className="w-full max-w-[1400px] px-6 flex items-center justify-between">
+          <div className="flex items-center gap-6">
+            <div className="flex items-center gap-3">
+              <Shield className="w-5 h-5 text-blue-500" />
+              <h1 className="text-sm font-black tracking-widest text-white uppercase">
+                Nalth Sample App
+              </h1>
+            </div>
+            <div className="hidden lg:flex items-center gap-6 border-l border-white/10 pl-6">
+              <span className="text-[10px] font-bold tracking-[0.2em] text-white uppercase">
+                Dashboard
+              </span>
+              {['Config', 'Logs', 'Analysis'].map((item) => (
+                <button
+                  key={item}
+                  className="text-[10px] font-bold tracking-[0.2em] text-zinc-600 hover:text-zinc-400 uppercase transition-colors"
+                >
+                  {item}
+                </button>
+              ))}
+            </div>
+          </div>
 
           <div className="flex items-center gap-4">
-            <div className="flex items-center gap-2 px-3 py-1.5 rounded-md bg-cyan-500/5 border border-cyan-500/20">
-              <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse" />
-              <span className="text-[10px] font-bold text-cyan-400">ENCRYPTED</span>
+            <div className="px-3 py-1 rounded bg-green-900/10 border border-green-500/20 flex items-center gap-2">
+              <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
+              <span className="text-[10px] font-bold text-green-500 uppercase tracking-wider">
+                Protected
+              </span>
             </div>
-            <button className="nalth-btn primary !py-2 !px-4 text-xs">
-              <Zap className="w-4 h-4" /> RE-DEPLOY
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="lg:hidden p-2 text-zinc-400"
+            >
+              {isMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
           </div>
         </div>
       </header>
 
-      {/* Main Command Center */}
-      <main className="max-w-[1800px] mx-auto px-6 pb-20 mt-8">
-        {/* Top Grid: Critical Intelligence */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-          {metrics.map((metric) => (
-            <div
-              key={metric.id}
-              className="glass-panel p-5 group hover:border-cyan-500/50 transition-all"
-            >
-              <div className="flex items-center justify-between mb-2">
-                <span className="text-[10px] font-bold tracking-widest text-slate-500 uppercase">
-                  {metric.label}
-                </span>
-                {metric.id === 'score' ? (
-                  <Shield className="w-4 h-4 text-cyan-400" />
-                ) : (
-                  <Activity className="w-4 h-4 text-slate-600" />
-                )}
-              </div>
-              <div className="flex items-baseline gap-2">
-                <span className="text-2xl font-bold font-mono tracking-tighter text-white">
-                  {metric.value}
-                </span>
-                <span
-                  className={`text-[10px] font-bold ${metric.trend === 'up' ? 'text-cyan-400' : 'text-rose-500'}`}
-                >
-                  {metric.change}
-                </span>
-              </div>
-              <div className="mt-4 h-[2px] w-full bg-slate-800 rounded-full overflow-hidden">
-                <div className="h-full bg-cyan-400 shadow-[0_0_10px_rgba(34,211,238,0.5)] w-2/3 transition-all group-hover:w-full duration-1000" />
-              </div>
-            </div>
-          ))}
+      {/* Main Content */}
+      <main className="relative z-10 w-full max-w-[1400px] px-6 pt-24 pb-12 mx-auto">
+        <div className="mb-10">
+          <h2 className="text-2xl font-black text-white uppercase tracking-tight mb-2">
+            Security Status
+          </h2>
+          <p className="text-sm text-zinc-500 max-w-2xl">
+            Overview of active running security mechanisms, middleware headers, and real-time
+            prevention engines protecting this session.
+          </p>
         </div>
 
-        {/* Central Intelligence Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          {/* Real-time Threat Map (Visual Mockup) */}
-          <div className="lg:col-span-2 glass-panel overflow-hidden flex flex-col min-h-[400px]">
-            <div className="p-4 border-b border-white/5 flex items-center justify-between bg-white/[0.02]">
-              <div className="flex items-center gap-2">
-                <Globe className="w-4 h-4 text-cyan-400" />
-                <span className="text-xs font-bold tracking-widest uppercase">
-                  Global Threat Intelligence
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+          {/* LEFT COLUMN: Active Mechanisms (Headers & Config) */}
+          <div className="lg:col-span-8 space-y-6">
+            {/* Active Headers Panel */}
+            <div className="glass-card rounded-xl overflow-hidden">
+              <div className="px-6 py-4 border-b border-white/[0.05] flex items-center justify-between bg-white/[0.02]">
+                <div className="flex items-center gap-2">
+                  <Server className="w-4 h-4 text-zinc-400" />
+                  <span className="text-[10px] font-black text-zinc-400 uppercase tracking-widest">
+                    Active Mechanisms (Middleware)
+                  </span>
+                </div>
+                <span className="text-[10px] font-mono text-zinc-600 uppercase">
+                  Rust Core v0.9.0
                 </span>
               </div>
-              <div className="flex items-center gap-1.5">
-                <div className="w-1.5 h-1.5 rounded-full bg-rose-500 animate-ping" />
-                <span className="text-[10px] text-rose-500 font-bold">LIVE ACTIVITY</span>
+              <div className="p-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+                {mechanisms.map((mech, i) => (
+                  <div
+                    key={i}
+                    className="p-3 rounded border border-white/[0.05] bg-black/40 hover:border-white/10 transition-colors flex items-center justify-between group"
+                  >
+                    <div className="flex items-center gap-3">
+                      <CheckCircle className={`w-3.5 h-3.5 ${mech.color}`} />
+                      <span className="text-[10px] font-bold text-zinc-300 font-mono">
+                        {mech.name}
+                      </span>
+                    </div>
+                    <div className="text-right">
+                      <div className={`text-[9px] font-bold uppercase ${mech.color}`}>
+                        {mech.status}
+                      </div>
+                      <div className="text-[9px] font-mono text-zinc-600 opacity-60 group-hover:opacity-100 transition-opacity">
+                        {mech.val}
+                      </div>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
-            <div className="flex-1 relative bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] flex items-center justify-center">
-              {/* Technical Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-[#030308] via-transparent to-transparent pointer-events-none" />
-              <div
-                className="absolute inset-0 opacity-20 pointer-events-none"
-                style={{
-                  backgroundImage:
-                    'linear-gradient(rgba(0, 242, 255, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 242, 255, 0.1) 1px, transparent 1px)',
-                  backgroundSize: '40px 40px',
-                }}
-              />
 
-              <div className="relative z-10 text-center p-8 glass-panel !bg-black/40 border-cyan-500/20 backdrop-blur-md">
-                <ShieldAlert className="w-12 h-12 text-cyan-400 mx-auto mb-4 opacity-50" />
-                <h4 className="text-sm font-bold tracking-widest uppercase mb-2">
-                  Network Shield Active
-                </h4>
-                <p className="text-xs text-slate-400 max-w-xs leading-relaxed">
-                  Nalth is currently monitoring 1.2M packets/sec across 14 edge locations. No active
-                  threats detected.
-                </p>
-                <div className="mt-6 flex justify-center gap-4">
-                  <div className="text-center">
-                    <div className="text-lg font-mono font-bold text-cyan-400">0</div>
-                    <div className="text-[8px] text-slate-500 font-bold uppercase">Critical</div>
-                  </div>
-                  <div className="w-[1px] h-8 bg-white/10" />
-                  <div className="text-center">
-                    <div className="text-lg font-mono font-bold text-amber-500">2</div>
-                    <div className="text-[8px] text-slate-500 font-bold uppercase">Warnings</div>
-                  </div>
-                  <div className="w-[1px] h-8 bg-white/10" />
-                  <div className="text-center">
-                    <div className="text-lg font-mono font-bold text-emerald-500">14</div>
-                    <div className="text-[8px] text-slate-500 font-bold uppercase">Nodes</div>
+            {/* Data Protection Visualization */}
+            <div className="glass-card rounded-xl overflow-hidden">
+              <div className="px-6 py-4 border-b border-white/[0.05] flex items-center justify-between bg-white/[0.02]">
+                <div className="flex items-center gap-2">
+                  <Activity className="w-4 h-4 text-blue-500" />
+                  <span className="text-[10px] font-black text-blue-500 uppercase tracking-widest">
+                    Real-Time Data Hygiene
+                  </span>
+                </div>
+              </div>
+              <div className="p-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+                <InputEncryptionDemo />
+
+                <div className="p-5 rounded border border-white/[0.05] bg-black/20 text-zinc-400 text-xs leading-relaxed font-medium">
+                  <h4 className="text-white font-bold uppercase tracking-wider mb-3 flex items-center gap-2">
+                    <Globe className="w-3.5 h-3.5" /> Edge Sanitization
+                  </h4>
+                  <p className="mb-4 text-zinc-500">
+                    All incoming requests are routed through the Nalth Edge Shield. Payloads are
+                    sanitized for SQLi patterns and XSS vectors before reaching the application
+                    core.
+                  </p>
+                  <div className="flex gap-2">
+                    <span className="px-2 py-1 rounded bg-zinc-800 text-[9px] font-mono text-zinc-300 border border-white/10">
+                      Sanitization: SQLi
+                    </span>
+                    <span className="px-2 py-1 rounded bg-zinc-800 text-[9px] font-mono text-zinc-300 border border-white/10">
+                      Sanitization: NoSQL
+                    </span>
                   </div>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Sidebar: Activity Logs & Quick Control */}
-          <div className="space-y-6">
-            {/* Quick Control Center */}
-            <div className="glass-panel p-6">
-              <h3 className="text-xs font-bold tracking-widest uppercase mb-6 flex items-center gap-2">
-                <Terminal className="w-4 h-4 text-cyan-400" /> System Control
-              </h3>
-              <div className="grid grid-cols-2 gap-3">
-                <button className="flex flex-col items-center gap-2 p-4 rounded-lg bg-white/5 border border-white/5 hover:border-cyan-500/40 transition-all group">
-                  <Shield className="w-6 h-6 text-slate-500 group-hover:text-cyan-400 transition-colors" />
-                  <span className="text-[9px] font-bold text-slate-400 tracking-tighter">
-                    HARDEN CSP
+          {/* RIGHT COLUMN: Active Preventions */}
+          <div className="lg:col-span-4 space-y-6">
+            <div className="glass-card rounded-xl overflow-hidden h-full flex flex-col">
+              <div className="px-6 py-4 border-b border-white/[0.05] flex items-center justify-between bg-red-500/5">
+                <div className="flex items-center gap-2">
+                  <ShieldAlert className="w-4 h-4 text-red-500" />
+                  <span className="text-[10px] font-black text-red-500 uppercase tracking-widest">
+                    Active Prevention
                   </span>
-                </button>
-                <button className="flex flex-col items-center gap-2 p-4 rounded-lg bg-white/5 border border-white/5 hover:border-cyan-500/40 transition-all group">
-                  <Lock className="w-6 h-6 text-slate-500 group-hover:text-cyan-400 transition-colors" />
-                  <span className="text-[9px] font-bold text-slate-400 tracking-tighter">
-                    ROTATION
-                  </span>
-                </button>
-                <button className="flex flex-col items-center gap-2 p-4 rounded-lg bg-white/5 border border-white/5 hover:border-cyan-500/40 transition-all group">
-                  <Cpu className="w-6 h-6 text-slate-500 group-hover:text-cyan-400 transition-colors" />
-                  <span className="text-[9px] font-bold text-slate-400 tracking-tighter">
-                    FLUSH CACHE
-                  </span>
-                </button>
-                <button className="flex flex-col items-center gap-2 p-4 rounded-lg bg-white/5 border border-white/5 hover:border-cyan-500/40 transition-all group">
-                  <AlertTriangle className="w-6 h-6 text-slate-500 group-hover:text-amber-500 transition-colors" />
-                  <span className="text-[9px] font-bold text-slate-400 tracking-tighter">
-                    DEBUG LOGS
-                  </span>
-                </button>
+                </div>
+                <div className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
               </div>
-            </div>
 
-            {/* Technical Log Level */}
-            <div className="glass-panel p-6 flex-1">
-              <h3 className="text-xs font-bold tracking-widest uppercase mb-4">Security Feed</h3>
-              <div className="space-y-4">
-                {securityEvents.map((event) => (
-                  <div key={event.id} className="flex gap-3">
-                    <div
-                      className={`w-1 self-stretch rounded-full ${event.type === 'success' ? 'bg-emerald-500' : event.type === 'warning' ? 'bg-amber-500' : 'bg-cyan-500'}`}
-                    />
-                    <div className="flex-1">
-                      <div className="flex justify-between items-start mb-0.5">
-                        <span className="text-[9px] font-mono text-slate-500">{event.id}</span>
-                        <span className="text-[9px] font-mono text-slate-600">{event.time}</span>
+              <div className="p-6 space-y-6 flex-1 bg-gradient-to-b from-red-500/5 to-transparent">
+                <CSPDemo />
+
+                <div className="p-4 rounded border border-white/5 bg-black/40">
+                  <h4 className="text-[10px] font-black text-zinc-500 uppercase tracking-widest mb-4">
+                    Integrity Monitor
+                  </h4>
+                  <div className="space-y-3">
+                    {[
+                      {
+                        label: 'File Change Detection',
+                        status: 'Monitoring',
+                        color: 'text-green-500',
+                      },
+                      { label: 'Unexpected Outbound', status: 'Clean', color: 'text-green-500' },
+                      { label: 'Dependency Audit', status: 'Verified', color: 'text-blue-500' },
+                    ].map((item, i) => (
+                      <div
+                        key={i}
+                        className="flex justify-between items-center text-[10px] border-b border-white/5 pb-2 last:border-0 last:pb-0"
+                      >
+                        <span className="font-bold text-zinc-400">{item.label}</span>
+                        <span className={`font-mono font-bold uppercase ${item.color}`}>
+                          {item.status}
+                        </span>
                       </div>
-                      <p className="text-[11px] leading-relaxed text-slate-300 font-medium">
-                        {event.message}
-                      </p>
-                    </div>
+                    ))}
                   </div>
-                ))}
+                </div>
               </div>
-              <button className="w-full mt-6 py-2 text-[10px] font-bold tracking-[0.2em] text-cyan-400/60 hover:text-cyan-400 border border-cyan-400/20 rounded hover:bg-cyan-400/5 transition-all">
-                VIEW ARCHIVE
-              </button>
             </div>
-          </div>
-        </div>
-
-        {/* Technical Footer Indicator */}
-        <div className="mt-8 flex flex-col md:flex-row items-center justify-between gap-6 opacity-30">
-          <div className="flex items-center gap-8">
-            <div className="flex flex-col gap-1">
-              <span className="text-[8px] font-bold uppercase tracking-widest">Protocol</span>
-              <span className="text-[10px] font-mono">NALTH/HTS-SECURE</span>
-            </div>
-            <div className="flex flex-col gap-1">
-              <span className="text-[8px] font-bold uppercase tracking-widest">Gateway</span>
-              <span className="text-[10px] font-mono">10.0.8.254</span>
-            </div>
-          </div>
-          <div className="flex items-center gap-2 text-[10px] font-mono">
-            <Shield className="w-3 h-3" />
-            <span>SIG_VERIFIED: 0x882A...F92</span>
           </div>
         </div>
       </main>
