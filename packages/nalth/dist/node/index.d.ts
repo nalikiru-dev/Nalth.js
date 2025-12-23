@@ -3356,8 +3356,8 @@ declare function securityPlugin(options?: SecurityPluginOptions): Plugin;
  */
 declare function securityMiddlewarePlugin(options?: SecurityPluginOptions): Plugin;
 //#endregion
-//#region ../../node_modules/.pnpm/@rollup+plugin-alias@5.1.1_rollup@4.54.0/node_modules/@rollup/plugin-alias/types/index.d.ts
-type MapToFunction$1<T> = T extends Function ? T : never;
+//#region ../../node_modules/.pnpm/@rollup+plugin-alias@6.0.0_rollup@4.54.0/node_modules/@rollup/plugin-alias/dist/index.d.ts
+type MapToFunction$1<T> = T extends ((...args: any[]) => any) ? T : never;
 type ResolverFunction$1 = MapToFunction$1<PluginHooks['resolveId']>;
 //#endregion
 //#region src/node/plugins/vue.d.ts
