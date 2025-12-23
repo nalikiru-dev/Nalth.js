@@ -23,6 +23,6 @@
   },
   "devDependencies": {
     "typescript": "~5.9.0",
-    "nalth": "^0.9.0"
+    "nalth": "^0.9.1"
   }
 }

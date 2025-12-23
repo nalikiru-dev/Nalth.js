@@ -67,13 +67,13 @@
     "globals": "^16.3.0",
     "lint-staged": "^16.2.7",
     "picocolors": "^1.1.1",
-    "playwright-chromium": "^1.54.2",
+    "playwright-chromium": "^1.57.0",
     "prettier": "3.7.4",
     "rollup": "^4.53.5",
     "simple-git-hooks": "^2.13.1",
-    "tsx": "^4.20.3",
+    "tsx": "^4.21.0",
     "typescript": "~5.9.2",
-    "typescript-eslint": "^8.39.1",
+    "typescript-eslint": "^8.50.1",
     "nalth": "workspace:*",
     "vitest": "^4.0.0"
   },
@@ -91,7 +91,7 @@
       "eslint --cache --fix"
     ]
   },
-  "packageManager": "pnpm@10.26.1",
+  "packageManager": "pnpm@10.26.2",
   "stackblitz": {
     "startCommand": "pnpm --filter='nalth' run dev"
   }

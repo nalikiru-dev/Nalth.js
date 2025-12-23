@@ -1,5 +1,5 @@
 import { createRequire as ___createRequire } from 'module'; const require = ___createRequire(import.meta.url);
-import { Tt as createLogger, r as resolveConfig } from "./chunks/dep-tQ1aoBia.js";
+import { Tt as createLogger, r as resolveConfig } from "./chunks/dep-Ct0b4E3E.js";
 import { k as VERSION } from "./chunks/dep-BzePhl6O.js";
 import fs from "node:fs";
 import path from "node:path";
@@ -9,6 +9,13 @@ import spawn from "cross-spawn";
 import { cac } from "cac";
 
 //#region src/node/cli.ts
+const BANNER = `
+  ${colors.cyan(colors.bold("🛡️  NALTH"))} ${colors.dim("v" + VERSION)}
+  ${colors.dim("The Security-First Unified Toolchain")}
+`;
+function showBanner() {
+	process.stdout.write(BANNER);
+}
 function isNalthProject(cwd) {
 	for (const config of [
 		"nalth.config.js",
@@ -124,7 +131,7 @@ ${colors.gray("Current directory:")} ${cwd}
 		process.exit(1);
 	}
 	filterDuplicateOptions(options);
-	const { createServer } = await import("./chunks/dep-qZM35prN.js");
+	const { createServer } = await import("./chunks/dep-DdD6Ayyd.js");
 	try {
 		const server = await createServer({
 			root,
@@ -180,6 +187,7 @@ ${colors.gray("Current directory:")} ${cwd}
 });
 cli.command("build [root]", "build for production").option("--target <target>", `[string] transpile target (default: 'baseline-widely-available')`).option("--outDir <dir>", `[string] output directory (default: dist)`).option("--assetsDir <dir>", `[string] directory under outDir to place assets in (default: assets)`).option("--assetsInlineLimit <number>", `[number] static asset base64 inline threshold in bytes (default: 4096)`).option("--ssr [entry]", `[string] build specified entry for server-side rendering`).option("--sourcemap [output]", `[boolean | "inline" | "hidden"] output source maps for build (default: false)`).option("--minify [minifier]", "[boolean | \"terser\" | \"esbuild\"] enable/disable minification, or specify minifier to use (default: esbuild)").option("--manifest [name]", `[boolean | string] emit build manifest json`).option("--ssrManifest [name]", `[boolean | string] emit ssr manifest json`).option("--emptyOutDir", `[boolean] force empty outDir when it's outside of root`).option("-w, --watch", `[boolean] rebuilds when modules have changed on disk`).option("--app", `[boolean] same as \`builder: {}\``).action(async (root, options) => {
 	const cwd = root ? path.resolve(root) : process.cwd();
+	showBanner();
 	if (!isNalthProject(cwd) && !options.force) {
 		console.error(`
 ${colors.red("🚨 Not a Nalth project!")}
@@ -197,7 +205,7 @@ ${colors.gray("Current directory:")} ${cwd}
 		process.exit(1);
 	}
 	filterDuplicateOptions(options);
-	const { createBuilder } = await import("./chunks/dep-BmNvoCGO.js");
+	const { createBuilder } = await import("./chunks/dep-ZCfVWped.js");
 	const buildOptions = cleanGlobalCLIOptions(cleanBuilderCLIOptions(options));
 	try {
 		await (await createBuilder({
@@ -220,7 +228,7 @@ ${colors.gray("Current directory:")} ${cwd}
 });
 cli.command("optimize [root]", "pre-bundle dependencies (deprecated, the pre-bundle process runs automatically and does not need to be called)").option("--force", `[boolean] force the optimizer to ignore the cache and re-bundle`).action(async (root, options) => {
 	filterDuplicateOptions(options);
-	const { optimizeDeps } = await import("./chunks/dep-DydKAHv6.js");
+	const { optimizeDeps } = await import("./chunks/dep-BqG1V5aV.js");
 	try {
 		await optimizeDeps(await resolveConfig({
 			root,
@@ -237,7 +245,7 @@ cli.command("optimize [root]", "pre-bundle dependencies (deprecated, the pre-bun
 });
 cli.command("preview [root]", "locally preview production build").option("--host [host]", `[string] specify hostname`, { type: [convertHost] }).option("--port <port>", `[number] specify port`).option("--strictPort", `[boolean] exit if specified port is already in use`).option("--open [path]", `[boolean | string] open browser on startup`).option("--outDir <dir>", `[string] output directory (default: dist)`).action(async (root, options) => {
 	filterDuplicateOptions(options);
-	const { preview } = await import("./chunks/dep-5AyroZHx.js");
+	const { preview } = await import("./chunks/dep-DyrQYqVQ.js");
 	try {
 		const server = await preview({
 			root,

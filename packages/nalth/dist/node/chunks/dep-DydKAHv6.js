@@ -1,5 +1,0 @@
-import { createRequire as ___createRequire } from 'module'; const require = ___createRequire(import.meta.url);
-import { Ct as toDiscoveredDependencies, St as runOptimizeDeps, _t as optimizeDeps, at as cleanupDepsCacheStaleDirs, bt as optimizedDepInfoFromId, ct as depsFromOptimizedDepInfo, dt as extractExportsData, ft as getDepsCacheDir, gt as loadCachedDepOptimizationMetadata, ht as isDepOptimizationDisabled, it as addOptimizedDepInfo, lt as depsLogString, mt as initDepsOptimizerMetadata, ot as createIsOptimizedDepFile, pt as getOptimizedDepPath, rt as addManuallyIncludedOptimizeDeps, st as createIsOptimizedDepUrl, ut as discoverProjectDependencies, vt as optimizeExplicitEnvironmentDeps, xt as optimizedDepNeedsInterop, yt as optimizedDepInfoFromFile } from "./dep-tQ1aoBia.js";
-import "./dep-BzePhl6O.js";
-
-export { optimizeDeps };

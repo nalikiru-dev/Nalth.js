@@ -72,6 +72,6 @@
     "picocolors": "^1.1.1"
   },
   "devDependencies": {
-    "tsdown": "^0.18.0"
+    "tsdown": "^0.18.2"
   }
 }

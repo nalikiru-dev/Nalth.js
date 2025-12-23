@@ -31,7 +31,7 @@ ${colors.magenta('/_/ |_/\\__,_/_/\\__/_/ /_/   ')}
 ${colors.magenta('      SECURITY FIRST        ')}
 
 ${blue('┌─────────────────────────────────────────────────────────────┐')}
-${blue('│')}        ${colors.cyan('Security-First Unified Toolchain')} v${process.env.npm_package_version || '2.2.0'}         ${blue('│')}
+${blue('│')}        ${colors.cyan('Security-First Unified Toolchain')} v${process.env.npm_package_version || '0.9.1'}         ${blue('│')}
 ${blue('└─────────────────────────────────────────────────────────────┘')}
 
 ${yellow('USAGE:')}
@@ -233,26 +233,26 @@ async function init() {
     const overwrite = argOverwrite
       ? 'yes'
       : await prompts.select({
-        message:
-          (targetDir === '.'
-            ? 'Current directory'
-            : `Target directory "${targetDir}"`) +
-          ` is not empty. Please choose how to proceed:`,
-        options: [
-          {
-            label: 'Cancel operation',
-            value: 'no',
-          },
-          {
-            label: 'Remove existing files and continue',
-            value: 'yes',
-          },
-          {
-            label: 'Ignore files and continue',
-            value: 'ignore',
-          },
-        ],
-      })
+          message:
+            (targetDir === '.'
+              ? 'Current directory'
+              : `Target directory "${targetDir}"`) +
+            ` is not empty. Please choose how to proceed:`,
+          options: [
+            {
+              label: 'Cancel operation',
+              value: 'no',
+            },
+            {
+              label: 'Remove existing files and continue',
+              value: 'yes',
+            },
+            {
+              label: 'Ignore files and continue',
+              value: 'ignore',
+            },
+          ],
+        })
     if (prompts.isCancel(overwrite)) return cancel()
     switch (overwrite) {
       case 'yes':
@@ -309,9 +309,9 @@ async function init() {
         const variantColor = variant.color
         const command = variant.customCommand
           ? getFullCustomCommand(variant.customCommand, pkgInfo).replace(
-            / TARGET_DIR$/,
-            '',
-          )
+              / TARGET_DIR$/,
+              '',
+            )
           : undefined
         return {
           label: variantColor(variant.display || variant.name),
@@ -416,8 +416,9 @@ async function init() {
   // Next steps
   doneMessage += `${yellow('🚀 NEXT STEPS:')}\n`
   if (root !== cwd) {
-    doneMessage += `\n  1. ${cyan('cd')} ${cdProjectName.includes(' ') ? `"${cdProjectName}"` : cdProjectName
-      }`
+    doneMessage += `\n  1. ${cyan('cd')} ${
+      cdProjectName.includes(' ') ? `"${cdProjectName}"` : cdProjectName
+    }`
   }
   switch (pkgManager) {
     case 'yarn':
@@ -522,7 +523,10 @@ function setupReactSwc(root: string, isTs: boolean) {
   editFile(
     path.resolve(root, `vite.config.${isTs ? 'ts' : 'js'}`),
     (content) => {
-      return content.replace('@nalthjs/plugin-react', '@nalthjs/plugin-react-swc')
+      return content.replace(
+        '@nalthjs/plugin-react',
+        '@nalthjs/plugin-react-swc',
+      )
     },
   )
 }
