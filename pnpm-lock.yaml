@@ -2163,7 +2163,7 @@ packages:
     os: [win32]
 
   '@vitejs/plugin-legacy@https://pkg.pr.new/vitejs/rolldown-vite/@vitejs/plugin-legacy@a2594ec':
-    resolution: {tarball: https://pkg.pr.new/vitejs/rolldown-vite/@vitejs/plugin-legacy@a2594ec}
+    resolution: {integrity: sha512-BAc0cP/7k/K0b+8auA1J+g3nf/n8KyeUuNVatAZDr1egWUKY2nJ/NyOT7qnV6boF3ZNTS02X8JIfuDbmtsvIFQ==, tarball: https://pkg.pr.new/vitejs/rolldown-vite/@vitejs/plugin-legacy@a2594ec}
     version: 7.2.0
     engines: {node: ^20.19.0 || >=22.12.0}
     peerDependencies:
