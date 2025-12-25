@@ -324,8 +324,8 @@ importers:
         specifier: 1.0.0-beta.56
         version: 1.0.0-beta.56
       rolldown-plugin-dts:
-        specifier: ^0.19.1
-        version: 0.19.1(rolldown@1.0.0-beta.56)(typescript@5.9.3)
+        specifier: ^0.20.0
+        version: 0.20.0(rolldown@1.0.0-beta.56)(typescript@5.9.3)
       rollup-plugin-license:
         specifier: ^3.6.0
         version: 3.6.0(picomatch@4.0.3)(rollup@4.54.0)
@@ -3550,6 +3550,25 @@ packages:
       rolldown: ^1.0.0-beta.55
       typescript: ^5.0.0
       vue-tsc: ~3.1.0
+    peerDependenciesMeta:
+      '@ts-macro/tsc':
+        optional: true
+      '@typescript/native-preview':
+        optional: true
+      typescript:
+        optional: true
+      vue-tsc:
+        optional: true
+
+  rolldown-plugin-dts@0.20.0:
+    resolution: {integrity: sha512-cLAY1kN2ilTYMfZcFlGWbXnu6Nb+8uwUBsi+Mjbh4uIx7IN8uMOmJ7RxrrRgPsO4H7eSz3E+JwGoL1gyugiyUA==}
+    engines: {node: '>=20.19.0'}
+    peerDependencies:
+      '@ts-macro/tsc': ^0.3.6
+      '@typescript/native-preview': '>=7.0.0-dev.20250601.1'
+      rolldown: ^1.0.0-beta.57
+      typescript: ^5.0.0
+      vue-tsc: ~3.2.0
     peerDependenciesMeta:
       '@ts-macro/tsc':
         optional: true
@@ -7223,7 +7242,7 @@ snapshots:
     transitivePeerDependencies:
       - oxc-resolver
 
-  rolldown-plugin-dts@0.19.1(rolldown@1.0.0-beta.56)(typescript@5.9.3):
+  rolldown-plugin-dts@0.20.0(rolldown@1.0.0-beta.56)(typescript@5.9.3):
     dependencies:
       '@babel/generator': 7.28.5
       '@babel/parser': 7.28.5
