@@ -1,5 +1,6 @@
 import fs from 'node:fs'
 import path from 'node:path'
+import fsp from 'node:fs/promises'
 import { createHash } from 'node:crypto'
 import colors from 'picocolors'
 
@@ -25,10 +26,12 @@ export class PerformanceOptimizer {
   private metrics: Partial<PerformanceMetrics> = {}
   private startTime = 0
 
-  constructor(root: string = process.cwd()) {
+  constructor(root: string = process.cwd(), enableCache: boolean = true) {
     this.cacheDir = path.join(root, 'node_modules', '.nalth', 'cache')
-    this.ensureCacheDir()
-    this.loadCache()
+    if (enableCache) {
+      this.ensureCacheDir()
+      this.loadCache()
+    }
   }
 
   /**
@@ -43,7 +46,7 @@ export class PerformanceOptimizer {
    */
   endTracking(): PerformanceMetrics {
     const buildTime = performance.now() - this.startTime
-    
+
     return {
       buildTime,
       bundleSize: this.metrics.bundleSize || 0,
@@ -75,7 +78,7 @@ export class PerformanceOptimizer {
 
     // Generate new content
     const content = await generator()
-    
+
     // Store in cache
     this.cache.set(key, {
       hash,
@@ -160,44 +163,51 @@ export class PerformanceOptimizer {
           manualChunks: (id: string) => {
             // Vendor chunks
             if (id.includes('node_modules')) {
-              // Large libraries get their own chunks
+              // Large libraries and common framework deps get their own chunks
               if (id.includes('lodash')) return 'vendor-lodash'
               if (id.includes('moment')) return 'vendor-moment'
               if (id.includes('chart')) return 'vendor-charts'
               if (id.includes('react-dom')) return 'vendor-react-dom'
               if (id.includes('react')) return 'vendor-react'
               if (id.includes('vue')) return 'vendor-vue'
-              
+
+              // Nalth specific and common template deps
+              if (id.includes('picocolors')) return 'vendor-ui'
+              if (id.includes('cac')) return 'vendor-cli'
+              if (id.includes('clack')) return 'vendor-cli-ui'
+              if (id.includes('lucide')) return 'vendor-icons'
+              if (id.includes('framer-motion')) return 'vendor-animations'
+
               // Group smaller vendor libraries
               return 'vendor'
             }
           },
-          
+
           // Optimize chunk names
-          chunkFileNames: (chunkInfo) => {
+          chunkFileNames: (chunkInfo: any) => {
             const name = chunkInfo.name
             return `assets/${name}-[hash].js`
           },
-          
+
           // Optimize asset names
-          assetFileNames: (assetInfo) => {
+          assetFileNames: (assetInfo: any) => {
             const name = assetInfo.name || ''
-            
+
             // Group by type
-            if (/\.(png|jpe?g|gif|svg|webp|avif)$/.test(name)) {
+            if (/\.(?:png|jpe?g|gif|svg|webp|avif)$/.test(name)) {
               return 'assets/images/[name]-[hash][extname]'
             }
-            if (/\.(woff2?|eot|ttf|otf)$/.test(name)) {
+            if (/\.(?:woff2?|eot|ttf|otf)$/.test(name)) {
               return 'assets/fonts/[name]-[hash][extname]'
             }
             if (/\.css$/.test(name)) {
               return 'assets/css/[name]-[hash][extname]'
             }
-            
+
             return 'assets/[name]-[hash][extname]'
           },
         },
-        
+
         // Tree-shaking optimizations
         treeshake: {
           moduleSideEffects: 'no-external',
@@ -258,34 +268,54 @@ export class PerformanceOptimizer {
   /**
    * Print performance report
    */
+  /* eslint-disable no-console */
   printReport(metrics: PerformanceMetrics): void {
     console.log(colors.cyan('\n📊 Performance Report:\n'))
-    
-    console.log(colors.white(`  Build Time: ${colors.bold(this.formatTime(metrics.buildTime))}`))
-    console.log(colors.white(`  Bundle Size: ${colors.bold(this.formatSize(metrics.bundleSize))}`))
-    console.log(colors.white(`  Chunks: ${colors.bold(String(metrics.chunkCount))}`))
-    console.log(colors.white(`  Cache Hit Rate: ${colors.bold(metrics.cacheHitRate.toFixed(1) + '%')}`))
-    
+
+    console.log(
+      colors.white(
+        `  Build Time: ${colors.bold(this.formatTime(metrics.buildTime))}`,
+      ),
+    )
+    console.log(
+      colors.white(
+        `  Bundle Size: ${colors.bold(this.formatSize(metrics.bundleSize))}`,
+      ),
+    )
+    console.log(
+      colors.white(`  Chunks: ${colors.bold(String(metrics.chunkCount))}`),
+    )
+    console.log(
+      colors.white(
+        `  Cache Hit Rate: ${colors.bold(metrics.cacheHitRate.toFixed(1) + '%')}`,
+      ),
+    )
+
     if (metrics.hmrUpdateTime > 0) {
-      console.log(colors.white(`  HMR Update: ${colors.bold(this.formatTime(metrics.hmrUpdateTime))}`))
+      console.log(
+        colors.white(
+          `  HMR Update: ${colors.bold(this.formatTime(metrics.hmrUpdateTime))}`,
+        ),
+      )
     }
 
     const suggestions = this.analyzePerformance(metrics)
     if (suggestions.length > 0) {
       console.log(colors.yellow('\n💡 Performance Suggestions:\n'))
-      suggestions.forEach(s => console.log(colors.white(`  ${s}`)))
+      suggestions.forEach((s: string) => console.log(colors.white(`  ${s}`)))
     }
 
     console.log() // Empty line
   }
+  /* eslint-enable no-console */
 
   /**
    * Hash key with dependencies
    */
   private hashKey(key: string, dependencies: string[]): string {
-    const hash = createHash('md5')
+    const hash = createHash('sha256')
     hash.update(key)
-    dependencies.forEach(dep => hash.update(dep))
+    dependencies.forEach((dep) => hash.update(dep))
     return hash.digest('hex')
   }
 
@@ -365,11 +395,24 @@ export class PerformanceOptimizer {
     if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(2)}KB`
     return `${(bytes / (1024 * 1024)).toFixed(2)}MB`
   }
+
+  /**
+   * Pre-warm the cache for common files
+   */
+  async prewarm(files: string[]): Promise<void> {
+    for (const file of files) {
+      if (fs.existsSync(file)) {
+        await this.getCached(file, () => fsp.readFile(file, 'utf-8'), [file])
+      }
+    }
+  }
 }
 
 /**
  * Create performance optimizer instance
  */
-export function createPerformanceOptimizer(root?: string): PerformanceOptimizer {
+export function createPerformanceOptimizer(
+  root?: string,
+): PerformanceOptimizer {
   return new PerformanceOptimizer(root)
 }

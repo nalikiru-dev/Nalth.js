@@ -28,7 +28,7 @@ export default defineConfig({
     alias: {
       'nalth/module-runner': path.resolve(
         _dirname,
-        './packages/vite/src/module-runner/index.ts',
+        './packages/nalth/src/module-runner/index.ts',
       ),
     },
   },

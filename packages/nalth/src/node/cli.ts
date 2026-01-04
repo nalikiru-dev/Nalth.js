@@ -1,7 +1,7 @@
 import path from 'node:path'
-import spawn from 'cross-spawn'
 import fs from 'node:fs'
 import { performance } from 'node:perf_hooks'
+import spawn from 'cross-spawn'
 import { cac } from 'cac'
 import colors from 'picocolors'
 import { VERSION } from './constants'
@@ -12,6 +12,7 @@ import type { LogLevel } from './logger'
 import { createLogger } from './logger'
 import { resolveConfig } from './config'
 import type { InlineConfig } from './config'
+import { createPerformanceOptimizer } from './performance-optimizer'
 
 const BANNER = `
   ${colors.cyan(colors.bold('🛡️  NALTH'))} ${colors.dim('v' + VERSION)}
@@ -32,7 +33,7 @@ function isNalthProject(cwd: string): boolean {
     'vite.config.js',
     'vite.config.ts',
     'vite.config.mjs',
-    'vite.config.cjs'
+    'vite.config.cjs',
   ]
 
   for (const config of configFiles) {
@@ -53,11 +54,17 @@ function isNalthProject(cwd: string): boolean {
         pkg.dependencies?.vite ||
         pkg.devDependencies?.vite
       )
-    } catch { }
+    } catch {}
   }
 
   // Check for common web project indicators
-  const webProjectFiles = ['index.html', 'src/main.ts', 'src/main.js', 'src/index.ts', 'src/index.js']
+  const webProjectFiles = [
+    'index.html',
+    'src/main.ts',
+    'src/main.js',
+    'src/index.ts',
+    'src/index.js',
+  ]
   for (const file of webProjectFiles) {
     if (fs.existsSync(path.join(cwd, file))) {
       return true
@@ -270,6 +277,9 @@ ${colors.gray('Current directory:')} ${cwd}
         forceOptimizeDeps: options.force,
       })
 
+      const optimizer = createPerformanceOptimizer(root)
+      optimizer.startTracking()
+
       if (!server.httpServer) {
         throw new Error('HTTP server not available')
       }
@@ -285,10 +295,10 @@ ${colors.gray('Current directory:')} ${cwd}
       const viteStartTime = global.__vite_start_time ?? false
       const startupDurationString = viteStartTime
         ? colors.dim(
-          `ready in ${colors.reset(
-            colors.bold(Math.ceil(performance.now() - viteStartTime)),
-          )} ms`,
-        )
+            `ready in ${colors.reset(
+              colors.bold(Math.ceil(performance.now() - viteStartTime)),
+            )} ms`,
+          )
         : ''
       const hasExistingLogs =
         process.stdout.bytesWritten > 0 || process.stderr.bytesWritten > 0
@@ -365,7 +375,7 @@ cli
   .option(
     '--minify [minifier]',
     `[boolean | "terser" | "esbuild"] enable/disable minification, ` +
-    `or specify minifier to use (default: esbuild)`,
+      `or specify minifier to use (default: esbuild)`,
   )
   .option('--manifest [name]', `[boolean | string] emit build manifest json`)
   .option('--ssrManifest [name]', `[boolean | string] emit ssr manifest json`)
@@ -422,7 +432,13 @@ ${colors.gray('Current directory:')} ${cwd}
           ...(options.app ? { builder: {} } : {}),
         }
         const builder = await createBuilder(inlineConfig, null)
+        const optimizer = createPerformanceOptimizer(root)
+        optimizer.startTracking()
+
         await builder.buildApp()
+
+        const metrics = optimizer.endTracking()
+        optimizer.printReport(metrics)
       } catch (e) {
         createLogger(options.logLevel).error(
           colors.red(`error during build:\n${e.stack}`),
@@ -578,7 +594,10 @@ cli
   .option('--cache', `[boolean] use cache (default: true)`)
   .option('--security', `[boolean] run security-focused linting`)
   .option('--strict', `[boolean] use strict rules`)
-  .option('--format <format>', `[string] output format (stylish|json|compact|html)`)
+  .option(
+    '--format <format>',
+    `[string] output format (stylish|json|compact|html)`,
+  )
   .option('--quiet', `[boolean] report errors only`)
   .option('--max-warnings <number>', `[number] max warnings before error`)
   .action(async (pattern: string | undefined, options: any) => {
@@ -629,20 +648,16 @@ cli
   })
 
 // run:init
-cli
-  .command('run:init', 'initialize task runner')
-  .action(async () => {
-    const { initRunCommand } = await import('./cli/run-command.js')
-    await initRunCommand()
-  })
+cli.command('run:init', 'initialize task runner').action(async () => {
+  const { initRunCommand } = await import('./cli/run-command.js')
+  await initRunCommand()
+})
 
 // ui
-cli
-  .command('ui', 'open advanced devtools UI')
-  .action(async () => {
-    const { uiCommand } = await import('./cli/ui-command.js')
-    await uiCommand()
-  })
+cli.command('ui', 'open advanced devtools UI').action(async () => {
+  const { uiCommand } = await import('./cli/ui-command.js')
+  await uiCommand()
+})
 
 // lib
 cli
@@ -654,16 +669,17 @@ cli
   })
 
 // lib:init
-cli
-  .command('lib:init', 'initialize library configuration')
-  .action(async () => {
-    const { initLibCommand } = await import('./cli/lib-command.js')
-    await initLibCommand()
-  })
+cli.command('lib:init', 'initialize library configuration').action(async () => {
+  const { initLibCommand } = await import('./cli/lib-command.js')
+  await initLibCommand()
+})
 
 // install
 cli
-  .command('install [packages...]', 'securely install packages with deep security analysis')
+  .command(
+    'install [packages...]',
+    'securely install packages with deep security analysis',
+  )
   .alias('i')
   .alias('add')
   // Security options
@@ -674,7 +690,10 @@ cli
   .option('--skip-analysis', `[boolean] skip deep package analysis`)
 
   // Package manager options
-  .option('--pm <manager>', `[string] package manager to use (npm|yarn|pnpm|bun)`)
+  .option(
+    '--pm <manager>',
+    `[string] package manager to use (npm|yarn|pnpm|bun)`,
+  )
   .option('--use-npm', `[boolean] use npm package manager`)
   .option('--use-yarn', `[boolean] use Yarn package manager`)
   .option('--use-pnpm', `[boolean] use pnpm package manager`)
@@ -697,7 +716,10 @@ cli
   .option('--scope <scope>', `[string] scope for scoped packages`)
 
   // Security levels
-  .option('--security-level <level>', `[string] security level (strict|normal|permissive)`)
+  .option(
+    '--security-level <level>',
+    `[string] security level (strict|normal|permissive)`,
+  )
   .option('--allow-scripts', `[boolean] allow install scripts to run`)
   .option('--ignore-scripts', `[boolean] ignore all install scripts`)
 
@@ -726,7 +748,10 @@ cli
   .command('audit', 'run security audit')
   .option('--path <path>', `[string] project path`)
   .option('--format <format>', `[string] output format (json|text)`)
-  .option('--severity <level>', `[string] minimum severity (low|moderate|high|critical)`)
+  .option(
+    '--severity <level>',
+    `[string] minimum severity (low|moderate|high|critical)`,
+  )
   .option('--fix', `[boolean] auto-fix vulnerabilities`)
   .action(async (options: any) => {
     const { auditCommand } = await import('./cli/security-commands.js')
@@ -751,7 +776,7 @@ cli
   .option('--output <file>', `[string] output file`)
   .option('--detailed', `[boolean] detailed report`)
   .action(async (options: any) => {
-    // For now, report triggers security report. 
+    // For now, report triggers security report.
     // In the future this can aggregate multiple reports.
     const { securityReportCommand } = await import('./cli/security-commands.js')
     await securityReportCommand(options)
